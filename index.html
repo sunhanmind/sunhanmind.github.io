@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="선한인연 선한명상 - 20년 수련, 10년 지도. 자매가 함께 운영하는 명상 센터">
+    <title>선한인연 선한명상 | Quiet Mind, Whole Self</title>
+
+    <!-- DNS prefetch + preconnect 이미지 CDN -->
+    <link rel="dns-prefetch" href="https://www.genspark.ai">
+    <link rel="preconnect" href="https://www.genspark.ai" crossorigin>
+
+    <!-- 최우선 이미지 미리 로드 (히어로 + 프로필 + 캐러셀 첫 2장) -->
+    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/5LGn383D" fetchpriority="high">
+    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/tCTmTTvD">
+    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/9npntwQx">
+    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/qz9PKQGG">
+
+    <!-- Google Fonts + Pretendard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+    <style>
+        /* ======================================================
+           DESIGN SYSTEM — Dark Editorial
+           명상 센터를 위한 차분한 다크 무드
+        ====================================================== */
+        :root {
+            /* 베이스 — 완벽한 검정 대신 약간의 따스함을 머금은 다크 톤 */
+            --bg: #0E0F0D;          /* 메인 배경 (잉크 블랙) */
+            --bg-elev: #15171413;   /* 살짝 올라온 표면 (투명) */
+            --bg-soft: #1A1C19;     /* 카드/엘리베이션 */
+            --bg-dim: #0A0B09;      /* 더 깊은 검정 (히어로 하단) */
+
+            /* 텍스트 — 가독성을 위해 전체적으로 밝게 */
+            --text: #F5F2EA;        /* 메인 텍스트 (밝은 웜 화이트) */
+            --text-soft: #D4D0C5;   /* 본문 보조 (한 단계 밝게) */
+            --text-mute: #9A968A;   /* 메타 · 캡션 (밝게) */
+            --text-faint: #5C5A52;  /* 라벨 라인 */
+
+            /* 포인트 컬러 — 더 선명하고 밝게 */
+            --sage: #B5D0B7;        /* 밝은 세이지 */
+            --sage-soft: #8FAE92;
+            --warm: #E8B888;        /* 밝은 골드 */
+            --warm-soft: #D4A574;
+
+            /* 형광펜 (highlight) */
+            --hl-gold: rgba(232, 184, 136, 0.28);   /* 골드 형광펜 */
+            --hl-sage: rgba(181, 208, 183, 0.22);   /* 세이지 형광펜 */
+
+            /* 라인 */
+            --line: #3A3D36;
+            --line-soft: #2A2D27;
+
+            /* 타이포 */
+            --font-serif-en: 'Cormorant Garamond', serif;
+            --font-serif-kr: 'Noto Serif KR', 'Pretendard Variable', serif;
+            --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+            /* 라운드 */
+            --radius: 2px;
+            --radius-img: 0;
+        }
+
+        /* ======================================================
+           RESET
+        ====================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--text);
+            background-color: var(--bg);
+            padding-bottom: 100px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.005em;
+            overflow-x: hidden;
+        }
+
+        /* 형광펜 효과 — 다크 모드용 (반투명 골드/세이지 그라디언트) */
+        .hl {
+            background: linear-gradient(
+                to top,
+                var(--hl-gold) 0%,
+                var(--hl-gold) 42%,
+                transparent 42%,
+                transparent 100%
+            );
+            padding: 0 3px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .hl--sage {
+            background: linear-gradient(
+                to top,
+                var(--hl-sage) 0%,
+                var(--hl-sage) 42%,
+                transparent 42%,
+                transparent 100%
+            );
+            padding: 0 3px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .page {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ======================================================
+           SHARED COMPONENTS
+        ====================================================== */
+
+        /* 섹션 라벨 — 미세한 도트 + 영문 */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .section-label__dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--warm);
+            flex-shrink: 0;
+        }
+
+        .section-label__num {
+            font-family: var(--font-serif-en);
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--text);
+            letter-spacing: 0.15em;
+        }
+
+        .section-label__text {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--text-mute);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .section-label__line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--line), transparent);
+        }
+
+        /* 헤드라인 */
+        .headline {
+            font-family: var(--font-serif-kr);
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 1.55;
+            color: var(--text);
+            letter-spacing: -0.025em;
+            word-break: keep-all;
+        }
+
+        .headline em {
+            font-style: italic;
+            font-family: var(--font-serif-en);
+            font-weight: 500;
+            color: var(--warm);
+        }
+
+        /* 본문 */
+        .body {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.95;
+            color: var(--text-soft);
+            word-break: keep-all;
+        }
+
+        /* 디바이더 */
+        .divider {
+            width: 32px;
+            height: 1px;
+            background-color: var(--warm);
+            border: none;
+            margin: 28px 0;
+            opacity: 0.7;
+        }
+
+        /* 섹션 */
+        .section {
+            padding: 80px 28px;
+            position: relative;
+        }
+
+        .section--elev {
+            background-color: var(--bg-soft);
+        }
+
+        /* ======================================================
+           HERO — 사진(위) + 헤드라인(아래) 분리 구조
+        ====================================================== */
+        .hero {
+            position: relative;
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 사진 영역 — 풀블리드, 로고/캘리그래피가 잘 보이게 */
+        .hero__image-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;       /* 정사각형 (원본 로고 사진 비율과 유사) */
+            overflow: hidden;
+            background: linear-gradient(
+                110deg,
+                #14171312 0%,
+                #1F221E 50%,
+                #14171312 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2.4s linear infinite;
+        }
+
+        .hero__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            filter: brightness(1) saturate(1.05) contrast(1.02);
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .hero__image.is-loaded {
+            opacity: 1;
+        }
+
+        /* 사진 → 검정 본문으로 부드럽게 이어지는 페이드 (사진 하단만) */
+        .hero__image-wrap::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 30%;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(14, 15, 13, 0.65) 75%,
+                var(--bg) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* 사진 위 우상단 작은 브랜드 도트 (장식) */
+        .hero__brand {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            padding: 22px 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .hero__brand-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--warm);
+            opacity: 0.9;
+            box-shadow: 0 0 12px rgba(232, 184, 136, 0.6);
+        }
+
+        /* 하단 콘텐츠 (헤드라인 + 메타) — 사진 아래 분리된 영역 */
+        .hero__content {
+            position: relative;
+            z-index: 3;
+            padding: 48px 28px 56px;
+            background-color: var(--bg);
+        }
+
+        .hero__eyebrow {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 17px;
+            color: var(--warm);
+            margin-bottom: 20px;
+            letter-spacing: 0.04em;
+            opacity: 1;
+        }
+
+        .hero__headline {
+            font-family: var(--font-serif-kr);
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 1.6;
+            color: var(--text);
+            letter-spacing: -0.025em;
+            margin-bottom: 36px;
+            word-break: keep-all;
+        }
+
+        /* 히어로 헤드라인 형광펜 */
+        .hero__headline .hl-hero {
+            background: linear-gradient(
+                to top,
+                var(--hl-gold) 0%,
+                var(--hl-gold) 42%,
+                transparent 42%
+            );
+            padding: 0 4px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .hero__meta {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+        }
+
+        .hero__meta-num {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--warm);
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .hero__meta-text {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text);
+            letter-spacing: 0.02em;
+        }
+
+        .hero__meta-text strong {
+            font-weight: 600;
+            color: var(--text);
+            display: block;
+            margin-bottom: 2px;
+            letter-spacing: 0.04em;
+        }
+
+        /* ======================================================
+           SECTION 2: EMPATHY
+        ====================================================== */
+        .empathy__quote-mark {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 0.6;
+            color: var(--warm);
+            opacity: 0.85;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .empathy__text {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 2.1;
+            color: var(--text);
+            white-space: pre-line;
+            letter-spacing: -0.005em;
+            margin-bottom: 44px;
+        }
+
+        .empathy__text strong {
+            font-weight: 500;
+            color: #FFFFFF;
+            font-family: var(--font-serif-kr);
+            background: linear-gradient(
+                to top,
+                var(--hl-gold) 0%,
+                var(--hl-gold) 45%,
+                transparent 45%
+            );
+            padding: 0 4px;
+        }
+
+        /* ======================================================
+           AUTO SLIDING CAROUSEL (Marquee)
+           — 좌측으로 무한히 흐르는 사진 슬라이드
+        ====================================================== */
+        .empathy__carousel {
+            position: relative;
+            width: calc(100% + 56px);
+            margin-left: -28px;        /* 섹션 패딩을 무시하고 좌우로 풀블리드 */
+            margin-right: -28px;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                #000 8%,
+                #000 92%,
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                #000 8%,
+                #000 92%,
+                transparent 100%
+            );
+        }
+
+        .empathy__carousel-track {
+            display: flex;
+            gap: 14px;
+            width: max-content;
+            animation: slideLeft 28s linear infinite;
+            will-change: transform;
+        }
+
+        .empathy__carousel:hover .empathy__carousel-track {
+            animation-play-state: paused;
+        }
+
+        .empathy__slide {
+            position: relative;
+            flex-shrink: 0;
+            width: 240px;
+            height: 320px;
+            overflow: hidden;
+            border-radius: var(--radius-img);
+            background: linear-gradient(
+                110deg,
+                #1A1C19 8%,
+                #25282204 18%,
+                #1A1C19 33%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2.4s linear infinite;
+        }
+
+        .empathy__slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85) saturate(0.9);
+            opacity: 0;
+            transition: opacity 0.6s ease, filter 0.4s ease;
+        }
+
+        /* 이미지 로딩 완료 시 부드럽게 페이드인 */
+        .empathy__slide img.is-loaded {
+            opacity: 1;
+        }
+
+        @keyframes shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .empathy__slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(14, 15, 13, 0.35) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* 두 트랙(원본 + 복제본)이 이어지도록 50% 이동 */
+        @keyframes slideLeft {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .empathy__carousel-track {
+                animation: none;
+            }
+        }
+
+        /* ======================================================
+           SECTION 3: FOUNDER STORY
+        ====================================================== */
+        .founder {
+            background-color: var(--bg);
+        }
+
+        .founder__profile-wrap {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 0 36px 0;
+        }
+
+        /* 사진 뒤 글로우 효과 */
+        .founder__profile-glow {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center,
+                rgba(212, 165, 116, 0.18) 0%,
+                rgba(212, 165, 116, 0.05) 40%,
+                transparent 70%
+            );
+            z-index: 1;
+        }
+
+        /* 사진 뒤 오프셋 링 */
+        .founder__profile-ring {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid var(--warm);
+            opacity: 0.4;
+            z-index: 2;
+        }
+
+        .founder__profile {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(
+                110deg,
+                #1A1C19 0%,
+                #25282280 50%,
+                #1A1C19 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2.4s linear infinite;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .founder__profile img {
+            width: 160%;
+            height: 160%;
+            object-fit: cover;
+            object-position: 50% 18%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: saturate(0.95) brightness(1);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .founder__profile img.is-loaded {
+            opacity: 1;
+        }
+
+        .founder__name-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .founder__name {
+            font-family: var(--font-serif-kr);
+            font-weight: 700;
+            font-size: 26px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .founder__name-en {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 18px;
+            color: var(--warm);
+            letter-spacing: 0.05em;
+        }
+
+        .founder__role {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--text-mute);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .founder__story {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 2;
+            color: var(--text-soft);
+            white-space: pre-line;
+            word-break: keep-all;
+        }
+
+        .founder__story strong {
+            font-weight: 500;
+            color: var(--text);
+            background: linear-gradient(
+                to top,
+                var(--hl-sage) 0%,
+                var(--hl-sage) 45%,
+                transparent 45%
+            );
+            padding: 0 3px;
+        }
+
+        /* ======================================================
+           SECTION 4: TESTIMONIALS
+        ====================================================== */
+        .testimonials__heading {
+            margin-bottom: 8px;
+        }
+
+        .testimonials__title {
+            font-family: var(--font-serif-kr);
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 1.5;
+            color: var(--text);
+            letter-spacing: -0.025em;
+            margin-bottom: 10px;
+            word-break: keep-all;
+        }
+
+        .testimonials__sub {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 15px;
+            color: var(--warm);
+            margin-bottom: 52px;
+            letter-spacing: 0.04em;
+        }
+
+        .testimonial-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .testimonial {
+            padding: 36px 0;
+            border-bottom: 1px solid var(--line);
+            position: relative;
+        }
+
+        .testimonial:first-child {
+            padding-top: 8px;
+        }
+
+        .testimonial:last-child {
+            border-bottom: none;
+            padding-bottom: 8px;
+        }
+
+        /* 카드 헤더: 인덱스 + 인적사항 */
+        .testimonial__header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .testimonial__index {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--warm);
+            letter-spacing: 0.12em;
+            min-width: 24px;
+            flex-shrink: 0;
+        }
+
+        .testimonial__profile {
+            flex: 1;
+        }
+
+        .testimonial__person {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text);
+            letter-spacing: 0.03em;
+            line-height: 1.4;
+        }
+
+        .testimonial__years {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--warm-soft);
+            letter-spacing: 0.04em;
+            margin-left: 6px;
+        }
+
+        /* 한 마디 인용 (큰 명조) */
+        .testimonial__quote {
+            font-family: var(--font-serif-kr);
+            font-weight: 500;
+            font-size: 19px;
+            line-height: 1.7;
+            color: var(--text);
+            letter-spacing: -0.025em;
+            word-break: keep-all;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        /* 인용문 좌측 골드 바 */
+        .testimonial__quote::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background-color: var(--warm);
+            opacity: 0.7;
+        }
+
+        .testimonial__quote .hl {
+            font-weight: 700;
+        }
+
+        /* 본문 스토리 */
+        .testimonial__story {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.95;
+            color: var(--text-soft);
+            letter-spacing: -0.005em;
+            word-break: keep-all;
+        }
+
+        .testimonial__story strong {
+            font-weight: 500;
+            color: var(--text);
+            background: linear-gradient(
+                to top,
+                var(--hl-gold) 0%,
+                var(--hl-gold) 42%,
+                transparent 42%
+            );
+            padding: 0 3px;
+        }
+
+        /* 대시(em-dash) — 골드 톤 (공용) */
+        .dash {
+            color: var(--warm);
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            margin: 0 2px;
+        }
+
+        /* ======================================================
+           SECTION 5: CTA
+        ====================================================== */
+        .final-cta {
+            text-align: left;
+        }
+
+        .final-cta__title {
+            font-family: var(--font-serif-kr);
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 1.45;
+            color: var(--text);
+            letter-spacing: -0.025em;
+            margin-bottom: 18px;
+            word-break: keep-all;
+        }
+
+        .final-cta__title em {
+            font-style: normal;
+            font-family: var(--font-serif-kr);
+            font-weight: 700;
+            color: var(--warm);
+            background: linear-gradient(
+                to top,
+                var(--hl-gold) 0%,
+                var(--hl-gold) 42%,
+                transparent 42%
+            );
+            padding: 0 4px;
+        }
+
+        .final-cta__desc {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.95;
+            color: var(--text-soft);
+            white-space: pre-line;
+            margin-bottom: 40px;
+            word-break: keep-all;
+        }
+
+        /* 전화번호 디스플레이 (Call 010 · 5299 · 7596) */
+        .contact-number {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            padding: 18px 0 24px;
+            margin-bottom: 28px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            text-decoration: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .contact-number:hover,
+        .contact-number:active {
+            opacity: 0.78;
+        }
+
+        .contact-number__label {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--warm);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .contact-number__digits {
+            font-family: var(--font-serif-kr);
+            font-weight: 500;
+            font-size: 22px;
+            color: var(--text);
+            letter-spacing: 0.02em;
+            line-height: 1;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            width: 100%;
+            padding: 0 24px;
+            border-radius: var(--radius);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn__label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn__num {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .btn__arrow {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 20px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover .btn__arrow,
+        .btn:active .btn__arrow {
+            transform: translateX(6px);
+        }
+
+        .btn--primary {
+            background-color: var(--text);
+            color: var(--bg);
+            border: 1px solid var(--text);
+        }
+
+        .btn--primary:hover,
+        .btn--primary:active {
+            background-color: var(--warm);
+            border-color: var(--warm);
+            color: var(--bg);
+        }
+
+        .btn--secondary {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--warm-soft);
+        }
+
+        .btn--secondary:hover,
+        .btn--secondary:active {
+            border-color: var(--warm);
+            color: var(--warm);
+            background-color: rgba(232, 184, 136, 0.08);
+        }
+
+        /* 주소 */
+        .address {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding-top: 32px;
+            border-top: 1px solid var(--line);
+        }
+
+        .address__label {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-size: 13px;
+            color: var(--warm);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            min-width: 60px;
+            padding-top: 2px;
+        }
+
+        .address__text {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.75;
+            color: var(--text-soft);
+            letter-spacing: 0.02em;
+        }
+
+        /* ======================================================
+           FOOTER
+        ====================================================== */
+        .footer {
+            background-color: var(--bg-dim);
+            color: var(--text-mute);
+            padding: 48px 28px 36px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer__brand {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 17px;
+            color: var(--warm);
+            margin-bottom: 8px;
+            letter-spacing: 0.1em;
+        }
+
+        .footer__divider {
+            width: 24px;
+            height: 1px;
+            background-color: var(--line);
+            margin: 16px auto;
+        }
+
+        .footer__copy {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--text-mute);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        /* ======================================================
+           FLOATING CTA
+        ====================================================== */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 420px;
+            height: 60px;
+            border-radius: var(--radius);
+            background-color: rgba(232, 229, 221, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+                        0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(232, 229, 221, 0.3);
+        }
+
+        .floating-cta:hover,
+        .floating-cta:active {
+            background-color: var(--warm);
+            color: var(--bg);
+        }
+
+        .floating-cta__label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .floating-cta__num {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-size: 14px;
+            color: var(--warm-soft);
+            letter-spacing: 0.06em;
+        }
+
+        .floating-cta:hover .floating-cta__num {
+            color: var(--bg);
+            opacity: 0.7;
+        }
+
+        .floating-cta__arrow {
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-cta:hover .floating-cta__arrow {
+            transform: translateX(5px);
+        }
+
+        /* ======================================================
+           FADE-IN
+        ====================================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        transform 1.1s cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+                animation: none;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ======================================================
+           SMALL SCREENS
+        ====================================================== */
+        @media (max-width: 360px) {
+            .section { padding: 64px 22px; }
+            .hero__content { padding: 0 22px 48px; }
+            .hero__brand { padding: 22px 22px 0; }
+            .hero__headline { font-size: 22px; }
+            .headline,
+            .testimonials__title { font-size: 22px; }
+            .final-cta__title { font-size: 24px; }
+            .testimonial__quote { font-size: 16px; }
+            .founder__profile-wrap { width: 170px; height: 170px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- ===========================================
+             HERO — 사진(위) + 헤드라인(아래) 분리 구조
+        ============================================ -->
+        <header class="hero" id="hero-section">
+            <!-- 사진 영역 (로고 + 캘리그래피가 또렷이 보임) -->
+            <div class="hero__image-wrap">
+                <img src="https://www.genspark.ai/api/files/s/5LGn383D"
+                     alt="선한인연 선한명상 브랜드 로고 — 호흡명상컨텐츠연구소"
+                     class="hero__image"
+                     width="480" height="480"
+                     fetchpriority="high"
+                     decoding="async"
+                     loading="eager">
+
+                <!-- 우상단 골드 도트 (장식) -->
+                <div class="hero__brand" aria-hidden="true">
+                    <span class="hero__brand-dot"></span>
+                </div>
+            </div>
+
+            <!-- 하단 콘텐츠 (사진과 분리된 영역) -->
+            <div class="hero__content fade-in">
+                <p class="hero__eyebrow">A space to return to yourself</p>
+
+                <h1 class="hero__headline">
+                    괜찮은 척 하느라<br>
+                    정작 <span class="hl-hero">나를 돌보지 못한 시간</span>,<br>
+                    얼마나 되셨나요?
+                </h1>
+
+                <div class="hero__meta">
+                    <span class="hero__meta-num" aria-hidden="true">20<span style="font-size:12px; letter-spacing:0.1em;">YRS</span></span>
+                    <p class="hero__meta-text">
+                        <strong>20년 지도</strong>
+                        자매가 함께 운영하는 명상 센터
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===========================================
+             SECTION 01 — EMPATHY
+        ============================================ -->
+        <section class="section fade-in" id="empathy-section" aria-labelledby="empathy-label">
+            <div class="section-label" id="empathy-label">
+                <span class="section-label__dot" aria-hidden="true"></span>
+                <span class="section-label__num">01</span>
+                <span class="section-label__text">Empathy</span>
+                <span class="section-label__line" aria-hidden="true"></span>
+            </div>
+
+            <span class="empathy__quote-mark" aria-hidden="true">“</span>
+
+            <p class="empathy__text"><span class="hl--sage">밤마다 생각이 멈추지 않고</span>,
+아침에 눈을 떠도 <span class="hl--sage">개운하지 않고</span>,
+이유 없이 짜증이 나고,
+몸 어딘가가 늘 불편하고,
+
+<strong>'나는 언제쯤 나를 돌볼 수 있을까'</strong>
+한 번이라도 이런 생각을 하셨다면,
+이 페이지를 끝까지 읽어주세요.</p>
+
+            <!-- 자동 슬라이드 캐러셀 (좌측으로 무한 이동) -->
+            <div class="empathy__carousel" aria-label="센터의 명상 수련 모습 슬라이드">
+                <div class="empathy__carousel-track">
+                    <!-- 원본 7장 — 첫 3장은 즉시 로드, 나머지는 lazy -->
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/9npntwQx" alt="센터 내부 수련장에서 그룹 명상 중인 모습" loading="eager" decoding="async" fetchpriority="high">
+                    </div>
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/qz9PKQGG" alt="대표님이 회원의 자세를 직접 교정해 주는 모습" loading="eager" decoding="async" fetchpriority="high">
+                    </div>
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/XKwjGFY0" alt="대표님과 회원이 일대일로 마주하는 순간" loading="eager" decoding="async">
+                    </div>
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/BmtWRQRQ" alt="거울을 마주한 명상 수련의 깊은 집중" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/qQvaz4th" alt="수련실에서 스트레칭과 명상을 병행하는 회원들" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/c1PHf1fi" alt="대표님이 동작을 시연하는 그룹 수련 풍경" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide">
+                        <img src="https://www.genspark.ai/api/files/s/GJ4LzSfn" alt="대표님이 회원의 자세를 섬세하게 잡아주는 모습" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- 복제본 (끊김 없이 이어지도록) -->
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/9npntwQx" alt="" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/qz9PKQGG" alt="" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/XKwjGFY0" alt="" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/BmtWRQRQ" alt="" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/qQvaz4th" alt="" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/c1PHf1fi" alt="" loading="lazy" decoding="async">
+                    </div>
+                    <div class="empathy__slide" aria-hidden="true">
+                        <img src="https://www.genspark.ai/api/files/s/GJ4LzSfn" alt="" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===========================================
+             SECTION 02 — OUR STORY
+        ============================================ -->
+        <section class="section section--elev founder fade-in" id="founder-section" aria-labelledby="founder-label">
+            <div class="section-label" id="founder-label">
+                <span class="section-label__dot" aria-hidden="true"></span>
+                <span class="section-label__num">02</span>
+                <span class="section-label__text">Our Story</span>
+                <span class="section-label__line" aria-hidden="true"></span>
+            </div>
+
+            <!-- 프로필 사진 (글로우 + 오프셋 링) -->
+            <div class="founder__profile-wrap">
+                <div class="founder__profile-glow" aria-hidden="true"></div>
+                <div class="founder__profile-ring" aria-hidden="true"></div>
+                <div class="founder__profile">
+                    <img src="https://www.genspark.ai/api/files/s/tCTmTTvD"
+                         alt="시아·가이 대표 프로필 사진"
+                         decoding="async"
+                         loading="eager">
+                </div>
+            </div>
+
+            <div class="founder__name-row">
+                <h2 class="founder__name">시아 · 가이</h2>
+                <span class="founder__name-en" aria-hidden="true">Sia · Gai</span>
+            </div>
+            <p class="founder__role">Founders · 선한인연 선한명상</p>
+
+            <hr class="divider" aria-hidden="true">
+
+            <p class="founder__story">수련을 시작하기 전,
+각자의 몸과 마음에서 오는
+수많은 통증과 아픔을 반복하며
+저희는 모든 일상의 무너짐을 느꼈습니다.
+
+<strong>만성염증과 두통, 허리 통증, 피부질환,
+고혈압, 불안, 우울, 대인기피증까지…</strong>
+
+세상의 치료법으로는 채워지지 않던 자리를,
+서로가 인연이 되어 회복하고 치유할 수 있었습니다.
+
+<strong>몸과 마음에 짙게 뿌리내린 병은
+해결해야 할 문제가 아니라
+나 자신을 알기 위한 신호였습니다.</strong>
+
+호흡을 통해 몸의 감각을 깨우고,
+생각과 감정을 바라보며
+마음을 다스릴 수 있기까지.
+
+이 여정을 <span class="dash" aria-hidden="true">—</span> 함께 걷기 위해,
+저희는 이 공간을 열었습니다.
+
+<strong>20년의 수련과 연구를 통해
+한 분 한 분의 곁에서 직접 지도한 시간.</strong>
+
+자매이자 동료 수련자로서,
+저희가 직접 겪고 회복한 방법만을 전합니다.</p>
+        </section>
+
+        <!-- ===========================================
+             SECTION 03 — VOICES
+        ============================================ -->
+        <section class="section fade-in" id="testimonials-section" aria-labelledby="testimonials-title">
+            <div class="section-label">
+                <span class="section-label__dot" aria-hidden="true"></span>
+                <span class="section-label__num">03</span>
+                <span class="section-label__text">Voices</span>
+                <span class="section-label__line" aria-hidden="true"></span>
+            </div>
+
+            <div class="testimonials__heading">
+                <h2 class="testimonials__title" id="testimonials-title">
+                    함께 걸어주신<br>회원분들의 변화
+                </h2>
+                <p class="testimonials__sub">Real voices, real change.</p>
+            </div>
+
+            <div class="testimonial-list">
+                <article class="testimonial">
+                    <div class="testimonial__header">
+                        <span class="testimonial__index" aria-hidden="true">i.</span>
+                        <div class="testimonial__profile">
+                            <p class="testimonial__person">
+                                30대 여성 · 브랜드 CEO
+                                <span class="testimonial__years">8 yrs of practice</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="testimonial__quote">"20대에 만난 명상이 <span class="hl">30대의 저를 만들었어요.</span>"</p>
+                    <p class="testimonial__story">면역결핍성 질환과 오랜 폭식으로 무너져 있던 20대에 명상을 시작했습니다. 8년이 지난 지금 <span class="dash" aria-hidden="true">—</span> <strong>자기 화장품 브랜드의 CEO</strong>로, 매일 아침 40분 명상으로 하루를 시작합니다.</p>
+                </article>
+
+                <article class="testimonial">
+                    <div class="testimonial__header">
+                        <span class="testimonial__index" aria-hidden="true">ii.</span>
+                        <div class="testimonial__profile">
+                            <p class="testimonial__person">
+                                40대 여성 · 교사
+                            </p>
+                        </div>
+                    </div>
+                    <p class="testimonial__quote">"머리로 이해하던 명상이 <span class="hl">몸으로 체감되니까, 완전히 달라졌어요.</span>"</p>
+                    <p class="testimonial__story">6년 동안 디스크 통증과 싸워왔습니다. 유튜브 명상 · 교정 필라테스 · 요가 <span class="dash" aria-hidden="true">—</span> 안 해본 것이 없었지만 풀리지 않던 통증이 <strong>두 달 만에 사라졌습니다.</strong> 지금은 학교에서도 자연스러운 리더십을 발휘하십니다.</p>
+                </article>
+
+                <article class="testimonial">
+                    <div class="testimonial__header">
+                        <span class="testimonial__index" aria-hidden="true">iii.</span>
+                        <div class="testimonial__profile">
+                            <p class="testimonial__person">
+                                50대 여성 · 암 회복
+                            </p>
+                        </div>
+                    </div>
+                    <p class="testimonial__quote">"<span class="hl">수련을 안 할 수가 없어요.</span>"</p>
+                    <p class="testimonial__story">유방암 수술 후 우울 · 불안 · 불면이 겹쳐 있던 시간. 처음으로 몸의 감각이 깨어나는 경험을 하셨습니다. 매일 밤 3~4번 깨던 잠이 <strong>한 번 정도 깨고 곧바로 다시 잠드는 깊은 잠</strong>으로 바뀌었습니다.</p>
+                </article>
+
+                <article class="testimonial">
+                    <div class="testimonial__header">
+                        <span class="testimonial__index" aria-hidden="true">iv.</span>
+                        <div class="testimonial__profile">
+                            <p class="testimonial__person">
+                                40대 여성 · 교감 선생님
+                            </p>
+                        </div>
+                    </div>
+                    <p class="testimonial__quote">"일을 해도 <span class="hl">에너지가 채워지는 느낌</span>을 받아요."</p>
+                    <p class="testimonial__story">심근경색 수술 후 고기능 우울증으로 무너져 있던 시간. 어릴 때부터 매일 달고 살던 장 트러블이 처음으로 풀리는 경험을 하셨습니다. <strong>"바라본다는 것이, 나를 안다는 것이 얼마나 중요한지 알게 되어 다행이에요."</strong></p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===========================================
+             SECTION 04 — CONTACT
+        ============================================ -->
+        <section class="section section--elev final-cta fade-in" id="cta-section" aria-labelledby="cta-title">
+            <div class="section-label">
+                <span class="section-label__dot" aria-hidden="true"></span>
+                <span class="section-label__num">04</span>
+                <span class="section-label__text">Contact</span>
+                <span class="section-label__line" aria-hidden="true"></span>
+            </div>
+
+            <h2 class="final-cta__title" id="cta-title">편하게 <em>문의</em>해 주세요</h2>
+            <p class="final-cta__desc">첫 상담은 부담 없이 이야기 나누는 시간입니다.
+궁금한 것만 물어보셔도 괜찮습니다.</p>
+
+            <a href="tel:01052997596" class="contact-number" aria-label="전화 010-5299-7596">
+                <span class="contact-number__label">Call</span>
+                <span class="contact-number__digits">010 · 5299 · 7596</span>
+            </a>
+
+            <div class="button-group">
+                <a href="tel:01052997596"
+                   class="btn btn--primary"
+                   aria-label="전화로 문의하기 010-5299-7596">
+                    <span class="btn__label">
+                        <span class="btn__num">01 —</span>
+                        전화로 문의하기
+                    </span>
+                    <span class="btn__arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="https://open.kakao.com/o/seQTrvti"
+                   class="btn btn--secondary"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="카카오톡 오픈채팅으로 문의하기">
+                    <span class="btn__label">
+                        <span class="btn__num">02 —</span>
+                        카카오톡으로 문의하기
+                    </span>
+                    <span class="btn__arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div class="address">
+                <span class="address__label" aria-hidden="true">Visit</span>
+                <p class="address__text">서울 광진구 아차산로78길 43<br>리버리치빌 503호</p>
+            </div>
+        </section>
+
+        <!-- ===========================================
+             FOOTER
+        ============================================ -->
+        <footer class="footer">
+            <p class="footer__brand">Sun-han Inyeon · Meditation</p>
+            <div class="footer__divider" aria-hidden="true"></div>
+            <p class="footer__copy">© 선한인연 선한명상</p>
+        </footer>
+
+    </div>
+
+    <!-- ===========================================
+         FLOATING CTA
+    ============================================ -->
+    <a href="tel:01052997596"
+       class="floating-cta"
+       aria-label="전화 상담 신청하기 010-5299-7596">
+        <span class="floating-cta__label">
+            <span class="floating-cta__num">전화</span>
+            상담 신청하기
+        </span>
+        <span class="floating-cta__arrow" aria-hidden="true">→</span>
+    </a>
+
+    <script>
+        /**
+         * 1) Fade-in on scroll (Intersection Observer)
+         */
+        (function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            if (!('IntersectionObserver' in window)) {
+                fadeElements.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+        })();
+
+        /**
+         * 2) 이미지 로드 완료 시 .is-loaded 클래스 부여
+         *    → 스켈레톤 시머에서 사진으로 부드럽게 페이드 인
+         */
+        (function () {
+            const images = document.querySelectorAll(
+                '.hero__image, .founder__profile img, .empathy__slide img'
+            );
+
+            images.forEach(function (img) {
+                // 이미 캐시되어 즉시 사용 가능한 경우
+                if (img.complete && img.naturalWidth > 0) {
+                    img.classList.add('is-loaded');
+                    return;
+                }
+
+                // 로드 완료 이벤트
+                img.addEventListener('load', function () {
+                    img.classList.add('is-loaded');
+                }, { once: true });
+
+                // 에러 시에도 시머 정지 (검정 박스로라도 표시)
+                img.addEventListener('error', function () {
+                    img.classList.add('is-loaded');
+                }, { once: true });
+            });
+        })();
+    </script>
+</body>
+</html>
