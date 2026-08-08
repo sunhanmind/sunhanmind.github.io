@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선한명상 셀프 체크 · 에너지 편 | 선한인연 선한명상</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f4f2ee;
+    color: #2c2c2c;
+    min-height: 100vh;
+    padding: 0 0 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ════════════════════════════════════
+     헤더
+     ════════════════════════════════════ */
+  .header {
+    background: linear-gradient(180deg, #1a2a3a 0%, #142030 100%);
+    text-align: center;
+    padding: 50px 24px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 1px;
+    background: #8cc63f;
+    opacity: 0.6;
+  }
+  .brand {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8cc63f;
+    font-weight: 500;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: #7a9ab8;
+    font-weight: 300;
+    line-height: 1.85;
+  }
+  .header-sub strong { color: #f5b551; font-weight: 600; }
+
+  /* ════════════════════════════════════
+     진행바 (sticky)
+     ════════════════════════════════════ */
+  .progress-wrap {
+    background: #142030;
+    padding: 12px 24px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .progress-bar {
+    height: 5px;
+    background: #2e3f52;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8cc63f, #a8e050);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+    box-shadow: 0 0 8px rgba(140, 198, 63, 0.4);
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #6a8aaa;
+    letter-spacing: 0.05em;
+  }
+  .progress-label .pct { color: #8cc63f; font-weight: 600; }
+
+  /* ════════════════════════════════════
+     섹션 구분
+     ════════════════════════════════════ */
+  .section-divider {
+    max-width: 680px;
+    margin: 28px auto 14px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-divider .s-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .s-body { background: #e0eef5; }
+  .s-flow { background: #dff2e4; }
+  .s-mind { background: #ede0f8; }
+
+  .s-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a2a3a;
+    letter-spacing: -0.01em;
+  }
+  .s-sub { font-size: 11.5px; color: #98a8b8; margin-top: 2px; letter-spacing: 0.02em; }
+  .s-line { flex: 1; height: 1px; background: #e0dcd4; }
+
+  /* ════════════════════════════════════
+     아이템 카드
+     ════════════════════════════════════ */
+  .list-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .item-card {
+    background: #fff;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .item-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+  }
+  .item-card.checked {
+    box-shadow: 0 2px 12px rgba(140, 198, 63, 0.25);
+    background: #fafff5;
+  }
+  .item-inner {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 14px;
+    user-select: none;
+  }
+  .item-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #eef0f3;
+    color: #8a9ab0;
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.25s;
+  }
+  .item-card.checked .item-num {
+    background: #8cc63f;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(140, 198, 63, 0.3);
+  }
+
+  .item-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .tag-body { background: #e3eefd; color: #2e60aa; }
+  .tag-flow { background: #e3f5ea; color: #2e7a48; }
+  .tag-mind { background: #ede0f8; color: #6030a0; }
+
+  .item-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #333;
+    flex: 1;
+    transition: color 0.2s;
+  }
+  .item-card.checked .item-text { color: #3e6020; font-weight: 500; }
+
+  .item-check {
+    width: 24px; height: 24px;
+    border: 2px solid #d0d5dc;
+    border-radius: 7px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+  }
+  .item-card.checked .item-check {
+    background: #8cc63f;
+    border-color: #8cc63f;
+    box-shadow: 0 2px 4px rgba(140, 198, 63, 0.3);
+  }
+  .item-check svg { display: none; }
+  .item-card.checked .item-check svg { display: block; }
+
+  /* ════════════════════════════════════
+     결과 영역
+     ════════════════════════════════════ */
+  .result-section {
+    max-width: 680px;
+    margin: 40px auto 0;
+    padding: 0 16px;
+  }
+  .result-card {
+    background: linear-gradient(180deg, #1a2a3a 0%, #142030 100%);
+    border-radius: 18px;
+    padding: 36px 28px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .result-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8cc63f;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .result-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ════════════════════════════════════
+     카테고리별 자세한 카드
+     ════════════════════════════════════ */
+  .cat-detail-list {
+    margin-bottom: 24px;
+  }
+  .cat-detail {
+    background: #243548;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+  }
+  .cat-detail.alert {
+    background: linear-gradient(180deg, #2e3a4a 0%, #1f2a3a 100%);
+    border-color: rgba(245, 181, 81, 0.4);
+    box-shadow: 0 4px 12px rgba(245, 181, 81, 0.1);
+  }
+  .cat-detail.severe {
+    background: linear-gradient(180deg, #3a2a2a 0%, #2a1f1f 100%);
+    border-color: rgba(224, 112, 112, 0.4);
+    box-shadow: 0 4px 12px rgba(224, 112, 112, 0.15);
+  }
+
+  .cat-detail-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .cat-detail-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .cat-detail-title-wrap {
+    flex: 1;
+  }
+  .cat-detail-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .cat-detail.alert .cat-detail-name { color: #f5d091; }
+  .cat-detail.severe .cat-detail-name { color: #f0a0a0; }
+
+  .cat-detail-tag {
+    font-size: 11.5px;
+    color: #6a8aaa;
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .cat-detail-score-wrap {
+    flex-shrink: 0;
+  }
+  .cat-detail-score {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .cat-detail.alert .cat-detail-score { color: #f5b551; }
+  .cat-detail.severe .cat-detail-score { color: #e07070; }
+  .cat-detail-max {
+    font-size: 13px;
+    color: #4a6070;
+    margin-left: 2px;
+  }
+
+  /* 진행바 */
+  .cat-detail-bar {
+    height: 4px;
+    background: #1a2a3a;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .cat-detail-bar-fill {
+    height: 100%;
+    background: #4a6070;
+    border-radius: 2px;
+    transition: all 0.5s ease;
+  }
+  .cat-detail.alert .cat-detail-bar-fill {
+    background: linear-gradient(90deg, #f5b551, #f5d091);
+  }
+  .cat-detail.severe .cat-detail-bar-fill {
+    background: linear-gradient(90deg, #e07070, #f0a0a0);
+  }
+
+  /* 설명 영역 */
+  .cat-detail-desc {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: #98a8b8;
+    padding-top: 4px;
+  }
+  .cat-detail-desc strong {
+    color: #fff;
+    font-weight: 500;
+  }
+  .cat-detail.alert .cat-detail-desc strong {
+    color: #f5d091;
+  }
+  .cat-detail.severe .cat-detail-desc strong {
+    color: #f0a0a0;
+  }
+  .cat-detail-desc .care {
+    display: block;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(140, 198, 63, 0.15);
+    font-size: 13px;
+    color: #8cc63f;
+    font-style: italic;
+  }
+  .cat-detail-desc .care::before {
+    content: '🌿 ';
+    margin-right: 4px;
+  }
+
+  /* 종합 메시지 */
+  .result-message {
+    background: #243548;
+    border-radius: 10px;
+    padding: 20px 22px;
+    font-size: 14px;
+    line-height: 1.95;
+    color: #b0c0d0;
+    margin-top: 24px;
+  }
+  .result-message strong { color: #8cc63f; font-weight: 500; }
+
+  /* ════════════════════════════════════
+     9단계 좌선 명상법 추천 박스
+     ════════════════════════════════════ */
+  .meditation-section {
+    background: linear-gradient(180deg, #1a3a2a 0%, #142a20 100%);
+    border-radius: 14px;
+    padding: 28px 24px;
+    margin-top: 28px;
+    border: 1px solid rgba(140, 198, 63, 0.25);
+    box-shadow: 0 4px 16px rgba(140, 198, 63, 0.08);
+  }
+
+  .meditation-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .meditation-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .meditation-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .meditation-sub {
+    font-size: 13px;
+    color: #a8c890;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  .meditation-sub strong {
+    color: #8cc63f;
+    font-weight: 500;
+  }
+
+  .meditation-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stage-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 2px solid #8cc63f;
+    transition: all 0.3s;
+  }
+  .stage-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(2px);
+  }
+
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .stage-num {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #8cc63f;
+    flex-shrink: 0;
+    min-width: 32px;
+    letter-spacing: 0.02em;
+  }
+  .stage-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .stage-tag {
+    font-size: 11px;
+    color: #6a8a7a;
+    margin-left: auto;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .stage-desc {
+    font-size: 13.5px;
+    color: #a8c890;
+    line-height: 1.85;
+    padding-left: 46px;
+  }
+  .stage-desc strong {
+    color: #c8e8a8;
+    font-weight: 500;
+  }
+
+  .meditation-footer {
+    text-align: center;
+    padding-top: 18px;
+    margin-top: 4px;
+    border-top: 1px solid rgba(140, 198, 63, 0.2);
+    font-size: 13px;
+    color: #8cc63f;
+    line-height: 1.95;
+    font-style: italic;
+  }
+
+  /* CTA 버튼 */
+  .cta-section {
+    text-align: center;
+    padding: 40px 30px;
+    margin: 40px auto 0;
+    max-width: 680px;
+  }
+  .cta-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    color: #4a6070;
+    margin-bottom: 22px;
+    line-height: 1.85;
+  }
+  .cta-button {
+    display: inline-block;
+    padding: 16px 36px;
+    background: #1a2a3a;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 14.5px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid #8cc63f;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .cta-button:hover {
+    background: #8cc63f;
+    color: #1a2a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(140, 198, 63, 0.3);
+  }
+
+  /* 리셋 버튼 */
+  .reset-btn {
+    display: block;
+    margin: 24px auto 0;
+    background: transparent;
+    border: 1px solid #4a6070;
+    color: #6a8aaa;
+    padding: 11px 30px;
+    border-radius: 24px;
+    font-size: 12.5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .reset-btn:hover {
+    border-color: #8cc63f;
+    color: #8cc63f;
+  }
+
+  /* 안내문 */
+  .notice {
+    max-width: 680px;
+    margin: 30px auto 0;
+    padding: 24px 30px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #98a8b8;
+    line-height: 1.95;
+    background: #fff;
+    border-radius: 10px;
+    border-left: 3px solid #8cc63f;
+  }
+  .notice strong { color: #1a2a3a; font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 30px;
+    color: #6a8aaa;
+    font-size: 12px;
+    background: #142030;
+    margin-top: 40px;
+  }
+  .footer .sign {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    color: #8cc63f;
+    margin-bottom: 10px;
+    letter-spacing: 0.15em;
+  }
+  .footer-divider {
+    width: 30px;
+    height: 1px;
+    background: #8cc63f;
+    margin: 0 auto 16px;
+    opacity: 0.4;
+  }
+
+  @media (max-width: 480px) {
+    .header { padding: 40px 20px 28px; }
+    .header h1 { font-size: 21px; }
+    .item-text { font-size: 14px; }
+    .result-card { padding: 28px 20px; }
+    .result-title { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     헤더
+     ════════════════════════════════════ -->
+<div class="header">
+  <div class="brand">선한명상 셀프 체크</div>
+  <h1>에너지 편</h1>
+  <div class="header-sub">
+    해당되는 항목을 모두 체크해 주세요. 2분이면 됩니다.<br>
+    <strong>작은 신호에서부터</strong> — 회복은 시작됩니다.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     진행바
+     ════════════════════════════════════ -->
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label">
+    <span id="progressText">0 / 23 체크됨</span>
+    <span class="pct" id="progressPct">0%</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     섹션 1 — 몸의 신호
+     ════════════════════════════════════ -->
+<div class="section-divider">
+  <div class="s-icon s-body">💧</div>
+  <div><div class="s-title">몸의 신호</div><div class="s-sub">피부·점막·관절</div></div>
+  <div class="s-line"></div>
+</div>
+<div class="list-container">
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">1</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">눈이 모래가 들어간 것처럼 뻑뻑하고 아프다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">2</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">자다가 입이 너무 말라 혀가 입천장에 달라붙어 깨고, 아침엔 입안에서 쓴맛이 난다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">3</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">코안이 늘 건조해서 딱지가 자주 생기고, 숨 쉴 때마다 코끝이 아릿하거나 따갑다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">4</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">머리카락이 예전 같지 않게 눈에 띄게 가늘어지고, 푸석푸석해서 자꾸만 빠진다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">5</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">로션을 아무리 듬뿍 발라도 금방 푸석해지고, 이유 없이 몸이 가려워 자꾸 긁게 된다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">6</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">발뒤꿈치가 갈라져 피가 나기도 하고, 손톱 주변에 거스러미가 끊이지 않고 생긴다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">7</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">얼굴에 생기가 사라지고 칙칙해졌으며, 화장이나 로션이 겉돌고 잘 먹지 않는다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">8</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">아침에 일어날 때 손가락이나 무릎 관절이 뻣뻣하고 '뚝뚝' 소리가 나며 불편하다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+</div>
+
+<!-- ════════════════════════════════════
+     섹션 2 — 흐름과 순환
+     ════════════════════════════════════ -->
+<div class="section-divider">
+  <div class="s-icon s-flow">🌿</div>
+  <div><div class="s-title">흐름과 순환</div><div class="s-sub">소화·체온·잠</div></div>
+  <div class="s-line"></div>
+</div>
+<div class="list-container">
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">9</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">소화제 없이는 밥 먹기가 두려울 정도로 위장이 꽉 막혀 움직이지 않는 느낌이다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">10</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">조금만 자극적인 걸 먹어도 속이 쓰리다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">11</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">밤에 자다가 소변을 보기 위해 1번 이상 꼭 깨서 깊은 잠을 자기 힘들다.
+        <span style="display:block; margin-top:6px; font-size:12.5px; color:#9a8f80;">
+        · 이 항목이 오래 이어진다면 병원에서 먼저 확인해 보시기를 권합니다.</span></div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">12</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">화장실을 자주 가는데 막상 시원하지 않고, 소변 색이 물처럼 너무 투명하다.
+        <span style="display:block; margin-top:6px; font-size:12.5px; color:#9a8f80;">
+        · 갈증이 함께 심하시다면 병원에서 먼저 확인해 보시기를 권합니다.</span></div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">13</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">조금만 말을 많이 해도 금방 목이 쉬고, 목에 뭔가 걸린 듯한 이물감이 가시지 않는다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">14</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">오후만 되면 얼굴로 열이 확 오르고 입은 더 마르면서 몸이 축축 처진다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">15</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">충분히 잤는데도 아침에 몸이 무겁고, 개운한 느낌 없이 하루를 시작하게 된다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+</div>
+
+<!-- ════════════════════════════════════
+     섹션 3 — 마음과 의식
+     ════════════════════════════════════ -->
+<div class="section-divider">
+  <div class="s-icon s-mind">✨</div>
+  <div><div class="s-title">마음과 의식</div><div class="s-sub">감각·정서·알아차림</div></div>
+  <div class="s-line"></div>
+</div>
+<div class="list-container">
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">16</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">몸이 바짝 마르는 느낌과 함께 마음이 붕 뜬 것 같고, 원인 모를 불안감이 자꾸 든다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">17</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">이전에는 아무렇지 않던 말이나 상황에 갑자기 감정이 올라오고, 내가 왜 이러나 싶다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">18</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">뭔가를 해야 한다는 걸 알면서도 몸도 마음도 움직여지지 않고, 의욕이 바닥난 것 같다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">19</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">집중이 잘 안 되고 멍하게 시간이 흘러가는 일이 많아졌다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">20</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">혼자 있을 때 문득 허무하거나 공허한 느낌이 들고, 무엇을 위해 이렇게 살고 있나 싶다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">21</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">괜찮다고 말해놓고 집에 돌아와서 그 대화가 계속 떠오른다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">22</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">쉬는 날에도 무언가 하지 않으면 불안하고, 가만히 있는 것이 불편하다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">23</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">사람을 만나고 온 날 유난히 지치고, 혼자 있는 시간이 자꾸 필요해진다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
+
+</div>
+
+<!-- ════════════════════════════════════
+     결과 영역
+     ════════════════════════════════════ -->
+<div class="result-section" id="resultSection">
+  <div class="result-card">
+    <div class="result-tag">RESULT</div>
+    <div class="result-title">지금 내 몸이 보내는 신호</div>
+
+    <div class="cat-detail-list">
+
+      <!-- 정(精) - 몸 -->
+      <div class="cat-detail" id="detail-body">
+        <div class="cat-detail-head">
+          <div class="cat-detail-icon">💧</div>
+          <div class="cat-detail-title-wrap">
+            <div class="cat-detail-name">정(精) · 몸의 결</div>
+            <div class="cat-detail-tag">피부·점막·관절의 신호</div>
+          </div>
+          <div class="cat-detail-score-wrap">
+            <span class="cat-detail-score" id="score-body">0</span><span class="cat-detail-max">/8</span>
+          </div>
+        </div>
+        <div class="cat-detail-bar">
+          <div class="cat-detail-bar-fill" id="bar-body" style="width: 0%"></div>
+        </div>
+        <div class="cat-detail-desc" id="desc-body">
+          <span>몸의 상태가 정돈되어 있습니다.</span>
+        </div>
+      </div>
+
+      <!-- 기(氣) - 흐름 -->
+      <div class="cat-detail" id="detail-flow">
+        <div class="cat-detail-head">
+          <div class="cat-detail-icon">🌿</div>
+          <div class="cat-detail-title-wrap">
+            <div class="cat-detail-name">기(氣) · 흐름의 결</div>
+            <div class="cat-detail-tag">소화·체온·잠</div>
+          </div>
+          <div class="cat-detail-score-wrap">
+            <span class="cat-detail-score" id="score-flow">0</span><span class="cat-detail-max">/7</span>
+          </div>
+        </div>
+        <div class="cat-detail-bar">
+          <div class="cat-detail-bar-fill" id="bar-flow" style="width: 0%"></div>
+        </div>
+        <div class="cat-detail-desc" id="desc-flow">
+          <span>흐름이 자연스럽게 움직이고 있습니다.</span>
+        </div>
+      </div>
+
+      <!-- 신(神) - 마음 -->
+      <div class="cat-detail" id="detail-mind">
+        <div class="cat-detail-head">
+          <div class="cat-detail-icon">✨</div>
+          <div class="cat-detail-title-wrap">
+            <div class="cat-detail-name">신(神) · 마음의 결</div>
+            <div class="cat-detail-tag">감각·정서·알아차림</div>
+          </div>
+          <div class="cat-detail-score-wrap">
+            <span class="cat-detail-score" id="score-mind">0</span><span class="cat-detail-max">/8</span>
+          </div>
+        </div>
+        <div class="cat-detail-bar">
+          <div class="cat-detail-bar-fill" id="bar-mind" style="width: 0%"></div>
+        </div>
+        <div class="cat-detail-desc" id="desc-mind">
+          <span>마음이 평온합니다.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ════════════════════════════════════
+         9단계 좌선 명상법 추천
+         ════════════════════════════════════ -->
+    <div class="meditation-section" id="meditationSection">
+      <div class="meditation-header">
+        <div class="meditation-icon">🌿</div>
+        <div class="meditation-title">지금 만나실 좌선 명상법</div>
+        <div class="meditation-sub" id="meditationSub">
+          체크리스트를 완료하시면 — 당신께 가장 필요한 단계를 안내해 드립니다.
+        </div>
+      </div>
+
+      <div class="meditation-stages" id="meditationStages">
+        <!-- 동적으로 채워짐 -->
+      </div>
+
+      <div class="meditation-footer" id="meditationFooter" style="display:none;">
+        9단계 전체를 따라가시는 길은 —<br>
+        선한명상의 통합 수련에서 함께 안내드립니다.
+      </div>
+    </div>
+
+    <!-- 종합 메시지 -->
+    <div class="result-message" id="resultMessage">
+      체크리스트를 완료하시면 — 정(精)·기(氣)·신(神) 세 가지를 통합으로 살펴보실 수 있습니다.
+    </div>
+
+    <button class="reset-btn" onclick="reset()">다시 체크하기</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     CTA — 카카오톡 상담
+     ════════════════════════════════════ -->
+<div class="cta-section">
+  <p class="cta-text">
+    어느 결이 가장 지쳐 있는지 아셨다면 —<br>
+    거기서부터 시작하시면 됩니다.<br>
+    <span style="display:block; margin-top:10px; font-size:14px; opacity:.8;">
+    등록하지 않으셔도 괜찮습니다. 궁금한 것만 물어보셔도 됩니다.</span>
+  </p>
+  <a href="https://open.kakao.com/o/seQTrvti" class="cta-button" target="_blank">
+    카카오톡 상담 바로가기 →
+  </a>
+</div>
+
+<!-- ════════════════════════════════════
+     안내문
+     ════════════════════════════════════ -->
+<div class="notice">
+  <strong>이 체크리스트는 의학적 진단을 대체하지 않습니다.</strong><br>
+  자기 몸과 마음의 상태를 살펴보는 도구로 활용해 주세요.<br>
+  깊은 회복은 — 일상의 작은 시간들에서 시작됩니다.
+</div>
+
+<!-- ════════════════════════════════════
+     Footer
+     ════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-divider"></div>
+  <div class="sign">선한인연 선한명상</div>
+  <div>SUNHANMIND · Seoul · 2026</div>
+</div>
+
+<script>
+  // 카테고리별 체크 카운트
+  const counts = {
+    body: 0,   // 8문항
+    flow: 0,   // 7문항
+    mind: 0    // 5문항
+  };
+
+  // 카테고리별 상세 메시지 (박선호님 코칭 결)
+  const catMessages = {
+    body: { // 정(精) - 몸의 결 (max 8)
+      0: { text: '몸의 상태가 정돈되어 있습니다.', care: null },
+      1: { text: '몸이 살짝 흐트러지기 시작했습니다.', care: null },
+      2: { text: '피부와 점막의 신호가 늘어나고 있습니다.', care: null },
+      3: { text: '<strong>몸의 건조함이 시작된 상태</strong>입니다. 작은 신호들이 쌓이고 있어요.', care: '몸의 회복은 — 깊은 호흡과 정화 안에서 다시 만나실 수 있습니다.' },
+      4: { text: '<strong>몸의 신호가 명확해진 상태</strong>입니다. 피부, 점막, 관절에 신호가 또렷합니다.', care: '몸의 회복을 위해 — 비움명상의 정화(장 해독, 죽염)가 깊이 도움이 됩니다.' },
+      5: { text: '<strong>몸이 많이 약해진 상태</strong>입니다. 일상의 작은 신호들에 귀 기울일 시점이에요.', care: '몸의 깊은 정화와 호흡 수련 — 통합 수련이 필요한 시점입니다.' },
+      6: { text: '<strong>몸이 깊은 건조와 피로 상태</strong>입니다. 회복이 시급한 신호가 모이고 있어요.', care: '비움명상의 정화와 함께 — 호흡, 기예공으로 깊이 회복하실 수 있습니다.' },
+      7: { text: '<strong>몸이 매우 약해진 상태</strong>입니다. 만성적 신호들이 일상이 되어가고 있어요.', care: '몸의 통합 회복 — 비움명상, 1:1 코칭, 깊은 호흡 수련이 필요한 시점입니다.' },
+      8: { text: '<strong>몸이 거의 무너진 상태</strong>입니다. 모든 신호가 회복을 요청하고 있어요.', care: '몸의 깊은 회복은 — 통합 수련 전체(비움·1:1·정념)에서 함께 만들어 갈 수 있습니다.' }
+    },
+    flow: { // 기(氣) - 흐름의 결 (max 7)
+      0: { text: '흐름이 자연스럽게 움직이고 있습니다.', care: null },
+      1: { text: '소화와 순환이 살짝 둔해지고 있습니다.', care: null },
+      2: { text: '몸의 흐름이 막히기 시작한 신호가 있습니다.', care: null },
+      3: { text: '<strong>기(氣)의 흐름이 흐트러진 상태</strong>입니다. 소화·체온·잠이 약해지고 있어요.', care: '깊은 호흡과 기예공 — 막힌 흐름을 풀어내는 시간이 필요합니다.' },
+      4: { text: '<strong>기(氣)가 많이 약해진 상태</strong>입니다. 막힘이 깊어져 일상의 활력이 떨어지고 있어요.', care: '기예공과 비움명상의 정화로 — 막힌 곳을 깊이 풀어내실 수 있습니다.' },
+      5: { text: '<strong>기(氣)가 크게 정체된 상태</strong>입니다. 소화·체온·잠 모두에서 신호가 강해지고 있어요.', care: '통합 수련 — 호흡, 기예공, 비움명상이 함께 필요한 시점입니다.' },
+      6: { text: '<strong>기(氣)가 거의 막힌 상태</strong>입니다. 만성적 정체가 일상이 되어가고 있어요.', care: '깊이 막힌 곳의 회복 — 통합 수련 전체에서 함께 풀어내야 할 시점입니다.' },
+      7: { text: '<strong>기(氣)가 매우 깊이 막힌 상태</strong>입니다. 회복이 시급한 신호가 모이고 있어요.', care: '비움명상의 깊은 정화와 통합 수련 — 회복의 길을 함께 만들어 갈 수 있습니다.' }
+    },
+    mind: { // 신(神) - 마음의 결 (max 5)
+      0: { text: '마음이 평온합니다.', care: null },
+      1: { text: '마음이 살짝 흩어지기 시작했습니다.', care: null },
+      2: { text: '감각과 알아차림이 약해지고 있습니다.', care: '마음을 들여다보는 일이 — 회복의 첫걸음이 됩니다.' },
+      3: { text: '<strong>신(神)이 약해진 상태</strong>입니다. 불안, 의욕 저하, 공허함이 늘어나고 있어요.', care: '1:1 코칭과 무의식 정화 세션 — 마음의 깊은 응어리를 풀어내는 시간이 도움이 됩니다.' },
+      4: { text: '<strong>신(神)이 많이 무너진 상태</strong>입니다. 일상의 의미가 흐려지고, 자기 자신과의 연결이 약해졌어요.', care: '깊이 가라앉은 마음의 회복 — 통합 수련과 무의식 정화 세션이 깊이 도움이 됩니다.' },
+      5: { text: '<strong>신(神)이 많이 약해진 상태</strong>입니다. 자기 자신과의 연결이 옅어진 시점이에요.', care: '마음의 깊은 회복은 — 1:1 개인명상과 명상심리코칭에서 함께 살펴볼 수 있습니다.' },
+      6: { text: '<strong>신(神)이 오래 지쳐 있는 상태</strong>입니다. 나를 뒤로 미뤄온 시간이 길었던 것 같아요.', care: '눌러온 마음을 먼저 풀어내는 시간 — 명상심리코칭이 도움이 됩니다.' },
+      7: { text: '<strong>신(神)이 깊이 가라앉은 상태</strong>입니다. 스스로를 살필 여유가 거의 없으셨던 듯해요.', care: '1:1 개인명상부터 천천히 — 지금 상태에 맞는 자리에서 시작하시면 됩니다.' },
+      8: { text: '<strong>신(神)이 많이 소진된 상태</strong>입니다. 오래 참아오신 신호가 모여 있어요.', care: '혼자 감당하지 않으셔도 됩니다. 먼저 한 번 이야기 나누는 것부터 시작하실 수 있습니다.' }
+    }
+  };
+
+  function toggle(card, cat) {
+    const isChecked = card.classList.toggle('checked');
+    if (isChecked) {
+      counts[cat]++;
+    } else {
+      counts[cat]--;
+    }
+    updateProgress();
+    updateResult();
+  }
+
+  function updateProgress() {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const pct = Math.round((total / 20) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = total + ' / 20 체크됨';
+    document.getElementById('progressPct').textContent = pct + '%';
+  }
+
+  function updateResult() {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const cats = ['body', 'flow', 'mind'];
+    const catMax = { body: 8, flow: 7, mind: 8 };
+    const catNames = {
+      body: '몸',
+      flow: '흐름',
+      mind: '마음'
+    };
+
+    let alertCats = [];
+    let severeCats = [];
+
+    cats.forEach(c => {
+      const score = counts[c];
+      const max = catMax[c];
+      const detail = document.getElementById('detail-' + c);
+      const scoreEl = document.getElementById('score-' + c);
+      const barEl = document.getElementById('bar-' + c);
+      const descEl = document.getElementById('desc-' + c);
+
+      // 점수 업데이트
+      scoreEl.textContent = score;
+
+      // 진행바 업데이트
+      barEl.style.width = (score / max * 100) + '%';
+
+      // 카드 색상 변경 (각 카테고리별 max 기준 비율)
+      detail.classList.remove('alert', 'severe');
+      const ratio = score / max;
+      if (ratio >= 0.7) {
+        detail.classList.add('severe');
+        severeCats.push(catNames[c]);
+      } else if (ratio >= 0.4) {
+        detail.classList.add('alert');
+        alertCats.push(catNames[c]);
+      }
+
+      // 메시지 업데이트
+      const msg = catMessages[c][score];
+      let descHTML = msg.text;
+      if (msg.care) {
+        descHTML += '<span class="care">' + msg.care + '</span>';
+      }
+      descEl.innerHTML = descHTML;
+    });
+
+    // 종합 메시지
+    const messageEl = document.getElementById('resultMessage');
+    if (total === 0) {
+      messageEl.innerHTML = '해당되는 항목을 체크해 보세요 — 정(精)·기(氣)·신(神) 세 가지 결을 함께 살펴보실 수 있습니다.';
+    } else if (severeCats.length >= 2) {
+      messageEl.innerHTML = `<strong style="color: #e07070;">${severeCats.join(', ')}</strong> 모두 오래 지쳐 있는 상태입니다.<br><br><strong>많이 체크되셨다고 놀라지 않으셔도 됩니다.</strong> 저희를 찾아오시는 분들 대부분이 이 정도에서 시작하십니다.<br><br>다만 <strong>어느 결이 가장 지쳐 있는지 아신 것</strong>만으로도 — 회복은 이미 시작된 겁니다.`;
+    } else if (severeCats.length > 0) {
+      messageEl.innerHTML = `<strong style="color: #e07070;">${severeCats.join(', ')}</strong> 쪽이 특히 지쳐 있습니다.<br><br>전부를 한 번에 바꾸실 필요는 없습니다. <strong>이 한 곳부터 시작하시면</strong> — 나머지가 자연스럽게 따라옵니다.`;
+    } else if (alertCats.length > 0) {
+      messageEl.innerHTML = `<strong style="color: #f5b551;">${alertCats.join(', ')}</strong> 쪽에서 신호가 시작되고 있습니다.<br><br>아직 크게 무너지기 전입니다. <strong>지금이 가장 돌리기 쉬운 때</strong>입니다.`;
+    } else if (total >= 7) {
+      messageEl.innerHTML = `전반적으로 <strong>에너지가 흔들리고 있는 상태</strong>입니다.<br><br>한 가지만 정해서 시작하셔도 됩니다. 호흡이든, 몸이든, 마음이든 — <strong>한 곳이 풀리면 나머지도 따라옵니다.</strong>`;
+    } else {
+      messageEl.innerHTML = `에너지 균형이 비교적 안정적인 상태입니다. <br><strong>지금처럼 더 깊이 이어가시면</strong> — 일상의 활력이 더 단단해집니다.`;
+    }
+
+    // 9단계 좌선 명상법 추천 업데이트
+    updateMeditation();
+  }
+
+  function reset() {
+    document.querySelectorAll('.item-card.checked').forEach(card => {
+      card.classList.remove('checked');
+    });
+    Object.keys(counts).forEach(k => counts[k] = 0);
+    updateProgress();
+    updateResult();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ════════════════════════════════════
+  // 9단계 좌선 명상법 데이터
+  // ════════════════════════════════════
+  const meditationStages = {
+    1: {
+      name: '깨어난다',
+      tag: '시작',
+      desc: '감각에 주의를 돌리는 순간 — <strong>의식이 외부에서 내부로</strong> 전환됩니다. 신체 감각을 인식하며 현재로 돌아옵니다.'
+    },
+    2: {
+      name: '풀려나간다',
+      tag: '이완',
+      desc: '긴장을 내려놓고 <strong>이완됩니다</strong>. 누적된 신체·정서적 긴장이 해소되며, 억압된 에너지가 자연스럽게 순환하기 시작합니다.'
+    },
+    3: {
+      name: '가라앉는다',
+      tag: '침잠',
+      desc: '에너지가 아래로 침잠합니다. <strong>흩어진 에너지가 중심으로 모이며</strong>, 과각성 상태에서 안정 상태로 전환됩니다.'
+    },
+    4: {
+      name: '기다린다',
+      tag: '여유',
+      desc: '조급함 없이 자기를 기다립니다. <strong>반응과 선택 사이에 공간이 생기며</strong>, 즉각 반응하지 않고 내면의 신호를 기다립니다.'
+    },
+    5: {
+      name: '바라본다',
+      tag: '관찰',
+      desc: '저항 없이 내면을 관찰합니다. <strong>판단 없이 감각·감정·생각을 있는 그대로 봅니다.</strong> 메타인지가 활성화됩니다.'
+    },
+    6: {
+      name: '알아차린다',
+      tag: '인식',
+      desc: '<strong>반복되는 패턴과 무의식적 반응을 인식</strong>합니다. 감정의 뿌리를 감각으로 만나는 단계입니다.'
+    },
+    7: {
+      name: '받아들인다',
+      tag: '수용',
+      desc: '불편한 감각과 감정을 저항 없이 수용합니다. <strong>수용이 변화의 시작</strong>임을 몸으로 체득합니다.'
+    },
+    8: {
+      name: '연결된다',
+      tag: '연결',
+      desc: '분리된 자아 감각이 이완되며 <strong>연결감이 생깁니다</strong>. 고립에서 관계로, 긴장에서 공명으로 이동합니다.'
+    },
+    9: {
+      name: '스며든다',
+      tag: '통합',
+      desc: '수련이 일상 전체로 통합됩니다. <strong>삶이 곧 명상이 되는 순간</strong>입니다.'
+    }
+  };
+
+  // 점수 기반 추천 단계 결정
+  function getRecommendedStages(bodyScore, flowScore, mindScore, total) {
+    const bodyMax = 8, flowMax = 7, mindMax = 5;
+    const bodyRatio = bodyScore / bodyMax;
+    const flowRatio = flowScore / flowMax;
+    const mindRatio = mindScore / mindMax;
+
+    // 가장 약한 자리 찾기
+    let weakest = 'none';
+    let maxRatio = 0.4; // 40% 이상이어야 추천 활성화
+
+    if (bodyRatio >= maxRatio) { weakest = 'body'; maxRatio = bodyRatio; }
+    if (flowRatio > maxRatio) { weakest = 'flow'; maxRatio = flowRatio; }
+    if (mindRatio > maxRatio) { weakest = 'mind'; maxRatio = mindRatio; }
+
+    // 추천 단계
+    if (total === 0) {
+      return { stages: [], intro: null, footer: false };
+    }
+
+    // 정(精) 약함 — 시작 단계
+    if (weakest === 'body') {
+      return {
+        stages: [1, 2, 3],
+        intro: '<strong>몸의 회복</strong>이 우선되는 시점입니다.<br>처음 세 단계로 — 감각을 깨우고, 긴장을 풀어내며, 에너지를 가라앉히세요.',
+        footer: true
+      };
+    }
+
+    // 기(氣) 막힘 — 흐름 단계
+    if (weakest === 'flow') {
+      return {
+        stages: [3, 4, 5],
+        intro: '<strong>흐름의 회복</strong>이 우선되는 시점입니다.<br>가라앉히고, 기다리며, 바라보는 단계에서 — 막힌 에너지가 풀려납니다.',
+        footer: true
+      };
+    }
+
+    // 신(神) 약함 — 알아차림 단계
+    if (weakest === 'mind') {
+      return {
+        stages: [5, 6, 7],
+        intro: '<strong>마음의 회복</strong>이 우선되는 시점입니다.<br>바라보고, 알아차리고, 받아들이는 단계에서 — 마음의 깊은 응어리가 풀립니다.',
+        footer: true
+      };
+    }
+
+    // 전체 안정 — 통합 단계
+    return {
+      stages: [8, 9],
+      intro: '균형이 비교적 안정적인 상태입니다.<br><strong>연결과 통합의 단계</strong>에서 — 명상이 삶으로 깊어지는 시간을 만나실 수 있습니다.',
+      footer: true
+    };
+  }
+
+  // 9단계 추천 박스 업데이트
+  function updateMeditation() {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const result = getRecommendedStages(counts.body, counts.flow, counts.mind, total);
+
+    const subEl = document.getElementById('meditationSub');
+    const stagesEl = document.getElementById('meditationStages');
+    const footerEl = document.getElementById('meditationFooter');
+
+    if (result.stages.length === 0) {
+      subEl.innerHTML = '체크리스트를 완료하시면 — 당신께 가장 필요한 단계를 안내해 드립니다.';
+      stagesEl.innerHTML = '';
+      footerEl.style.display = 'none';
+      return;
+    }
+
+    subEl.innerHTML = result.intro;
+
+    let stagesHTML = '';
+    result.stages.forEach(num => {
+      const stage = meditationStages[num];
+      stagesHTML += `
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-num">0${num}</div>
+            <div class="stage-name">${stage.name}</div>
+            <div class="stage-tag">${stage.tag}</div>
+          </div>
+          <div class="stage-desc">${stage.desc}</div>
+        </div>
+      `;
+    });
+    stagesEl.innerHTML = stagesHTML;
+    footerEl.style.display = result.footer ? 'block' : 'none';
+  }
+</script>
+
+</body>
+</html>
