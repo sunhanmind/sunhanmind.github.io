@@ -1,1521 +1,1260 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="선한인연 선한명상 - 20년 수련, 10년 지도. 자매가 함께 운영하는 명상 센터">
-    <title>선한인연 선한명상 | Quiet Mind, Whole Self</title>
-
-    <!-- DNS prefetch + preconnect 이미지 CDN -->
-    <link rel="dns-prefetch" href="https://www.genspark.ai">
-    <link rel="preconnect" href="https://www.genspark.ai" crossorigin>
-
-    <!-- 최우선 이미지 미리 로드 (히어로 + 프로필 + 캐러셀 첫 2장) -->
-    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/5LGn383D" fetchpriority="high">
-    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/tCTmTTvD">
-    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/9npntwQx">
-    <link rel="preload" as="image" href="https://www.genspark.ai/api/files/s/qz9PKQGG">
-
-    <!-- Google Fonts + Pretendard -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-
-    <style>
-        /* ======================================================
-           DESIGN SYSTEM — Dark Editorial
-           명상 센터를 위한 차분한 다크 무드
-        ====================================================== */
-        :root {
-            /* 베이스 — 완벽한 검정 대신 약간의 따스함을 머금은 다크 톤 */
-            --bg: #0E0F0D;          /* 메인 배경 (잉크 블랙) */
-            --bg-elev: #15171413;   /* 살짝 올라온 표면 (투명) */
-            --bg-soft: #1A1C19;     /* 카드/엘리베이션 */
-            --bg-dim: #0A0B09;      /* 더 깊은 검정 (히어로 하단) */
-
-            /* 텍스트 — 가독성을 위해 전체적으로 밝게 */
-            --text: #F5F2EA;        /* 메인 텍스트 (밝은 웜 화이트) */
-            --text-soft: #D4D0C5;   /* 본문 보조 (한 단계 밝게) */
-            --text-mute: #9A968A;   /* 메타 · 캡션 (밝게) */
-            --text-faint: #5C5A52;  /* 라벨 라인 */
-
-            /* 포인트 컬러 — 더 선명하고 밝게 */
-            --sage: #B5D0B7;        /* 밝은 세이지 */
-            --sage-soft: #8FAE92;
-            --warm: #E8B888;        /* 밝은 골드 */
-            --warm-soft: #D4A574;
-
-            /* 형광펜 (highlight) */
-            --hl-gold: rgba(232, 184, 136, 0.28);   /* 골드 형광펜 */
-            --hl-sage: rgba(181, 208, 183, 0.22);   /* 세이지 형광펜 */
-
-            /* 라인 */
-            --line: #3A3D36;
-            --line-soft: #2A2D27;
-
-            /* 타이포 */
-            --font-serif-en: 'Cormorant Garamond', serif;
-            --font-serif-kr: 'Noto Serif KR', 'Pretendard Variable', serif;
-            --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-
-            /* 라운드 */
-            --radius: 2px;
-            --radius-img: 0;
-        }
-
-        /* ======================================================
-           RESET
-        ====================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg);
-        }
-
-        body {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.85;
-            color: var(--text);
-            background-color: var(--bg);
-            padding-bottom: 100px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            letter-spacing: -0.005em;
-            overflow-x: hidden;
-        }
-
-        /* 형광펜 효과 — 다크 모드용 (반투명 골드/세이지 그라디언트) */
-        .hl {
-            background: linear-gradient(
-                to top,
-                var(--hl-gold) 0%,
-                var(--hl-gold) 42%,
-                transparent 42%,
-                transparent 100%
-            );
-            padding: 0 3px;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .hl--sage {
-            background: linear-gradient(
-                to top,
-                var(--hl-sage) 0%,
-                var(--hl-sage) 42%,
-                transparent 42%,
-                transparent 100%
-            );
-            padding: 0 3px;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .page {
-            max-width: 480px;
-            margin: 0 auto;
-            background-color: var(--bg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        /* ======================================================
-           SHARED COMPONENTS
-        ====================================================== */
-
-        /* 섹션 라벨 — 미세한 도트 + 영문 */
-        .section-label {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 32px;
-        }
-
-        .section-label__dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: var(--warm);
-            flex-shrink: 0;
-        }
-
-        .section-label__num {
-            font-family: var(--font-serif-en);
-            font-weight: 500;
-            font-size: 13px;
-            color: var(--text);
-            letter-spacing: 0.15em;
-        }
-
-        .section-label__text {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 13px;
-            color: var(--text-mute);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-
-        .section-label__line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, var(--line), transparent);
-        }
-
-        /* 헤드라인 */
-        .headline {
-            font-family: var(--font-serif-kr);
-            font-weight: 500;
-            font-size: 26px;
-            line-height: 1.55;
-            color: var(--text);
-            letter-spacing: -0.025em;
-            word-break: keep-all;
-        }
-
-        .headline em {
-            font-style: italic;
-            font-family: var(--font-serif-en);
-            font-weight: 500;
-            color: var(--warm);
-        }
-
-        /* 본문 */
-        .body {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.95;
-            color: var(--text-soft);
-            word-break: keep-all;
-        }
-
-        /* 디바이더 */
-        .divider {
-            width: 32px;
-            height: 1px;
-            background-color: var(--warm);
-            border: none;
-            margin: 28px 0;
-            opacity: 0.7;
-        }
-
-        /* 섹션 */
-        .section {
-            padding: 80px 28px;
-            position: relative;
-        }
-
-        .section--elev {
-            background-color: var(--bg-soft);
-        }
-
-        /* ======================================================
-           HERO — 사진(위) + 헤드라인(아래) 분리 구조
-        ====================================================== */
-        .hero {
-            position: relative;
-            background-color: var(--bg);
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 사진 영역 — 풀블리드, 로고/캘리그래피가 잘 보이게 */
-        .hero__image-wrap {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1 / 1;       /* 정사각형 (원본 로고 사진 비율과 유사) */
-            overflow: hidden;
-            background: linear-gradient(
-                110deg,
-                #14171312 0%,
-                #1F221E 50%,
-                #14171312 100%
-            );
-            background-size: 200% 100%;
-            animation: shimmer 2.4s linear infinite;
-        }
-
-        .hero__image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            filter: brightness(1) saturate(1.05) contrast(1.02);
-            opacity: 0;
-            transition: opacity 0.7s ease;
-        }
-
-        .hero__image.is-loaded {
-            opacity: 1;
-        }
-
-        /* 사진 → 검정 본문으로 부드럽게 이어지는 페이드 (사진 하단만) */
-        .hero__image-wrap::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 30%;
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                rgba(14, 15, 13, 0.65) 75%,
-                var(--bg) 100%
-            );
-            pointer-events: none;
-        }
-
-        /* 사진 위 우상단 작은 브랜드 도트 (장식) */
-        .hero__brand {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 3;
-            padding: 22px 24px 0;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .hero__brand-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: var(--warm);
-            opacity: 0.9;
-            box-shadow: 0 0 12px rgba(232, 184, 136, 0.6);
-        }
-
-        /* 하단 콘텐츠 (헤드라인 + 메타) — 사진 아래 분리된 영역 */
-        .hero__content {
-            position: relative;
-            z-index: 3;
-            padding: 48px 28px 56px;
-            background-color: var(--bg);
-        }
-
-        .hero__eyebrow {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 500;
-            font-size: 17px;
-            color: var(--warm);
-            margin-bottom: 20px;
-            letter-spacing: 0.04em;
-            opacity: 1;
-        }
-
-        .hero__headline {
-            font-family: var(--font-serif-kr);
-            font-weight: 500;
-            font-size: 26px;
-            line-height: 1.6;
-            color: var(--text);
-            letter-spacing: -0.025em;
-            margin-bottom: 36px;
-            word-break: keep-all;
-        }
-
-        /* 히어로 헤드라인 형광펜 */
-        .hero__headline .hl-hero {
-            background: linear-gradient(
-                to top,
-                var(--hl-gold) 0%,
-                var(--hl-gold) 42%,
-                transparent 42%
-            );
-            padding: 0 4px;
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .hero__meta {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding-top: 24px;
-            border-top: 1px solid var(--line);
-        }
-
-        .hero__meta-num {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-size: 22px;
-            font-weight: 400;
-            color: var(--warm);
-            line-height: 1;
-            padding-top: 2px;
-        }
-
-        .hero__meta-text {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 1.7;
-            color: var(--text);
-            letter-spacing: 0.02em;
-        }
-
-        .hero__meta-text strong {
-            font-weight: 600;
-            color: var(--text);
-            display: block;
-            margin-bottom: 2px;
-            letter-spacing: 0.04em;
-        }
-
-        /* ======================================================
-           SECTION 2: EMPATHY
-        ====================================================== */
-        .empathy__quote-mark {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 72px;
-            line-height: 0.6;
-            color: var(--warm);
-            opacity: 0.85;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .empathy__text {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 17px;
-            line-height: 2.1;
-            color: var(--text);
-            white-space: pre-line;
-            letter-spacing: -0.005em;
-            margin-bottom: 44px;
-        }
-
-        .empathy__text strong {
-            font-weight: 500;
-            color: #FFFFFF;
-            font-family: var(--font-serif-kr);
-            background: linear-gradient(
-                to top,
-                var(--hl-gold) 0%,
-                var(--hl-gold) 45%,
-                transparent 45%
-            );
-            padding: 0 4px;
-        }
-
-        /* ======================================================
-           AUTO SLIDING CAROUSEL (Marquee)
-           — 좌측으로 무한히 흐르는 사진 슬라이드
-        ====================================================== */
-        .empathy__carousel {
-            position: relative;
-            width: calc(100% + 56px);
-            margin-left: -28px;        /* 섹션 패딩을 무시하고 좌우로 풀블리드 */
-            margin-right: -28px;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                #000 8%,
-                #000 92%,
-                transparent 100%
-            );
-            mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                #000 8%,
-                #000 92%,
-                transparent 100%
-            );
-        }
-
-        .empathy__carousel-track {
-            display: flex;
-            gap: 14px;
-            width: max-content;
-            animation: slideLeft 28s linear infinite;
-            will-change: transform;
-        }
-
-        .empathy__carousel:hover .empathy__carousel-track {
-            animation-play-state: paused;
-        }
-
-        .empathy__slide {
-            position: relative;
-            flex-shrink: 0;
-            width: 240px;
-            height: 320px;
-            overflow: hidden;
-            border-radius: var(--radius-img);
-            background: linear-gradient(
-                110deg,
-                #1A1C19 8%,
-                #25282204 18%,
-                #1A1C19 33%
-            );
-            background-size: 200% 100%;
-            animation: shimmer 2.4s linear infinite;
-        }
-
-        .empathy__slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.85) saturate(0.9);
-            opacity: 0;
-            transition: opacity 0.6s ease, filter 0.4s ease;
-        }
-
-        /* 이미지 로딩 완료 시 부드럽게 페이드인 */
-        .empathy__slide img.is-loaded {
-            opacity: 1;
-        }
-
-        @keyframes shimmer {
-            0%   { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .empathy__slide::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                transparent 50%,
-                rgba(14, 15, 13, 0.35) 100%
-            );
-            pointer-events: none;
-        }
-
-        /* 두 트랙(원본 + 복제본)이 이어지도록 50% 이동 */
-        @keyframes slideLeft {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .empathy__carousel-track {
-                animation: none;
-            }
-        }
-
-        /* ======================================================
-           SECTION 3: FOUNDER STORY
-        ====================================================== */
-        .founder {
-            background-color: var(--bg);
-        }
-
-        .founder__profile-wrap {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 0 36px 0;
-        }
-
-        /* 사진 뒤 글로우 효과 */
-        .founder__profile-glow {
-            position: absolute;
-            inset: -20px;
-            border-radius: 50%;
-            background: radial-gradient(circle at center,
-                rgba(212, 165, 116, 0.18) 0%,
-                rgba(212, 165, 116, 0.05) 40%,
-                transparent 70%
-            );
-            z-index: 1;
-        }
-
-        /* 사진 뒤 오프셋 링 */
-        .founder__profile-ring {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1px solid var(--warm);
-            opacity: 0.4;
-            z-index: 2;
-        }
-
-        .founder__profile {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(
-                110deg,
-                #1A1C19 0%,
-                #25282280 50%,
-                #1A1C19 100%
-            );
-            background-size: 200% 100%;
-            animation: shimmer 2.4s linear infinite;
-            z-index: 3;
-            overflow: hidden;
-        }
-
-        .founder__profile img {
-            width: 160%;
-            height: 160%;
-            object-fit: cover;
-            object-position: 50% 18%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: saturate(0.95) brightness(1);
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .founder__profile img.is-loaded {
-            opacity: 1;
-        }
-
-        .founder__name-row {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-        }
-
-        .founder__name {
-            font-family: var(--font-serif-kr);
-            font-weight: 700;
-            font-size: 26px;
-            color: var(--text);
-            letter-spacing: -0.02em;
-        }
-
-        .founder__name-en {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 500;
-            font-size: 18px;
-            color: var(--warm);
-            letter-spacing: 0.05em;
-        }
-
-        .founder__role {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 13px;
-            color: var(--text-mute);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .founder__story {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 2;
-            color: var(--text-soft);
-            white-space: pre-line;
-            word-break: keep-all;
-        }
-
-        .founder__story strong {
-            font-weight: 500;
-            color: var(--text);
-            background: linear-gradient(
-                to top,
-                var(--hl-sage) 0%,
-                var(--hl-sage) 45%,
-                transparent 45%
-            );
-            padding: 0 3px;
-        }
-
-        /* ======================================================
-           SECTION 4: TESTIMONIALS
-        ====================================================== */
-        .testimonials__heading {
-            margin-bottom: 8px;
-        }
-
-        .testimonials__title {
-            font-family: var(--font-serif-kr);
-            font-weight: 500;
-            font-size: 26px;
-            line-height: 1.5;
-            color: var(--text);
-            letter-spacing: -0.025em;
-            margin-bottom: 10px;
-            word-break: keep-all;
-        }
-
-        .testimonials__sub {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 15px;
-            color: var(--warm);
-            margin-bottom: 52px;
-            letter-spacing: 0.04em;
-        }
-
-        .testimonial-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .testimonial {
-            padding: 36px 0;
-            border-bottom: 1px solid var(--line);
-            position: relative;
-        }
-
-        .testimonial:first-child {
-            padding-top: 8px;
-        }
-
-        .testimonial:last-child {
-            border-bottom: none;
-            padding-bottom: 8px;
-        }
-
-        /* 카드 헤더: 인덱스 + 인적사항 */
-        .testimonial__header {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--line-soft);
-        }
-
-        .testimonial__index {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 500;
-            font-size: 14px;
-            color: var(--warm);
-            letter-spacing: 0.12em;
-            min-width: 24px;
-            flex-shrink: 0;
-        }
-
-        .testimonial__profile {
-            flex: 1;
-        }
-
-        .testimonial__person {
-            font-family: var(--font-sans);
-            font-weight: 500;
-            font-size: 14px;
-            color: var(--text);
-            letter-spacing: 0.03em;
-            line-height: 1.4;
-        }
-
-        .testimonial__years {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 13px;
-            color: var(--warm-soft);
-            letter-spacing: 0.04em;
-            margin-left: 6px;
-        }
-
-        /* 한 마디 인용 (큰 명조) */
-        .testimonial__quote {
-            font-family: var(--font-serif-kr);
-            font-weight: 500;
-            font-size: 19px;
-            line-height: 1.7;
-            color: var(--text);
-            letter-spacing: -0.025em;
-            word-break: keep-all;
-            margin-bottom: 20px;
-            position: relative;
-            padding-left: 14px;
-        }
-
-        /* 인용문 좌측 골드 바 */
-        .testimonial__quote::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            bottom: 6px;
-            width: 2px;
-            background-color: var(--warm);
-            opacity: 0.7;
-        }
-
-        .testimonial__quote .hl {
-            font-weight: 700;
-        }
-
-        /* 본문 스토리 */
-        .testimonial__story {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 15px;
-            line-height: 1.95;
-            color: var(--text-soft);
-            letter-spacing: -0.005em;
-            word-break: keep-all;
-        }
-
-        .testimonial__story strong {
-            font-weight: 500;
-            color: var(--text);
-            background: linear-gradient(
-                to top,
-                var(--hl-gold) 0%,
-                var(--hl-gold) 42%,
-                transparent 42%
-            );
-            padding: 0 3px;
-        }
-
-        /* 대시(em-dash) — 골드 톤 (공용) */
-        .dash {
-            color: var(--warm);
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            margin: 0 2px;
-        }
-
-        /* ======================================================
-           SECTION 5: CTA
-        ====================================================== */
-        .final-cta {
-            text-align: left;
-        }
-
-        .final-cta__title {
-            font-family: var(--font-serif-kr);
-            font-weight: 500;
-            font-size: 28px;
-            line-height: 1.45;
-            color: var(--text);
-            letter-spacing: -0.025em;
-            margin-bottom: 18px;
-            word-break: keep-all;
-        }
-
-        .final-cta__title em {
-            font-style: normal;
-            font-family: var(--font-serif-kr);
-            font-weight: 700;
-            color: var(--warm);
-            background: linear-gradient(
-                to top,
-                var(--hl-gold) 0%,
-                var(--hl-gold) 42%,
-                transparent 42%
-            );
-            padding: 0 4px;
-        }
-
-        .final-cta__desc {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.95;
-            color: var(--text-soft);
-            white-space: pre-line;
-            margin-bottom: 40px;
-            word-break: keep-all;
-        }
-
-        /* 전화번호 디스플레이 (Call 010 · 5299 · 7596) */
-        .contact-number {
-            display: flex;
-            align-items: baseline;
-            gap: 14px;
-            padding: 18px 0 24px;
-            margin-bottom: 28px;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-            text-decoration: none;
-            transition: opacity 0.25s ease;
-        }
-
-        .contact-number:hover,
-        .contact-number:active {
-            opacity: 0.78;
-        }
-
-        .contact-number__label {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 500;
-            font-size: 15px;
-            color: var(--warm);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            flex-shrink: 0;
-        }
-
-        .contact-number__digits {
-            font-family: var(--font-serif-kr);
-            font-weight: 500;
-            font-size: 22px;
-            color: var(--text);
-            letter-spacing: 0.02em;
-            line-height: 1;
-        }
-
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 60px;
-            width: 100%;
-            padding: 0 24px;
-            border-radius: var(--radius);
-            font-family: var(--font-sans);
-            font-weight: 500;
-            font-size: 16px;
-            letter-spacing: 0.04em;
-            text-decoration: none;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn__label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn__num {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-
-        .btn__arrow {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 20px;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn:hover .btn__arrow,
-        .btn:active .btn__arrow {
-            transform: translateX(6px);
-        }
-
-        .btn--primary {
-            background-color: var(--text);
-            color: var(--bg);
-            border: 1px solid var(--text);
-        }
-
-        .btn--primary:hover,
-        .btn--primary:active {
-            background-color: var(--warm);
-            border-color: var(--warm);
-            color: var(--bg);
-        }
-
-        .btn--secondary {
-            background-color: transparent;
-            color: var(--text);
-            border: 1px solid var(--warm-soft);
-        }
-
-        .btn--secondary:hover,
-        .btn--secondary:active {
-            border-color: var(--warm);
-            color: var(--warm);
-            background-color: rgba(232, 184, 136, 0.08);
-        }
-
-        /* 주소 */
-        .address {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding-top: 32px;
-            border-top: 1px solid var(--line);
-        }
-
-        .address__label {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-size: 13px;
-            color: var(--warm);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            min-width: 60px;
-            padding-top: 2px;
-        }
-
-        .address__text {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 1.75;
-            color: var(--text-soft);
-            letter-spacing: 0.02em;
-        }
-
-        /* ======================================================
-           FOOTER
-        ====================================================== */
-        .footer {
-            background-color: var(--bg-dim);
-            color: var(--text-mute);
-            padding: 48px 28px 36px;
-            text-align: center;
-            border-top: 1px solid var(--line);
-        }
-
-        .footer__brand {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 17px;
-            color: var(--warm);
-            margin-bottom: 8px;
-            letter-spacing: 0.1em;
-        }
-
-        .footer__divider {
-            width: 24px;
-            height: 1px;
-            background-color: var(--line);
-            margin: 16px auto;
-        }
-
-        .footer__copy {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 12px;
-            color: var(--text-mute);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-
-        /* ======================================================
-           FLOATING CTA
-        ====================================================== */
-        .floating-cta {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 420px;
-            height: 60px;
-            border-radius: var(--radius);
-            background-color: rgba(232, 229, 221, 0.97);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-            font-family: var(--font-sans);
-            font-weight: 500;
-            font-size: 15px;
-            letter-spacing: 0.04em;
-            text-decoration: none;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
-                        0 2px 8px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(232, 229, 221, 0.3);
-        }
-
-        .floating-cta:hover,
-        .floating-cta:active {
-            background-color: var(--warm);
-            color: var(--bg);
-        }
-
-        .floating-cta__label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .floating-cta__num {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-size: 14px;
-            color: var(--warm-soft);
-            letter-spacing: 0.06em;
-        }
-
-        .floating-cta:hover .floating-cta__num {
-            color: var(--bg);
-            opacity: 0.7;
-        }
-
-        .floating-cta__arrow {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .floating-cta:hover .floating-cta__arrow {
-            transform: translateX(5px);
-        }
-
-        /* ======================================================
-           FADE-IN
-        ====================================================== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.1s cubic-bezier(0.25, 0.1, 0.25, 1),
-                        transform 1.1s cubic-bezier(0.25, 0.1, 0.25, 1);
-            will-change: opacity, transform;
-        }
-
-        .fade-in.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .fade-in {
-                opacity: 1;
-                transform: none;
-                transition: none;
-                animation: none;
-            }
-            html { scroll-behavior: auto; }
-        }
-
-        /* ======================================================
-           SMALL SCREENS
-        ====================================================== */
-        @media (max-width: 360px) {
-            .section { padding: 64px 22px; }
-            .hero__content { padding: 0 22px 48px; }
-            .hero__brand { padding: 22px 22px 0; }
-            .hero__headline { font-size: 22px; }
-            .headline,
-            .testimonials__title { font-size: 22px; }
-            .final-cta__title { font-size: 24px; }
-            .testimonial__quote { font-size: 16px; }
-            .founder__profile-wrap { width: 170px; height: 170px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에너지 부족 체크리스트 | 선한인연 선한명상</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f4f2ee;
+    color: #2c2c2c;
+    min-height: 100vh;
+    padding: 0 0 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ════════════════════════════════════
+     헤더
+     ════════════════════════════════════ */
+  .header {
+    background: linear-gradient(180deg, #1a2a3a 0%, #142030 100%);
+    text-align: center;
+    padding: 50px 24px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 1px;
+    background: #8cc63f;
+    opacity: 0.6;
+  }
+  .brand {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8cc63f;
+    font-weight: 500;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: #7a9ab8;
+    font-weight: 300;
+    line-height: 1.85;
+  }
+  .header-sub strong { color: #f5b551; font-weight: 600; }
+
+  /* ════════════════════════════════════
+     진행바 (sticky)
+     ════════════════════════════════════ */
+  .progress-wrap {
+    background: #142030;
+    padding: 12px 24px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .progress-bar {
+    height: 5px;
+    background: #2e3f52;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8cc63f, #a8e050);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+    box-shadow: 0 0 8px rgba(140, 198, 63, 0.4);
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #6a8aaa;
+    letter-spacing: 0.05em;
+  }
+  .progress-label .pct { color: #8cc63f; font-weight: 600; }
+
+  /* ════════════════════════════════════
+     섹션 구분
+     ════════════════════════════════════ */
+  .section-divider {
+    max-width: 680px;
+    margin: 28px auto 14px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-divider .s-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .s-body { background: #e0eef5; }
+  .s-flow { background: #dff2e4; }
+  .s-mind { background: #ede0f8; }
+
+  .s-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a2a3a;
+    letter-spacing: -0.01em;
+  }
+  .s-sub { font-size: 11.5px; color: #98a8b8; margin-top: 2px; letter-spacing: 0.02em; }
+  .s-line { flex: 1; height: 1px; background: #e0dcd4; }
+
+  /* ════════════════════════════════════
+     아이템 카드
+     ════════════════════════════════════ */
+  .list-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .item-card {
+    background: #fff;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .item-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+  }
+  .item-card.checked {
+    box-shadow: 0 2px 12px rgba(140, 198, 63, 0.25);
+    background: #fafff5;
+  }
+  .item-inner {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 14px;
+    user-select: none;
+  }
+  .item-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #eef0f3;
+    color: #8a9ab0;
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.25s;
+  }
+  .item-card.checked .item-num {
+    background: #8cc63f;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(140, 198, 63, 0.3);
+  }
+
+  .item-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .tag-body { background: #e3eefd; color: #2e60aa; }
+  .tag-flow { background: #e3f5ea; color: #2e7a48; }
+  .tag-mind { background: #ede0f8; color: #6030a0; }
+
+  .item-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #333;
+    flex: 1;
+    transition: color 0.2s;
+  }
+  .item-card.checked .item-text { color: #3e6020; font-weight: 500; }
+
+  .item-check {
+    width: 24px; height: 24px;
+    border: 2px solid #d0d5dc;
+    border-radius: 7px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+  }
+  .item-card.checked .item-check {
+    background: #8cc63f;
+    border-color: #8cc63f;
+    box-shadow: 0 2px 4px rgba(140, 198, 63, 0.3);
+  }
+  .item-check svg { display: none; }
+  .item-card.checked .item-check svg { display: block; }
+
+  /* ════════════════════════════════════
+     결과 영역
+     ════════════════════════════════════ */
+  .result-section {
+    max-width: 680px;
+    margin: 40px auto 0;
+    padding: 0 16px;
+  }
+  .result-card {
+    background: linear-gradient(180deg, #1a2a3a 0%, #142030 100%);
+    border-radius: 18px;
+    padding: 36px 28px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .result-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8cc63f;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .result-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ════════════════════════════════════
+     카테고리별 자세한 카드
+     ════════════════════════════════════ */
+  .cat-detail-list {
+    margin-bottom: 24px;
+  }
+  .cat-detail {
+    background: #243548;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+  }
+  .cat-detail.alert {
+    background: linear-gradient(180deg, #2e3a4a 0%, #1f2a3a 100%);
+    border-color: rgba(245, 181, 81, 0.4);
+    box-shadow: 0 4px 12px rgba(245, 181, 81, 0.1);
+  }
+  .cat-detail.severe {
+    background: linear-gradient(180deg, #3a2a2a 0%, #2a1f1f 100%);
+    border-color: rgba(224, 112, 112, 0.4);
+    box-shadow: 0 4px 12px rgba(224, 112, 112, 0.15);
+  }
+
+  .cat-detail-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .cat-detail-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .cat-detail-title-wrap {
+    flex: 1;
+  }
+  .cat-detail-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .cat-detail.alert .cat-detail-name { color: #f5d091; }
+  .cat-detail.severe .cat-detail-name { color: #f0a0a0; }
+
+  .cat-detail-tag {
+    font-size: 11.5px;
+    color: #6a8aaa;
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .cat-detail-score-wrap {
+    flex-shrink: 0;
+  }
+  .cat-detail-score {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .cat-detail.alert .cat-detail-score { color: #f5b551; }
+  .cat-detail.severe .cat-detail-score { color: #e07070; }
+  .cat-detail-max {
+    font-size: 13px;
+    color: #4a6070;
+    margin-left: 2px;
+  }
+
+  /* 진행바 */
+  .cat-detail-bar {
+    height: 4px;
+    background: #1a2a3a;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .cat-detail-bar-fill {
+    height: 100%;
+    background: #4a6070;
+    border-radius: 2px;
+    transition: all 0.5s ease;
+  }
+  .cat-detail.alert .cat-detail-bar-fill {
+    background: linear-gradient(90deg, #f5b551, #f5d091);
+  }
+  .cat-detail.severe .cat-detail-bar-fill {
+    background: linear-gradient(90deg, #e07070, #f0a0a0);
+  }
+
+  /* 설명 영역 */
+  .cat-detail-desc {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: #98a8b8;
+    padding-top: 4px;
+  }
+  .cat-detail-desc strong {
+    color: #fff;
+    font-weight: 500;
+  }
+  .cat-detail.alert .cat-detail-desc strong {
+    color: #f5d091;
+  }
+  .cat-detail.severe .cat-detail-desc strong {
+    color: #f0a0a0;
+  }
+  .cat-detail-desc .care {
+    display: block;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(140, 198, 63, 0.15);
+    font-size: 13px;
+    color: #8cc63f;
+    font-style: italic;
+  }
+  .cat-detail-desc .care::before {
+    content: '🌿 ';
+    margin-right: 4px;
+  }
+
+  /* 종합 메시지 */
+  .result-message {
+    background: #243548;
+    border-radius: 10px;
+    padding: 20px 22px;
+    font-size: 14px;
+    line-height: 1.95;
+    color: #b0c0d0;
+    margin-top: 24px;
+  }
+  .result-message strong { color: #8cc63f; font-weight: 500; }
+
+  /* ════════════════════════════════════
+     9단계 좌선 명상법 추천 박스
+     ════════════════════════════════════ */
+  .meditation-section {
+    background: linear-gradient(180deg, #1a3a2a 0%, #142a20 100%);
+    border-radius: 14px;
+    padding: 28px 24px;
+    margin-top: 28px;
+    border: 1px solid rgba(140, 198, 63, 0.25);
+    box-shadow: 0 4px 16px rgba(140, 198, 63, 0.08);
+  }
+
+  .meditation-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .meditation-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .meditation-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .meditation-sub {
+    font-size: 13px;
+    color: #a8c890;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  .meditation-sub strong {
+    color: #8cc63f;
+    font-weight: 500;
+  }
+
+  .meditation-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stage-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 2px solid #8cc63f;
+    transition: all 0.3s;
+  }
+  .stage-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(2px);
+  }
+
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .stage-num {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #8cc63f;
+    flex-shrink: 0;
+    min-width: 32px;
+    letter-spacing: 0.02em;
+  }
+  .stage-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .stage-tag {
+    font-size: 11px;
+    color: #6a8a7a;
+    margin-left: auto;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .stage-desc {
+    font-size: 13.5px;
+    color: #a8c890;
+    line-height: 1.85;
+    padding-left: 46px;
+  }
+  .stage-desc strong {
+    color: #c8e8a8;
+    font-weight: 500;
+  }
+
+  .meditation-footer {
+    text-align: center;
+    padding-top: 18px;
+    margin-top: 4px;
+    border-top: 1px solid rgba(140, 198, 63, 0.2);
+    font-size: 13px;
+    color: #8cc63f;
+    line-height: 1.95;
+    font-style: italic;
+  }
+
+  /* CTA 버튼 */
+  .cta-section {
+    text-align: center;
+    padding: 40px 30px;
+    margin: 40px auto 0;
+    max-width: 680px;
+  }
+  .cta-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    color: #4a6070;
+    margin-bottom: 22px;
+    line-height: 1.85;
+  }
+  .cta-button {
+    display: inline-block;
+    padding: 16px 36px;
+    background: #1a2a3a;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 14.5px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid #8cc63f;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .cta-button:hover {
+    background: #8cc63f;
+    color: #1a2a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(140, 198, 63, 0.3);
+  }
+
+  /* 리셋 버튼 */
+  .reset-btn {
+    display: block;
+    margin: 24px auto 0;
+    background: transparent;
+    border: 1px solid #4a6070;
+    color: #6a8aaa;
+    padding: 11px 30px;
+    border-radius: 24px;
+    font-size: 12.5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .reset-btn:hover {
+    border-color: #8cc63f;
+    color: #8cc63f;
+  }
+
+  /* 안내문 */
+  .notice {
+    max-width: 680px;
+    margin: 30px auto 0;
+    padding: 24px 30px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #98a8b8;
+    line-height: 1.95;
+    background: #fff;
+    border-radius: 10px;
+    border-left: 3px solid #8cc63f;
+  }
+  .notice strong { color: #1a2a3a; font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 30px;
+    color: #6a8aaa;
+    font-size: 12px;
+    background: #142030;
+    margin-top: 40px;
+  }
+  .footer .sign {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    color: #8cc63f;
+    margin-bottom: 10px;
+    letter-spacing: 0.15em;
+  }
+  .footer-divider {
+    width: 30px;
+    height: 1px;
+    background: #8cc63f;
+    margin: 0 auto 16px;
+    opacity: 0.4;
+  }
+
+  @media (max-width: 480px) {
+    .header { padding: 40px 20px 28px; }
+    .header h1 { font-size: 21px; }
+    .item-text { font-size: 14px; }
+    .result-card { padding: 28px 20px; }
+    .result-title { font-size: 19px; }
+  }
+</style>
 </head>
 <body>
-    <div class="page">
 
-        <!-- ===========================================
-             HERO — 사진(위) + 헤드라인(아래) 분리 구조
-        ============================================ -->
-        <header class="hero" id="hero-section">
-            <!-- 사진 영역 (로고 + 캘리그래피가 또렷이 보임) -->
-            <div class="hero__image-wrap">
-                <img src="https://www.genspark.ai/api/files/s/5LGn383D"
-                     alt="선한인연 선한명상 브랜드 로고 — 호흡명상컨텐츠연구소"
-                     class="hero__image"
-                     width="480" height="480"
-                     fetchpriority="high"
-                     decoding="async"
-                     loading="eager">
+<!-- ════════════════════════════════════
+     헤더
+     ════════════════════════════════════ -->
+<div class="header">
+  <div class="brand">선한인연 선한명상 · 에너지 점검</div>
+  <h1>에너지 부족 체크리스트</h1>
+  <div class="header-sub">
+    해당되는 항목을 모두 체크해 주세요.<br>
+    <strong>작은 신호에서부터</strong> — 회복은 시작됩니다.
+  </div>
+</div>
 
-                <!-- 우상단 골드 도트 (장식) -->
-                <div class="hero__brand" aria-hidden="true">
-                    <span class="hero__brand-dot"></span>
-                </div>
-            </div>
+<!-- ════════════════════════════════════
+     진행바
+     ════════════════════════════════════ -->
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label">
+    <span id="progressText">0 / 20 체크됨</span>
+    <span class="pct" id="progressPct">0%</span>
+  </div>
+</div>
 
-            <!-- 하단 콘텐츠 (사진과 분리된 영역) -->
-            <div class="hero__content fade-in">
-                <p class="hero__eyebrow">A space to return to yourself</p>
+<!-- ════════════════════════════════════
+     섹션 1 — 몸의 신호
+     ════════════════════════════════════ -->
+<div class="section-divider">
+  <div class="s-icon s-body">💧</div>
+  <div><div class="s-title">몸의 신호</div><div class="s-sub">피부·점막·관절</div></div>
+  <div class="s-line"></div>
+</div>
+<div class="list-container">
 
-                <h1 class="hero__headline">
-                    괜찮은 척 하느라<br>
-                    정작 <span class="hl-hero">나를 돌보지 못한 시간</span>,<br>
-                    얼마나 되셨나요?
-                </h1>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">1</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">눈이 모래가 들어간 것처럼 뻑뻑하고 아프다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-                <div class="hero__meta">
-                    <span class="hero__meta-num" aria-hidden="true">20<span style="font-size:12px; letter-spacing:0.1em;">YRS</span></span>
-                    <p class="hero__meta-text">
-                        <strong>20년 지도</strong>
-                        자매가 함께 운영하는 명상 센터
-                    </p>
-                </div>
-            </div>
-        </header>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">2</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">자다가 입이 너무 말라 혀가 입천장에 달라붙어 깨고, 아침엔 입안에서 쓴맛이 난다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-        <!-- ===========================================
-             SECTION 01 — EMPATHY
-        ============================================ -->
-        <section class="section fade-in" id="empathy-section" aria-labelledby="empathy-label">
-            <div class="section-label" id="empathy-label">
-                <span class="section-label__dot" aria-hidden="true"></span>
-                <span class="section-label__num">01</span>
-                <span class="section-label__text">Empathy</span>
-                <span class="section-label__line" aria-hidden="true"></span>
-            </div>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">3</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">코안이 늘 건조해서 딱지가 자주 생기고, 숨 쉴 때마다 코끝이 아릿하거나 따갑다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <span class="empathy__quote-mark" aria-hidden="true">“</span>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">4</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">머리카락이 예전 같지 않게 눈에 띄게 가늘어지고, 푸석푸석해서 자꾸만 빠진다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <p class="empathy__text"><span class="hl--sage">밤마다 생각이 멈추지 않고</span>,
-아침에 눈을 떠도 <span class="hl--sage">개운하지 않고</span>,
-이유 없이 짜증이 나고,
-몸 어딘가가 늘 불편하고,
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">5</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">로션을 아무리 듬뿍 발라도 금방 푸석해지고, 이유 없이 몸이 가려워 자꾸 긁게 된다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-<strong>'나는 언제쯤 나를 돌볼 수 있을까'</strong>
-한 번이라도 이런 생각을 하셨다면,
-이 페이지를 끝까지 읽어주세요.</p>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">6</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">발뒤꿈치가 갈라져 피가 나기도 하고, 손톱 주변에 거스러미가 끊이지 않고 생긴다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <!-- 자동 슬라이드 캐러셀 (좌측으로 무한 이동) -->
-            <div class="empathy__carousel" aria-label="센터의 명상 수련 모습 슬라이드">
-                <div class="empathy__carousel-track">
-                    <!-- 원본 7장 — 첫 3장은 즉시 로드, 나머지는 lazy -->
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/9npntwQx" alt="센터 내부 수련장에서 그룹 명상 중인 모습" loading="eager" decoding="async" fetchpriority="high">
-                    </div>
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/qz9PKQGG" alt="대표님이 회원의 자세를 직접 교정해 주는 모습" loading="eager" decoding="async" fetchpriority="high">
-                    </div>
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/XKwjGFY0" alt="대표님과 회원이 일대일로 마주하는 순간" loading="eager" decoding="async">
-                    </div>
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/BmtWRQRQ" alt="거울을 마주한 명상 수련의 깊은 집중" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/qQvaz4th" alt="수련실에서 스트레칭과 명상을 병행하는 회원들" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/c1PHf1fi" alt="대표님이 동작을 시연하는 그룹 수련 풍경" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide">
-                        <img src="https://www.genspark.ai/api/files/s/GJ4LzSfn" alt="대표님이 회원의 자세를 섬세하게 잡아주는 모습" loading="lazy" decoding="async">
-                    </div>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">7</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">얼굴에 생기가 사라지고 칙칙해졌으며, 화장이나 로션이 겉돌고 잘 먹지 않는다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-                    <!-- 복제본 (끊김 없이 이어지도록) -->
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/9npntwQx" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/qz9PKQGG" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/XKwjGFY0" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/BmtWRQRQ" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/qQvaz4th" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/c1PHf1fi" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="empathy__slide" aria-hidden="true">
-                        <img src="https://www.genspark.ai/api/files/s/GJ4LzSfn" alt="" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div class="item-card" onclick="toggle(this,'body')"><div class="item-inner">
+    <div class="item-num">8</div>
+    <div style="flex:1">
+      <div class="item-tag tag-body">몸</div>
+      <div class="item-text">아침에 일어날 때 손가락이나 무릎 관절이 뻣뻣하고 '뚝뚝' 소리가 나며 불편하다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-        <!-- ===========================================
-             SECTION 02 — OUR STORY
-        ============================================ -->
-        <section class="section section--elev founder fade-in" id="founder-section" aria-labelledby="founder-label">
-            <div class="section-label" id="founder-label">
-                <span class="section-label__dot" aria-hidden="true"></span>
-                <span class="section-label__num">02</span>
-                <span class="section-label__text">Our Story</span>
-                <span class="section-label__line" aria-hidden="true"></span>
-            </div>
+</div>
 
-            <!-- 프로필 사진 (글로우 + 오프셋 링) -->
-            <div class="founder__profile-wrap">
-                <div class="founder__profile-glow" aria-hidden="true"></div>
-                <div class="founder__profile-ring" aria-hidden="true"></div>
-                <div class="founder__profile">
-                    <img src="https://www.genspark.ai/api/files/s/tCTmTTvD"
-                         alt="시아·가이 대표 프로필 사진"
-                         decoding="async"
-                         loading="eager">
-                </div>
-            </div>
+<!-- ════════════════════════════════════
+     섹션 2 — 흐름과 순환
+     ════════════════════════════════════ -->
+<div class="section-divider">
+  <div class="s-icon s-flow">🌿</div>
+  <div><div class="s-title">흐름과 순환</div><div class="s-sub">소화·체온·잠</div></div>
+  <div class="s-line"></div>
+</div>
+<div class="list-container">
 
-            <div class="founder__name-row">
-                <h2 class="founder__name">시아 · 가이</h2>
-                <span class="founder__name-en" aria-hidden="true">Sia · Gai</span>
-            </div>
-            <p class="founder__role">Founders · 선한인연 선한명상</p>
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">9</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">소화제 없이는 밥 먹기가 두려울 정도로 위장이 꽉 막혀 움직이지 않는 느낌이다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <hr class="divider" aria-hidden="true">
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">10</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">조금만 자극적인 걸 먹어도 속이 쓰리다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <p class="founder__story">수련을 시작하기 전,
-각자의 몸과 마음에서 오는
-수많은 통증과 아픔을 반복하며
-저희는 모든 일상의 무너짐을 느꼈습니다.
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">11</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">밤에 자다가 소변을 보기 위해 1번 이상 꼭 깨서 깊은 잠을 자기 힘들다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-<strong>만성염증과 두통, 허리 통증, 피부질환,
-고혈압, 불안, 우울, 대인기피증까지…</strong>
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">12</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">화장실을 자주 가는데 막상 시원하지 않고, 소변 색이 물처럼 너무 투명하다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-세상의 치료법으로는 채워지지 않던 자리를,
-서로가 인연이 되어 회복하고 치유할 수 있었습니다.
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">13</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">조금만 말을 많이 해도 금방 목이 쉬고, 목에 뭔가 걸린 듯한 이물감이 가시지 않는다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-<strong>몸과 마음에 짙게 뿌리내린 병은
-해결해야 할 문제가 아니라
-나 자신을 알기 위한 신호였습니다.</strong>
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">14</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">오후만 되면 얼굴로 열이 확 오르고 입은 더 마르면서 몸이 축축 처진다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-호흡을 통해 몸의 감각을 깨우고,
-생각과 감정을 바라보며
-마음을 다스릴 수 있기까지.
+  <div class="item-card" onclick="toggle(this,'flow')"><div class="item-inner">
+    <div class="item-num">15</div>
+    <div style="flex:1">
+      <div class="item-tag tag-flow">순환</div>
+      <div class="item-text">충분히 잤는데도 아침에 몸이 무겁고, 개운한 느낌 없이 하루를 시작하게 된다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-이 여정을 <span class="dash" aria-hidden="true">—</span> 함께 걷기 위해,
-저희는 이 공간을 열었습니다.
+</div>
 
-<strong>20년의 수련과 연구를 통해
-한 분 한 분의 곁에서 직접 지도한 시간.</strong>
+<!-- ════════════════════════════════════
+     섹션 3 — 마음과 의식
+     ════════════════════════════════════ -->
+<div class="section-divider">
+  <div class="s-icon s-mind">✨</div>
+  <div><div class="s-title">마음과 의식</div><div class="s-sub">감각·정서·알아차림</div></div>
+  <div class="s-line"></div>
+</div>
+<div class="list-container">
 
-자매이자 동료 수련자로서,
-저희가 직접 겪고 회복한 방법만을 전합니다.</p>
-        </section>
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">16</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">몸이 바짝 마르는 느낌과 함께 마음이 붕 뜬 것 같고, 원인 모를 불안감이 자꾸 든다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-        <!-- ===========================================
-             SECTION 03 — VOICES
-        ============================================ -->
-        <section class="section fade-in" id="testimonials-section" aria-labelledby="testimonials-title">
-            <div class="section-label">
-                <span class="section-label__dot" aria-hidden="true"></span>
-                <span class="section-label__num">03</span>
-                <span class="section-label__text">Voices</span>
-                <span class="section-label__line" aria-hidden="true"></span>
-            </div>
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">17</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">이전에는 아무렇지 않던 말이나 상황에 갑자기 감정이 올라오고, 내가 왜 이러나 싶다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <div class="testimonials__heading">
-                <h2 class="testimonials__title" id="testimonials-title">
-                    함께 걸어주신<br>회원분들의 변화
-                </h2>
-                <p class="testimonials__sub">Real voices, real change.</p>
-            </div>
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">18</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">뭔가를 해야 한다는 걸 알면서도 몸도 마음도 움직여지지 않고, 의욕이 바닥난 것 같다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-            <div class="testimonial-list">
-                <article class="testimonial">
-                    <div class="testimonial__header">
-                        <span class="testimonial__index" aria-hidden="true">i.</span>
-                        <div class="testimonial__profile">
-                            <p class="testimonial__person">
-                                30대 여성 · 브랜드 CEO
-                                <span class="testimonial__years">8 yrs of practice</span>
-                            </p>
-                        </div>
-                    </div>
-                    <p class="testimonial__quote">"20대에 만난 명상이 <span class="hl">30대의 저를 만들었어요.</span>"</p>
-                    <p class="testimonial__story">면역결핍성 질환과 오랜 폭식으로 무너져 있던 20대에 명상을 시작했습니다. 8년이 지난 지금 <span class="dash" aria-hidden="true">—</span> <strong>자기 화장품 브랜드의 CEO</strong>로, 매일 아침 40분 명상으로 하루를 시작합니다.</p>
-                </article>
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">19</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">집중이 잘 안 되고 멍하게 시간이 흘러가는 일이 많아졌다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-                <article class="testimonial">
-                    <div class="testimonial__header">
-                        <span class="testimonial__index" aria-hidden="true">ii.</span>
-                        <div class="testimonial__profile">
-                            <p class="testimonial__person">
-                                40대 여성 · 교사
-                            </p>
-                        </div>
-                    </div>
-                    <p class="testimonial__quote">"머리로 이해하던 명상이 <span class="hl">몸으로 체감되니까, 완전히 달라졌어요.</span>"</p>
-                    <p class="testimonial__story">6년 동안 디스크 통증과 싸워왔습니다. 유튜브 명상 · 교정 필라테스 · 요가 <span class="dash" aria-hidden="true">—</span> 안 해본 것이 없었지만 풀리지 않던 통증이 <strong>두 달 만에 사라졌습니다.</strong> 지금은 학교에서도 자연스러운 리더십을 발휘하십니다.</p>
-                </article>
+  <div class="item-card" onclick="toggle(this,'mind')"><div class="item-inner">
+    <div class="item-num">20</div>
+    <div style="flex:1">
+      <div class="item-tag tag-mind">마음</div>
+      <div class="item-text">혼자 있을 때 문득 허무하거나 공허한 느낌이 들고, 무엇을 위해 이렇게 살고 있나 싶다.</div>
+    </div>
+    <div class="item-check"><svg width="14" height="10" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div></div>
 
-                <article class="testimonial">
-                    <div class="testimonial__header">
-                        <span class="testimonial__index" aria-hidden="true">iii.</span>
-                        <div class="testimonial__profile">
-                            <p class="testimonial__person">
-                                50대 여성 · 암 회복
-                            </p>
-                        </div>
-                    </div>
-                    <p class="testimonial__quote">"<span class="hl">수련을 안 할 수가 없어요.</span>"</p>
-                    <p class="testimonial__story">유방암 수술 후 우울 · 불안 · 불면이 겹쳐 있던 시간. 처음으로 몸의 감각이 깨어나는 경험을 하셨습니다. 매일 밤 3~4번 깨던 잠이 <strong>한 번 정도 깨고 곧바로 다시 잠드는 깊은 잠</strong>으로 바뀌었습니다.</p>
-                </article>
+</div>
 
-                <article class="testimonial">
-                    <div class="testimonial__header">
-                        <span class="testimonial__index" aria-hidden="true">iv.</span>
-                        <div class="testimonial__profile">
-                            <p class="testimonial__person">
-                                40대 여성 · 교감 선생님
-                            </p>
-                        </div>
-                    </div>
-                    <p class="testimonial__quote">"일을 해도 <span class="hl">에너지가 채워지는 느낌</span>을 받아요."</p>
-                    <p class="testimonial__story">심근경색 수술 후 고기능 우울증으로 무너져 있던 시간. 어릴 때부터 매일 달고 살던 장 트러블이 처음으로 풀리는 경험을 하셨습니다. <strong>"바라본다는 것이, 나를 안다는 것이 얼마나 중요한지 알게 되어 다행이에요."</strong></p>
-                </article>
-            </div>
-        </section>
+<!-- ════════════════════════════════════
+     결과 영역
+     ════════════════════════════════════ -->
+<div class="result-section" id="resultSection">
+  <div class="result-card">
+    <div class="result-tag">RESULT</div>
+    <div class="result-title">에너지 균형 진단 결과</div>
 
-        <!-- ===========================================
-             SECTION 04 — CONTACT
-        ============================================ -->
-        <section class="section section--elev final-cta fade-in" id="cta-section" aria-labelledby="cta-title">
-            <div class="section-label">
-                <span class="section-label__dot" aria-hidden="true"></span>
-                <span class="section-label__num">04</span>
-                <span class="section-label__text">Contact</span>
-                <span class="section-label__line" aria-hidden="true"></span>
-            </div>
+    <div class="cat-detail-list">
 
-            <h2 class="final-cta__title" id="cta-title">편하게 <em>문의</em>해 주세요</h2>
-            <p class="final-cta__desc">첫 상담은 부담 없이 이야기 나누는 시간입니다.
-궁금한 것만 물어보셔도 괜찮습니다.</p>
+      <!-- 정(精) - 몸 -->
+      <div class="cat-detail" id="detail-body">
+        <div class="cat-detail-head">
+          <div class="cat-detail-icon">💧</div>
+          <div class="cat-detail-title-wrap">
+            <div class="cat-detail-name">정(精) · 몸의 결</div>
+            <div class="cat-detail-tag">피부·점막·관절의 신호</div>
+          </div>
+          <div class="cat-detail-score-wrap">
+            <span class="cat-detail-score" id="score-body">0</span><span class="cat-detail-max">/8</span>
+          </div>
+        </div>
+        <div class="cat-detail-bar">
+          <div class="cat-detail-bar-fill" id="bar-body" style="width: 0%"></div>
+        </div>
+        <div class="cat-detail-desc" id="desc-body">
+          <span>몸의 상태가 정돈되어 있습니다.</span>
+        </div>
+      </div>
 
-            <a href="tel:01052997596" class="contact-number" aria-label="전화 010-5299-7596">
-                <span class="contact-number__label">Call</span>
-                <span class="contact-number__digits">010 · 5299 · 7596</span>
-            </a>
+      <!-- 기(氣) - 흐름 -->
+      <div class="cat-detail" id="detail-flow">
+        <div class="cat-detail-head">
+          <div class="cat-detail-icon">🌿</div>
+          <div class="cat-detail-title-wrap">
+            <div class="cat-detail-name">기(氣) · 흐름의 결</div>
+            <div class="cat-detail-tag">소화·체온·잠</div>
+          </div>
+          <div class="cat-detail-score-wrap">
+            <span class="cat-detail-score" id="score-flow">0</span><span class="cat-detail-max">/7</span>
+          </div>
+        </div>
+        <div class="cat-detail-bar">
+          <div class="cat-detail-bar-fill" id="bar-flow" style="width: 0%"></div>
+        </div>
+        <div class="cat-detail-desc" id="desc-flow">
+          <span>흐름이 자연스럽게 움직이고 있습니다.</span>
+        </div>
+      </div>
 
-            <div class="button-group">
-                <a href="tel:01052997596"
-                   class="btn btn--primary"
-                   aria-label="전화로 문의하기 010-5299-7596">
-                    <span class="btn__label">
-                        <span class="btn__num">01 —</span>
-                        전화로 문의하기
-                    </span>
-                    <span class="btn__arrow" aria-hidden="true">→</span>
-                </a>
-                <a href="https://open.kakao.com/o/seQTrvti"
-                   class="btn btn--secondary"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="카카오톡 오픈채팅으로 문의하기">
-                    <span class="btn__label">
-                        <span class="btn__num">02 —</span>
-                        카카오톡으로 문의하기
-                    </span>
-                    <span class="btn__arrow" aria-hidden="true">→</span>
-                </a>
-            </div>
-
-            <div class="address">
-                <span class="address__label" aria-hidden="true">Visit</span>
-                <p class="address__text">서울 광진구 아차산로78길 43<br>리버리치빌 503호</p>
-            </div>
-        </section>
-
-        <!-- ===========================================
-             FOOTER
-        ============================================ -->
-        <footer class="footer">
-            <p class="footer__brand">Sun-han Inyeon · Meditation</p>
-            <div class="footer__divider" aria-hidden="true"></div>
-            <p class="footer__copy">© 선한인연 선한명상</p>
-        </footer>
+      <!-- 신(神) - 마음 -->
+      <div class="cat-detail" id="detail-mind">
+        <div class="cat-detail-head">
+          <div class="cat-detail-icon">✨</div>
+          <div class="cat-detail-title-wrap">
+            <div class="cat-detail-name">신(神) · 마음의 결</div>
+            <div class="cat-detail-tag">감각·정서·알아차림</div>
+          </div>
+          <div class="cat-detail-score-wrap">
+            <span class="cat-detail-score" id="score-mind">0</span><span class="cat-detail-max">/5</span>
+          </div>
+        </div>
+        <div class="cat-detail-bar">
+          <div class="cat-detail-bar-fill" id="bar-mind" style="width: 0%"></div>
+        </div>
+        <div class="cat-detail-desc" id="desc-mind">
+          <span>마음이 평온합니다.</span>
+        </div>
+      </div>
 
     </div>
 
-    <!-- ===========================================
-         FLOATING CTA
-    ============================================ -->
-    <a href="tel:01052997596"
-       class="floating-cta"
-       aria-label="전화 상담 신청하기 010-5299-7596">
-        <span class="floating-cta__label">
-            <span class="floating-cta__num">전화</span>
-            상담 신청하기
-        </span>
-        <span class="floating-cta__arrow" aria-hidden="true">→</span>
-    </a>
+    <!-- ════════════════════════════════════
+         9단계 좌선 명상법 추천
+         ════════════════════════════════════ -->
+    <div class="meditation-section" id="meditationSection">
+      <div class="meditation-header">
+        <div class="meditation-icon">🌿</div>
+        <div class="meditation-title">지금 만나실 좌선 명상법</div>
+        <div class="meditation-sub" id="meditationSub">
+          체크리스트를 완료하시면 — 당신께 가장 필요한 단계를 안내해 드립니다.
+        </div>
+      </div>
 
-    <script>
-        /**
-         * 1) Fade-in on scroll (Intersection Observer)
-         */
-        (function () {
-            const fadeElements = document.querySelectorAll('.fade-in');
+      <div class="meditation-stages" id="meditationStages">
+        <!-- 동적으로 채워짐 -->
+      </div>
 
-            if (!('IntersectionObserver' in window)) {
-                fadeElements.forEach(el => el.classList.add('is-visible'));
-                return;
-            }
+      <div class="meditation-footer" id="meditationFooter" style="display:none;">
+        9단계 전체를 따라가시는 길은 —<br>
+        선한명상의 통합 수련에서 함께 안내드립니다.
+      </div>
+    </div>
 
-            const observer = new IntersectionObserver(function (entries, obs) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.15
-            });
+    <!-- 종합 메시지 -->
+    <div class="result-message" id="resultMessage">
+      체크리스트를 완료하시면 — 정(精)·기(氣)·신(神) 세 가지를 통합으로 살펴보실 수 있습니다.
+    </div>
 
-            fadeElements.forEach(el => observer.observe(el));
-        })();
+    <button class="reset-btn" onclick="reset()">다시 체크하기</button>
+  </div>
+</div>
 
-        /**
-         * 2) 이미지 로드 완료 시 .is-loaded 클래스 부여
-         *    → 스켈레톤 시머에서 사진으로 부드럽게 페이드 인
-         */
-        (function () {
-            const images = document.querySelectorAll(
-                '.hero__image, .founder__profile img, .empathy__slide img'
-            );
+<!-- ════════════════════════════════════
+     CTA — 카카오톡 상담
+     ════════════════════════════════════ -->
+<div class="cta-section">
+  <p class="cta-text">
+    에너지 회복은 — 정(精)·기(氣)·신(神)<br>
+    세 가지가 함께 정돈될 때 시작됩니다.
+  </p>
+  <a href="https://open.kakao.com/o/seQTrvti" class="cta-button" target="_blank">
+    카카오톡 상담 바로가기 →
+  </a>
+</div>
 
-            images.forEach(function (img) {
-                // 이미 캐시되어 즉시 사용 가능한 경우
-                if (img.complete && img.naturalWidth > 0) {
-                    img.classList.add('is-loaded');
-                    return;
-                }
+<!-- ════════════════════════════════════
+     안내문
+     ════════════════════════════════════ -->
+<div class="notice">
+  <strong>이 체크리스트는 의학적 진단을 대체하지 않습니다.</strong><br>
+  자기 몸과 마음의 상태를 살펴보는 도구로 활용해 주세요.<br>
+  깊은 회복은 — 일상의 작은 시간들에서 시작됩니다.
+</div>
 
-                // 로드 완료 이벤트
-                img.addEventListener('load', function () {
-                    img.classList.add('is-loaded');
-                }, { once: true });
+<!-- ════════════════════════════════════
+     Footer
+     ════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-divider"></div>
+  <div class="sign">선한인연 선한명상</div>
+  <div>SUNHANMIND · Seoul · 2026</div>
+</div>
 
-                // 에러 시에도 시머 정지 (검정 박스로라도 표시)
-                img.addEventListener('error', function () {
-                    img.classList.add('is-loaded');
-                }, { once: true });
-            });
-        })();
-    </script>
+<script>
+  // 카테고리별 체크 카운트
+  const counts = {
+    body: 0,   // 8문항
+    flow: 0,   // 7문항
+    mind: 0    // 5문항
+  };
+
+  // 카테고리별 상세 메시지 (박선호님 코칭 결)
+  const catMessages = {
+    body: { // 정(精) - 몸의 결 (max 8)
+      0: { text: '몸의 상태가 정돈되어 있습니다.', care: null },
+      1: { text: '몸이 살짝 흐트러지기 시작했습니다.', care: null },
+      2: { text: '피부와 점막의 신호가 늘어나고 있습니다.', care: null },
+      3: { text: '<strong>몸의 건조함이 시작된 상태</strong>입니다. 작은 신호들이 쌓이고 있어요.', care: '몸의 회복은 — 깊은 호흡과 정화 안에서 다시 만나실 수 있습니다.' },
+      4: { text: '<strong>몸의 신호가 명확해진 상태</strong>입니다. 피부, 점막, 관절에 신호가 또렷합니다.', care: '몸의 회복을 위해 — 비움명상의 정화(장 해독, 죽염)가 깊이 도움이 됩니다.' },
+      5: { text: '<strong>몸이 많이 약해진 상태</strong>입니다. 일상의 작은 신호들에 귀 기울일 시점이에요.', care: '몸의 깊은 정화와 호흡 수련 — 통합 수련이 필요한 시점입니다.' },
+      6: { text: '<strong>몸이 깊은 건조와 피로 상태</strong>입니다. 회복이 시급한 신호가 모이고 있어요.', care: '비움명상의 정화와 함께 — 호흡, 기예공으로 깊이 회복하실 수 있습니다.' },
+      7: { text: '<strong>몸이 매우 약해진 상태</strong>입니다. 만성적 신호들이 일상이 되어가고 있어요.', care: '몸의 통합 회복 — 비움명상, 1:1 코칭, 깊은 호흡 수련이 필요한 시점입니다.' },
+      8: { text: '<strong>몸이 거의 무너진 상태</strong>입니다. 모든 신호가 회복을 요청하고 있어요.', care: '몸의 깊은 회복은 — 통합 수련 전체(비움·1:1·정념)에서 함께 만들어 갈 수 있습니다.' }
+    },
+    flow: { // 기(氣) - 흐름의 결 (max 7)
+      0: { text: '흐름이 자연스럽게 움직이고 있습니다.', care: null },
+      1: { text: '소화와 순환이 살짝 둔해지고 있습니다.', care: null },
+      2: { text: '몸의 흐름이 막히기 시작한 신호가 있습니다.', care: null },
+      3: { text: '<strong>기(氣)의 흐름이 흐트러진 상태</strong>입니다. 소화·체온·잠이 약해지고 있어요.', care: '깊은 호흡과 기예공 — 막힌 흐름을 풀어내는 시간이 필요합니다.' },
+      4: { text: '<strong>기(氣)가 많이 약해진 상태</strong>입니다. 막힘이 깊어져 일상의 활력이 떨어지고 있어요.', care: '기예공과 비움명상의 정화로 — 막힌 곳을 깊이 풀어내실 수 있습니다.' },
+      5: { text: '<strong>기(氣)가 크게 정체된 상태</strong>입니다. 소화·체온·잠 모두에서 신호가 강해지고 있어요.', care: '통합 수련 — 호흡, 기예공, 비움명상이 함께 필요한 시점입니다.' },
+      6: { text: '<strong>기(氣)가 거의 막힌 상태</strong>입니다. 만성적 정체가 일상이 되어가고 있어요.', care: '깊이 막힌 곳의 회복 — 통합 수련 전체에서 함께 풀어내야 할 시점입니다.' },
+      7: { text: '<strong>기(氣)가 매우 깊이 막힌 상태</strong>입니다. 회복이 시급한 신호가 모이고 있어요.', care: '비움명상의 깊은 정화와 통합 수련 — 회복의 길을 함께 만들어 갈 수 있습니다.' }
+    },
+    mind: { // 신(神) - 마음의 결 (max 5)
+      0: { text: '마음이 평온합니다.', care: null },
+      1: { text: '마음이 살짝 흩어지기 시작했습니다.', care: null },
+      2: { text: '감각과 알아차림이 약해지고 있습니다.', care: '마음을 들여다보는 일이 — 회복의 첫걸음이 됩니다.' },
+      3: { text: '<strong>신(神)이 약해진 상태</strong>입니다. 불안, 의욕 저하, 공허함이 늘어나고 있어요.', care: '1:1 코칭과 무의식 정화 세션 — 마음의 깊은 응어리를 풀어내는 시간이 도움이 됩니다.' },
+      4: { text: '<strong>신(神)이 많이 무너진 상태</strong>입니다. 일상의 의미가 흐려지고, 자기 자신과의 연결이 약해졌어요.', care: '깊이 가라앉은 마음의 회복 — 통합 수련과 무의식 정화 세션이 깊이 도움이 됩니다.' },
+      5: { text: '<strong>신(神)이 매우 약해진 상태</strong>입니다. 자기 자신과의 연결이 거의 끊어진 시점이에요.', care: '마음의 깊은 회복은 — 1:1 개인 코칭, 무의식 정화, 비움명상의 통합에서 만나실 수 있습니다.' }
+    }
+  };
+
+  function toggle(card, cat) {
+    const isChecked = card.classList.toggle('checked');
+    if (isChecked) {
+      counts[cat]++;
+    } else {
+      counts[cat]--;
+    }
+    updateProgress();
+    updateResult();
+  }
+
+  function updateProgress() {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const pct = Math.round((total / 20) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = total + ' / 20 체크됨';
+    document.getElementById('progressPct').textContent = pct + '%';
+  }
+
+  function updateResult() {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const cats = ['body', 'flow', 'mind'];
+    const catMax = { body: 8, flow: 7, mind: 5 };
+    const catNames = {
+      body: '몸',
+      flow: '흐름',
+      mind: '마음'
+    };
+
+    let alertCats = [];
+    let severeCats = [];
+
+    cats.forEach(c => {
+      const score = counts[c];
+      const max = catMax[c];
+      const detail = document.getElementById('detail-' + c);
+      const scoreEl = document.getElementById('score-' + c);
+      const barEl = document.getElementById('bar-' + c);
+      const descEl = document.getElementById('desc-' + c);
+
+      // 점수 업데이트
+      scoreEl.textContent = score;
+
+      // 진행바 업데이트
+      barEl.style.width = (score / max * 100) + '%';
+
+      // 카드 색상 변경 (각 카테고리별 max 기준 비율)
+      detail.classList.remove('alert', 'severe');
+      const ratio = score / max;
+      if (ratio >= 0.7) {
+        detail.classList.add('severe');
+        severeCats.push(catNames[c]);
+      } else if (ratio >= 0.4) {
+        detail.classList.add('alert');
+        alertCats.push(catNames[c]);
+      }
+
+      // 메시지 업데이트
+      const msg = catMessages[c][score];
+      let descHTML = msg.text;
+      if (msg.care) {
+        descHTML += '<span class="care">' + msg.care + '</span>';
+      }
+      descEl.innerHTML = descHTML;
+    });
+
+    // 종합 메시지
+    const messageEl = document.getElementById('resultMessage');
+    if (total === 0) {
+      messageEl.innerHTML = '체크리스트를 완료하시면 — 정(精)·기(氣)·신(神) 세 가지를 통합으로 살펴보실 수 있습니다.';
+    } else if (severeCats.length >= 2) {
+      messageEl.innerHTML = `<strong style="color: #e07070;">${severeCats.join(', ')}</strong> 모두 깊이 약해진 상태입니다. <br>몸과 마음 전체의 회복이 시급한 시점이에요. <br><br><strong>에너지 회복은 정·기·신이 함께 정돈될 때 시작됩니다.</strong> 선한명상의 통합 수련에서 함께 만나실 수 있습니다.`;
+    } else if (severeCats.length > 0) {
+      messageEl.innerHTML = `<strong style="color: #e07070;">${severeCats.join(', ')}</strong> 균형이 크게 무너진 상태입니다. <br>이 부분의 회복부터 시작하시면 — <strong>전체가 자연스럽게 살아납니다.</strong>`;
+    } else if (alertCats.length > 0) {
+      messageEl.innerHTML = `<strong style="color: #f5b551;">${alertCats.join(', ')}</strong> 균형이 흔들리기 시작한 상태입니다. <br>일상의 작은 시간들에서 — <strong>회복을 만들어 갈 수 있습니다.</strong>`;
+    } else if (total >= 7) {
+      messageEl.innerHTML = `전반적으로 <strong>에너지가 흔들리고 있는 상태</strong>입니다. <br>호흡, 몸의 정화, 마음을 함께 살피며 — 자기 자신을 회복하실 수 있습니다.`;
+    } else {
+      messageEl.innerHTML = `에너지 균형이 비교적 안정적인 상태입니다. <br><strong>지금처럼 더 깊이 이어가시면</strong> — 일상의 활력이 더 단단해집니다.`;
+    }
+
+    // 9단계 좌선 명상법 추천 업데이트
+    updateMeditation();
+  }
+
+  function reset() {
+    document.querySelectorAll('.item-card.checked').forEach(card => {
+      card.classList.remove('checked');
+    });
+    Object.keys(counts).forEach(k => counts[k] = 0);
+    updateProgress();
+    updateResult();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ════════════════════════════════════
+  // 9단계 좌선 명상법 데이터
+  // ════════════════════════════════════
+  const meditationStages = {
+    1: {
+      name: '깨어난다',
+      tag: '시작',
+      desc: '감각에 주의를 돌리는 순간 — <strong>의식이 외부에서 내부로</strong> 전환됩니다. 신체 감각을 인식하며 현재로 돌아옵니다.'
+    },
+    2: {
+      name: '풀려나간다',
+      tag: '이완',
+      desc: '긴장을 내려놓고 <strong>이완됩니다</strong>. 누적된 신체·정서적 긴장이 해소되며, 억압된 에너지가 자연스럽게 순환하기 시작합니다.'
+    },
+    3: {
+      name: '가라앉는다',
+      tag: '침잠',
+      desc: '에너지가 아래로 침잠합니다. <strong>흩어진 에너지가 중심으로 모이며</strong>, 과각성 상태에서 안정 상태로 전환됩니다.'
+    },
+    4: {
+      name: '기다린다',
+      tag: '여유',
+      desc: '조급함 없이 자기를 기다립니다. <strong>반응과 선택 사이에 공간이 생기며</strong>, 즉각 반응하지 않고 내면의 신호를 기다립니다.'
+    },
+    5: {
+      name: '바라본다',
+      tag: '관찰',
+      desc: '저항 없이 내면을 관찰합니다. <strong>판단 없이 감각·감정·생각을 있는 그대로 봅니다.</strong> 메타인지가 활성화됩니다.'
+    },
+    6: {
+      name: '알아차린다',
+      tag: '인식',
+      desc: '<strong>반복되는 패턴과 무의식적 반응을 인식</strong>합니다. 감정의 뿌리를 감각으로 만나는 단계입니다.'
+    },
+    7: {
+      name: '받아들인다',
+      tag: '수용',
+      desc: '불편한 감각과 감정을 저항 없이 수용합니다. <strong>수용이 변화의 시작</strong>임을 몸으로 체득합니다.'
+    },
+    8: {
+      name: '연결된다',
+      tag: '연결',
+      desc: '분리된 자아 감각이 이완되며 <strong>연결감이 생깁니다</strong>. 고립에서 관계로, 긴장에서 공명으로 이동합니다.'
+    },
+    9: {
+      name: '스며든다',
+      tag: '통합',
+      desc: '수련이 일상 전체로 통합됩니다. <strong>삶이 곧 명상이 되는 순간</strong>입니다.'
+    }
+  };
+
+  // 점수 기반 추천 단계 결정
+  function getRecommendedStages(bodyScore, flowScore, mindScore, total) {
+    const bodyMax = 8, flowMax = 7, mindMax = 5;
+    const bodyRatio = bodyScore / bodyMax;
+    const flowRatio = flowScore / flowMax;
+    const mindRatio = mindScore / mindMax;
+
+    // 가장 약한 자리 찾기
+    let weakest = 'none';
+    let maxRatio = 0.4; // 40% 이상이어야 추천 활성화
+
+    if (bodyRatio >= maxRatio) { weakest = 'body'; maxRatio = bodyRatio; }
+    if (flowRatio > maxRatio) { weakest = 'flow'; maxRatio = flowRatio; }
+    if (mindRatio > maxRatio) { weakest = 'mind'; maxRatio = mindRatio; }
+
+    // 추천 단계
+    if (total === 0) {
+      return { stages: [], intro: null, footer: false };
+    }
+
+    // 정(精) 약함 — 시작 단계
+    if (weakest === 'body') {
+      return {
+        stages: [1, 2, 3],
+        intro: '<strong>몸의 회복</strong>이 우선되는 시점입니다.<br>처음 세 단계로 — 감각을 깨우고, 긴장을 풀어내며, 에너지를 가라앉히세요.',
+        footer: true
+      };
+    }
+
+    // 기(氣) 막힘 — 흐름 단계
+    if (weakest === 'flow') {
+      return {
+        stages: [3, 4, 5],
+        intro: '<strong>흐름의 회복</strong>이 우선되는 시점입니다.<br>가라앉히고, 기다리며, 바라보는 단계에서 — 막힌 에너지가 풀려납니다.',
+        footer: true
+      };
+    }
+
+    // 신(神) 약함 — 알아차림 단계
+    if (weakest === 'mind') {
+      return {
+        stages: [5, 6, 7],
+        intro: '<strong>마음의 회복</strong>이 우선되는 시점입니다.<br>바라보고, 알아차리고, 받아들이는 단계에서 — 마음의 깊은 응어리가 풀립니다.',
+        footer: true
+      };
+    }
+
+    // 전체 안정 — 통합 단계
+    return {
+      stages: [8, 9],
+      intro: '균형이 비교적 안정적인 상태입니다.<br><strong>연결과 통합의 단계</strong>에서 — 명상이 삶으로 깊어지는 시간을 만나실 수 있습니다.',
+      footer: true
+    };
+  }
+
+  // 9단계 추천 박스 업데이트
+  function updateMeditation() {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const result = getRecommendedStages(counts.body, counts.flow, counts.mind, total);
+
+    const subEl = document.getElementById('meditationSub');
+    const stagesEl = document.getElementById('meditationStages');
+    const footerEl = document.getElementById('meditationFooter');
+
+    if (result.stages.length === 0) {
+      subEl.innerHTML = '체크리스트를 완료하시면 — 당신께 가장 필요한 단계를 안내해 드립니다.';
+      stagesEl.innerHTML = '';
+      footerEl.style.display = 'none';
+      return;
+    }
+
+    subEl.innerHTML = result.intro;
+
+    let stagesHTML = '';
+    result.stages.forEach(num => {
+      const stage = meditationStages[num];
+      stagesHTML += `
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-num">0${num}</div>
+            <div class="stage-name">${stage.name}</div>
+            <div class="stage-tag">${stage.tag}</div>
+          </div>
+          <div class="stage-desc">${stage.desc}</div>
+        </div>
+      `;
+    });
+    stagesEl.innerHTML = stagesHTML;
+    footerEl.style.display = result.footer ? 'block' : 'none';
+  }
+</script>
+
 </body>
 </html>
