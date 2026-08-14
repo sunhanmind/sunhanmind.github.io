@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://seonhan.kr/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://seonhan.kr/start/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://seonhan.kr/check/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 아래 두 줄은 셀프체크 잠편·번아웃편을 올린 뒤
+       앞의 <!- - 와 뒤의 - -> 를 지워서 살리세요. -->
+  <!--
+  <url><loc>https://seonhan.kr/sleep/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://seonhan.kr/burnout/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  -->
+
+  <!-- /guides/ 와 /ojt/ 는 회원 전용이므로 사이트맵에 넣지 않습니다. -->
+
+</urlset>

@@ -1,0 +1,13 @@
+# 선한인연 선한명상 — 검색 로봇 안내
+# 이 파일은 대문 저장소(sunhanmind.github.io) 최상위에 둡니다.
+
+User-agent: *
+Allow: /
+Allow: /start/
+Allow: /check/
+
+# ── 회원 전용 · 검색 수집 금지 ──
+Disallow: /guides/
+Disallow: /ojt/
+
+Sitemap: https://seonhan.kr/sitemap.xml
