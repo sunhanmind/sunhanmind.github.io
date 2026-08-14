@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1:1 개인수업 — 선한인연 선한명상</title>
+<meta name="description" content="요가도 도수치료도 안 되던 분들이 오십니다. 몸의 감각에서 시작하는 60분 첫 수업. 서울 광진구 아차산로78길, 2005년부터 20년.">
+<meta property="og:title" content="1:1 개인수업 — 선한인연 선한명상">
+<meta property="og:description" content="처음 오시는 분을 위한 60분. 66,000원.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #1a1814;
+    --bg-secondary: #221f1a;
+    --bg-card: #25221d;
+    --text-primary: #f0e8d8;
+    --text-secondary: #c0b9a8;
+    --text-tertiary: #8a7e6a;
+    --gold: #c4a55a;
+    --gold-soft: #9e8849;
+    --line: #3a342c;
+    --kakao: #FEE500;
+    --kakao-ink: #191919;
+    --serif: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Nanum Myeongjo', serif;
+    --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--serif);
+    line-height: 1.9;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at top right, rgba(196,165,90,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(196,165,90,0.03) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 2; max-width: 480px; margin: 0 auto; padding: 0 28px; }
+
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em;
+    color: var(--gold-soft); font-weight: 500;
+    margin-bottom: 20px; text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 23px; font-weight: 600; line-height: 1.65;
+    letter-spacing: -0.01em; margin-bottom: 26px;
+  }
+
+  p { color: var(--text-secondary); font-size: 15.5px; margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--text-primary); font-weight: 600; }
+  em { font-style: normal; color: var(--gold); }
+
+  /* ─── 히어로 ─── */
+  .hero { padding: 92px 0 68px; text-align: left; }
+  .hero .mark {
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em;
+    color: var(--gold-soft); margin-bottom: 34px;
+  }
+  .hero h1 {
+    font-size: 30px; font-weight: 700; line-height: 1.55;
+    letter-spacing: -0.02em; margin-bottom: 24px;
+  }
+  .hero h1 .thin { display: block; font-weight: 300; color: var(--text-secondary); font-size: 21px; margin-top: 12px; }
+  .hero .lede { font-size: 16px; color: var(--text-secondary); }
+  .rule { width: 34px; height: 1px; background: var(--gold); margin: 34px 0; opacity: .75; }
+
+  /* ─── 걱정 ─── */
+  .worry {
+    font-size: 17px; color: var(--text-primary);
+    padding: 18px 0 18px 20px;
+    border-left: 1px solid var(--gold-pale, #6b5b3a);
+    margin-bottom: 4px; line-height: 1.75;
+  }
+  .worry + .worry { margin-top: 8px; }
+
+  /* ─── 반박 제거 ─── */
+  .answer { margin-bottom: 34px; }
+  .answer:last-child { margin-bottom: 0; }
+  .answer .q {
+    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+    color: var(--gold); letter-spacing: 0.02em; margin-bottom: 10px;
+  }
+  .answer p { margin-bottom: 10px; }
+
+  /* ─── 60분 타임라인 (시그니처) ─── */
+  .timeline { margin-top: 8px; }
+  .tl-head {
+    display: flex; align-items: baseline; gap: 10px;
+    font-family: var(--sans); font-size: 11.5px;
+    color: var(--text-tertiary); letter-spacing: .1em;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 22px;
+  }
+  .step { margin-bottom: 22px; }
+  .step-top { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .step-min {
+    font-family: var(--sans); font-weight: 700; font-size: 15px;
+    color: var(--gold); min-width: 42px; letter-spacing: -0.01em;
+  }
+  .step-name { font-size: 16px; font-weight: 500; color: var(--text-primary); }
+  .bar { height: 3px; background: var(--gold-soft); opacity: .55; border-radius: 2px; margin-bottom: 9px; }
+  .step.major .bar { opacity: 1; height: 5px; }
+  .step.major .step-name { font-weight: 600; }
+  .step p { font-size: 14px; margin: 0; line-height: 1.8; }
+  .tl-note {
+    font-size: 14px; color: var(--text-tertiary);
+    border-top: 1px solid var(--line); padding-top: 20px; margin-top: 30px;
+  }
+
+  /* ─── 목록 ─── */
+  .list { list-style: none; }
+  .list li {
+    font-size: 15.5px; color: var(--text-secondary);
+    padding: 13px 0 13px 22px; border-bottom: 1px solid var(--line);
+    position: relative; line-height: 1.8;
+  }
+  .list li:last-child { border-bottom: none; }
+  .list li::before {
+    content: ''; position: absolute; left: 0; top: 22px;
+    width: 9px; height: 1px; background: var(--gold); opacity: .8;
+  }
+
+  /* ─── 가격 ─── */
+  .price-card {
+    background: var(--bg-card); border: 1px solid var(--line);
+    padding: 30px 26px; margin-bottom: 14px;
+  }
+  .price-card.lead { border-color: var(--gold-soft); }
+  .price-label {
+    font-family: var(--sans); font-size: 12px; letter-spacing: .1em;
+    color: var(--text-tertiary); margin-bottom: 10px;
+  }
+  .price-num {
+    font-family: var(--sans); font-size: 30px; font-weight: 700;
+    color: var(--gold); letter-spacing: -0.02em; line-height: 1.3;
+  }
+  .price-card.next .price-num { color: var(--text-primary); font-size: 26px; }
+  .price-unit { font-family: var(--sans); font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+  .price-card p { font-size: 14px; margin: 12px 0 0; }
+  .price-bridge {
+    font-size: 15px; color: var(--text-primary);
+    text-align: center; padding: 20px 0 6px;
+  }
+
+  /* ─── 증거 ─── */
+  .proof { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 18px; }
+  .proof:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .proof-num {
+    font-family: var(--sans); font-size: 20px; font-weight: 700;
+    color: var(--gold); letter-spacing: -0.01em;
+  }
+  .proof p { font-size: 14.5px; margin-top: 4px; }
+
+  /* ─── 오시는 길 ─── */
+  .addr { font-size: 17px; color: var(--text-primary); margin-bottom: 6px; }
+  .addr-sub { font-family: var(--sans); font-size: 14px; color: var(--text-tertiary); margin-bottom: 26px; }
+  .honest {
+    border-left: 1px solid var(--gold); padding: 4px 0 4px 20px;
+    font-size: 15.5px; color: var(--text-secondary); margin-top: 24px;
+  }
+
+  /* ─── 신청 ─── */
+  .apply { text-align: center; }
+  .apply h2 { text-align: center; }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 17px; border-radius: 3px; text-decoration: none;
+    font-family: var(--sans); font-weight: 500; font-size: 15.5px;
+    margin-bottom: 11px; transition: opacity .2s, transform .2s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-kakao { background: var(--kakao); color: var(--kakao-ink); }
+  .btn-call { background: transparent; color: var(--text-primary); border: 1px solid var(--gold-soft); }
+  .btn:hover { opacity: .88; }
+  .apply .fine { font-size: 13.5px; color: var(--text-tertiary); margin-top: 16px; }
+
+  /* ─── 하단 고정 ─── */
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    background: rgba(26,24,20,.96);
+    border-top: 1px solid var(--line);
+    padding: 11px 16px calc(11px + env(safe-area-inset-bottom, 0px));
+    display: flex; gap: 9px; max-width: 480px; margin: 0 auto;
+  }
+  .dock a {
+    flex: 1; text-align: center; padding: 14px 8px; border-radius: 3px;
+    font-family: var(--sans); font-size: 14.5px; font-weight: 500;
+    text-decoration: none; transition: opacity .2s;
+  }
+  .dock .d-kakao { background: var(--kakao); color: var(--kakao-ink); flex: 1.35; }
+  .dock .d-call { border: 1px solid var(--gold-soft); color: var(--text-primary); }
+  .dock a:hover { opacity: .88; }
+
+  /* ─── 더 보기 ─── */
+  .more { border-top: 1px solid var(--line); padding: 56px 0 10px; }
+  .more h3 {
+    font-size: 17px; font-weight: 500; color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .more .sub { font-size: 14px; color: var(--text-tertiary); margin-bottom: 26px; }
+  .more-link {
+    display: block; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 3px;
+    padding: 20px 22px; margin-bottom: 11px;
+    transition: border-color .2s, background .2s;
+  }
+  .more-link:hover { border-color: var(--gold-soft); background: var(--bg-card); }
+  .more-link .ml-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .more-link .ml-name {
+    font-size: 16px; font-weight: 500; color: var(--text-primary);
+  }
+  .more-link .ml-arrow { color: var(--gold); font-family: var(--sans); font-size: 15px; }
+  .more-link p { font-size: 13.5px; color: var(--text-secondary); margin: 7px 0 0; line-height: 1.75; }
+
+  /* ─── 안내문 · 푸터 ─── */
+  .notice {
+    font-family: var(--sans); font-size: 12.5px; line-height: 1.85;
+    color: var(--text-tertiary); border-top: 1px solid var(--line);
+    padding: 26px 0; margin-top: 8px;
+  }
+  footer {
+    text-align: center; padding: 34px 0 46px;
+    font-family: var(--sans); font-size: 12px; color: var(--text-tertiary); line-height: 2;
+  }
+  footer .sign { font-family: var(--serif); font-size: 15px; color: var(--gold-soft); margin-bottom: 10px; }
+  footer a { color: var(--text-tertiary); }
+
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 26px; }
+    h2 { font-size: 21px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+  a:focus-visible, .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- 1. 후킹 -->
+  <section class="hero">
+    <div class="mark">선한인연 선한명상 · 1:1 개인수업</div>
+    <h1>
+      요가도 도수치료도<br>안 되던 분들이 오십니다
+      <span class="thin">몸의 감각에서 시작하는 60분</span>
+    </h1>
+    <div class="rule"></div>
+    <p class="lede">
+      명상 앱을 세 개쯤 지워보셨다면, 이 자리가 맞을지 모릅니다.
+      저희는 마음을 다스리는 법부터 가르치지 않습니다. <strong>몸에서 시작합니다.</strong>
+      2005년부터 스무 해, 같은 자리에서 이어온 수련입니다.
+    </p>
+  </section>
+
+  <!-- 2. 걱정 -->
+  <section>
+    <div class="eyebrow">Before</div>
+    <h2>여기까지 오시기 전에<br>이런 생각을 하셨을 겁니다</h2>
+    <div class="worry">"명상 앱도, 유튜브도 해봤는데… 나만 안 되는 건가"</div>
+    <div class="worry">"10분도 가만히 못 앉아 있는데 될 리가 없지…"</div>
+    <div class="worry">"한 시간에 뭐가 달라지겠어. 돈만 쓰는 거 아닌가"</div>
+  </section>
+
+  <!-- 3. 반박 제거 -->
+  <section>
+    <div class="eyebrow">Answer</div>
+    <h2>세 가지 모두<br>먼저 말씀드리겠습니다</h2>
+
+    <div class="answer">
+      <div class="q">"나만 안 되는 건가"</div>
+      <p>아닙니다. 저희를 찾아오시는 분들의 공통점이 바로 그것입니다.
+      <strong>명상을 처음 하는 분이 아니라, 여러 번 시도했는데 안 됐던 분들</strong>입니다.</p>
+      <p>앱과 영상은 안내를 들려줄 수는 있어도, 지금 당신의 몸이 어디서 막혀 있는지는 볼 수 없습니다.
+      안 된 것이 아니라, 볼 사람이 없었던 것입니다.</p>
+    </div>
+
+    <div class="answer">
+      <div class="q">"가만히 못 앉아 있는데"</div>
+      <p>앉지 않으셔도 됩니다. 처음 오시는 분께는 <em>입선</em> — 서서 하는 자세를 먼저 권해드립니다.
+      발바닥이 땅에 닿는 것만으로 몸은 가장 빠르게 가라앉습니다.</p>
+      <p>고관절이나 허리가 굳어 앉기 어려우신 분, 눈을 감으면 어지러우신 분 —
+      <strong>미리 말씀해 주시면 그 몸에 맞는 자세로 진행합니다.</strong></p>
+    </div>
+
+    <div class="answer">
+      <div class="q">"한 시간에 뭐가 달라지겠어"</div>
+      <p>인생이 바뀐다고 말씀드리지 않겠습니다. 60분 동안 하는 일은 하나입니다.
+      <strong>지금 내 몸이 어디서 막혀 있는지, 어떤 호흡이 나에게 맞는지를 아는 것</strong>입니다.</p>
+      <p>그 하나를 알고 돌아가시면, 이어서 하실지 말지는 그때 정하시면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 4. 60분 흐름 — 시그니처 -->
+  <section>
+    <div class="eyebrow">60 Minutes</div>
+    <h2>60분은<br>이렇게 흐릅니다</h2>
+    <p>설명이 많은 시간이 아닙니다. <strong>60분 중 35분을 몸의 경험에 씁니다.</strong>
+    아래 선의 굵기가 그 시간의 크기입니다.</p>
+
+    <div class="timeline">
+      <div class="tl-head"><span>순서</span><span>·</span><span>시간</span><span>·</span><span>하는 일</span></div>
+
+      <div class="step">
+        <div class="step-top"><span class="step-min">5분</span><span class="step-name">도착과 차 한 잔</span></div>
+        <div class="bar" style="width:8%"></div>
+        <p>가벼운 대화로 긴장을 풉니다. 공간의 공기에 익숙해지는 시간입니다.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-top"><span class="step-min">5분</span><span class="step-name">오늘 무엇을 하는지</span></div>
+        <div class="bar" style="width:8%"></div>
+        <p>길게 설명하지 않습니다. 말보다 경험이 먼저입니다.</p>
+      </div>
+
+      <div class="step major">
+        <div class="step-top"><span class="step-min">20분</span><span class="step-name">18개 관절 열기</span></div>
+        <div class="bar" style="width:31%"></div>
+        <p>턱관절부터 발목까지 하나씩 엽니다. 이것만으로도 오래 잠들어 있던 몸이 깨어나기 시작합니다.</p>
+      </div>
+
+      <div class="step major">
+        <div class="step-top"><span class="step-min">15분</span><span class="step-name">첫 수련 — 깨어난다</span></div>
+        <div class="bar" style="width:25%"></div>
+        <p>의식을 몸에 붙이고 감각을 따라갑니다. 9단계 수련의 첫 걸음입니다. 잘하려 하지 않으셔도 됩니다.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-top"><span class="step-min">10분</span><span class="step-name">나눔</span></div>
+        <div class="bar" style="width:15%"></div>
+        <p>느끼신 것을 편하게 나눕니다. 한 단어, 한 문장으로도 충분합니다.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-top"><span class="step-min">5분</span><span class="step-name">마무리</span></div>
+        <div class="bar" style="width:8%"></div>
+        <p>집에서 하실 수 있는 작은 안내를 드리고, 이후를 함께 상의합니다.</p>
+      </div>
+
+      <div class="tl-note">
+        시간 배분은 기준일 뿐입니다. 그날의 몸 상태와 나눔의 흐름에 따라 조금씩 달라집니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 무엇을 알게 되는가 -->
+  <section>
+    <div class="eyebrow">What You Take Home</div>
+    <h2>60분 뒤에<br>알고 돌아가시는 것</h2>
+    <ul class="list">
+      <li>내 몸의 어느 자리가 굳어 있고, 어디서 호흡이 멈추는지</li>
+      <li>나에게 맞는 자세가 서는 자세인지, 앉는 자세인지, 눕는 자세인지</li>
+      <li>집에서 아침저녁 10분으로 이어갈 수 있는 방법 한 가지</li>
+      <li>이 수련을 계속할지 말지를 판단할 나만의 기준</li>
+    </ul>
+  </section>
+
+  <!-- 6. 준비와 진행 -->
+  <section>
+    <div class="eyebrow">Before You Come</div>
+    <h2>오시기 전에<br>준비하실 것</h2>
+    <p>많지 않습니다. <strong>수련복은 대여하지 않으니 편한 옷으로 오시면 됩니다.</strong></p>
+    <ul class="list">
+      <li><strong>편한 면 소재 옷</strong> — 몸을 조이지 않고 움직임이 자유로운 것으로</li>
+      <li><strong>맨발</strong> — 수련실에서는 양말을 벗습니다. 발바닥의 감각이 시작입니다</li>
+      <li><strong>가벼운 공복</strong> — 속이 무거우면 호흡이 깊어지기 어렵습니다</li>
+      <li><strong>겉옷 한 겹</strong> — 수련 후 체온이 내려갈 수 있습니다</li>
+      <li>물과 차는 준비되어 있으니 따로 챙기지 않으셔도 됩니다</li>
+      <li>휴대폰은 무음으로. 바깥과 잠시 거리를 두는 것도 수련입니다</li>
+    </ul>
+    <p style="margin-top:22px">
+      예약이 잡히면 <strong>건강 설문을 카카오톡으로 먼저 보내드립니다.</strong>
+      지금의 몸 상태, 생활 리듬, 수련 시 주의할 점을 미리 여쭙습니다.
+      평가가 아니라, 그날 60분을 안전하게 설계하기 위한 준비입니다.
+      답하기 어려운 항목은 비워두셔도 괜찮습니다.
+    </p>
+  </section>
+
+  <!-- 7. 가격 -->
+  <section>
+    <div class="eyebrow">Fee</div>
+    <h2>1:1 개인수업<br>60분</h2>
+
+    <div class="price-card lead">
+      <div class="price-label">처음 오시는 분</div>
+      <div class="price-num">66,000<span class="price-unit">원 · 60분</span></div>
+      <p>시아 박선호 관장이 직접 진행합니다.</p>
+    </div>
+
+    <div class="price-bridge">이어가기로 하시면 —</div>
+
+    <div class="price-card next">
+      <div class="price-label">연간 멤버십으로 계속하실 때</div>
+      <div class="price-num">33,000<span class="price-unit">원 · 1시간</span></div>
+      <p>같은 한 시간이 절반 단가가 됩니다. 할인이 아니라, 원래 구조가 그렇습니다.</p>
+    </div>
+
+    <p style="margin-top:22px">
+      첫 수업이 끝난 자리에서 이후의 흐름을 함께 상의합니다.
+      <strong>그날 결정하지 않으셔도 됩니다.</strong>
+      며칠 두고 몸의 느낌을 살펴보신 뒤에 정하셔도 늦지 않습니다.
+    </p>
+  </section>
+
+  <!-- 8. 증거 -->
+  <section>
+    <div class="eyebrow">Since 2005</div>
+    <h2>스무 해 동안<br>같은 자리에 있었습니다</h2>
+
+    <div class="proof">
+      <div class="proof-num">20년</div>
+      <p>2005년부터 이어온 수련입니다. 두 관장이 직접 지도합니다. 사람을 바꿔가며 가르치지 않습니다.</p>
+    </div>
+    <div class="proof">
+      <div class="proof-num">정원 30명</div>
+      <p>한 분 한 분의 수련 좌표를 직접 확인합니다. 그 이상은 받지 않습니다.</p>
+    </div>
+    <div class="proof">
+      <div class="proof-num">10년째</div>
+      <p>처음 문을 열었을 때 오신 분이, 지금도 같은 자리에 앉아 계십니다. 저희가 드릴 수 있는 가장 정확한 증거입니다.</p>
+    </div>
+  </section>
+
+  <!-- 9. 오시는 길 -->
+  <section>
+    <div class="eyebrow">Location</div>
+    <h2>오시는 길</h2>
+    <div class="addr">서울 광진구 아차산로78길 43 리버리치빌 503호</div>
+    <div class="addr-sub">광진구 정보도서관 뒤 · 한강 도보 3분 · 아차산 자락</div>
+
+    <ul class="list">
+      <li>광나루역에서 <strong>도보 약 12분</strong>입니다. 마을버스도 있습니다</li>
+      <li>처음 오시는 날은 <strong>10분 정도 여유</strong>를 두고 도착해 주세요</li>
+      <li>503호 앞에서 초인종을 눌러주세요. 준비 중일 수 있으니 잠시 기다려 주시면 문을 열어드립니다</li>
+      <li>길을 못 찾으시면 전화나 카톡 주세요. 어디 계신지 여쭤보고 안내해 드립니다</li>
+    </ul>
+
+    <div class="honest">
+      역에서 조금 걷습니다.<br>
+      조용한 자리를 찾다 보니 그렇게 됐습니다.
+    </div>
+  </section>
+
+  <!-- 신청 -->
+  <section class="apply" id="apply">
+    <div class="eyebrow" style="text-align:center">Apply</div>
+    <h2>첫 수업 신청</h2>
+    <p style="margin-bottom:26px">
+      날짜를 함께 잡고, 건강 설문을 보내드립니다.<br>
+      궁금한 것만 물어보셔도 됩니다.
+    </p>
+    <a class="btn btn-kakao" href="https://open.kakao.com/o/seQTrvti" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+    <a class="btn btn-call" href="tel:01052997596">전화로 문의하기 010-5299-7596</a>
+    <p class="fine">수련 시간에는 받지 못할 수 있습니다. 남겨주시면 끝나는 대로 답을 드립니다.</p>
+  </section>
+
+  <section class="more">
+    <h3>바로 신청하기 어려우시면</h3>
+    <div class="sub">먼저 살펴보실 수 있는 두 가지가 있습니다.</div>
+
+    <a class="more-link" href="/check/">
+      <div class="ml-top">
+        <span class="ml-name">에너지 셀프체크</span>
+        <span class="ml-arrow">→</span>
+      </div>
+      <p>23개 항목에 체크하시면 지금 몸·흐름·마음 중 어느 결이 가장 지쳐 있는지 보여드립니다. 2분이면 됩니다.</p>
+    </a>
+
+    <a class="more-link" href="/">
+      <div class="ml-top">
+        <span class="ml-name">선한인연 선한명상 홈</span>
+        <span class="ml-arrow">→</span>
+      </div>
+      <p>9단계 수련 체계, 반 편성, 연간 멤버십과 회비를 전부 열어두었습니다.</p>
+    </a>
+  </section>
+
+  <div class="notice">
+    선한명상은 의료행위가 아니며, 진단이나 치료를 대신하지 않습니다.
+    현재 치료 중이거나 복용 중인 약이 있으시면 담당 의료진과 상의하신 뒤 오시고,
+    예약 후 보내드리는 건강 설문에도 알려주세요.
+    몸의 불편이 오래 이어지거나 심해지신다면 의료기관 진료를 먼저 받아보시기를 권합니다.
+  </div>
+
+  <footer>
+    <div class="sign">선한인연 선한명상</div>
+    서울 광진구 아차산로78길 43 리버리치빌 503호<br>
+    가이 · 박선정 관장 / 시아 · 박선호 지도<br>
+    010-5299-7596
+  </footer>
+
+</div>
+
+<div class="dock">
+  <a class="d-kakao" href="https://open.kakao.com/o/seQTrvti" target="_blank" rel="noopener">카카오톡 문의</a>
+  <a class="d-call" href="tel:01052997596">전화</a>
+</div>
+
+</body>
+</html>
