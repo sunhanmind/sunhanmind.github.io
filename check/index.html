@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="canonical" href="https://seonhan.kr/check/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>선한명상 셀프 체크 · 에너지 편 | 선한인연 선한명상</title>
 <style>
@@ -532,6 +533,44 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(140, 198, 63, 0.3);
   }
+  .cta-button-sub {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 13px 30px;
+    background: transparent;
+    color: #4a6070;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 13.5px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: 1px solid #c3c9ce;
+    transition: all 0.25s;
+    letter-spacing: 0.03em;
+  }
+  .cta-button-sub:hover {
+    border-color: #8cc63f;
+    color: #1a2a3a;
+  }
+  .cta-capture {
+    max-width: 520px;
+    margin: 0 auto 22px;
+    padding: 16px 22px;
+    background: #eceae5;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #4a6070;
+    line-height: 1.9;
+  }
+  .med-note {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 30px 6px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #8a9198;
+    line-height: 1.85;
+  }
 
   /* 리셋 버튼 */
   .reset-btn {
@@ -979,15 +1018,30 @@
 <!-- ════════════════════════════════════
      CTA — 카카오톡 상담
      ════════════════════════════════════ -->
+<div class="med-note">
+  체크된 신호가 오래 이어지거나 심해지신다면,<br>
+  의료기관 진료를 먼저 받아보시기를 권해 드립니다.
+</div>
+
 <div class="cta-section">
   <p class="cta-text">
     어느 결이 가장 지쳐 있는지 아셨다면 —<br>
-    거기서부터 시작하시면 됩니다.<br>
-    <span style="display:block; margin-top:10px; font-size:14px; opacity:.8;">
-    등록하지 않으셔도 괜찮습니다. 궁금한 것만 물어보셔도 됩니다.</span>
+    거기서부터 시작하시면 됩니다.
   </p>
+
+  <div class="cta-capture">
+    <strong>이 결과 화면을 캡처해서 보내주세요.</strong><br>
+    지금 상태에서 어느 단계부터 시작하시면 좋을지<br>
+    직접 읽어보고 답해 드립니다.<br>
+    <span style="opacity:.75;">등록하지 않으셔도 괜찮습니다. 궁금한 것만 물어보셔도 됩니다.</span>
+  </div>
+
   <a href="https://open.kakao.com/o/seQTrvti" class="cta-button" target="_blank">
-    카카오톡 상담 바로가기 →
+    카카오톡으로 결과 보내기 →
+  </a>
+  <br>
+  <a href="/start" class="cta-button-sub">
+    처음이라면 1:1 개인수업부터 보기 (60분 66,000원)
   </a>
 </div>
 
@@ -1014,7 +1068,7 @@
   const counts = {
     body: 0,   // 8문항
     flow: 0,   // 7문항
-    mind: 0    // 5문항
+    mind: 0    // 8문항
   };
 
   // 카테고리별 상세 메시지 (박선호님 코칭 결)
@@ -1024,7 +1078,7 @@
       1: { text: '몸이 살짝 흐트러지기 시작했습니다.', care: null },
       2: { text: '피부와 점막의 신호가 늘어나고 있습니다.', care: null },
       3: { text: '<strong>몸의 건조함이 시작된 상태</strong>입니다. 작은 신호들이 쌓이고 있어요.', care: '몸의 회복은 — 깊은 호흡과 정화 안에서 다시 만나실 수 있습니다.' },
-      4: { text: '<strong>몸의 신호가 명확해진 상태</strong>입니다. 피부, 점막, 관절에 신호가 또렷합니다.', care: '몸의 회복을 위해 — 비움명상의 정화(장 해독, 죽염)가 깊이 도움이 됩니다.' },
+      4: { text: '<strong>몸의 신호가 명확해진 상태</strong>입니다. 피부, 점막, 관절에 신호가 또렷합니다.', care: '몸의 회복을 위해 — 비움명상의 정화 과정이 도움이 됩니다.' },
       5: { text: '<strong>몸이 많이 약해진 상태</strong>입니다. 일상의 작은 신호들에 귀 기울일 시점이에요.', care: '몸의 깊은 정화와 호흡 수련 — 통합 수련이 필요한 시점입니다.' },
       6: { text: '<strong>몸이 깊은 건조와 피로 상태</strong>입니다. 회복이 시급한 신호가 모이고 있어요.', care: '비움명상의 정화와 함께 — 호흡, 기예공으로 깊이 회복하실 수 있습니다.' },
       7: { text: '<strong>몸이 매우 약해진 상태</strong>입니다. 만성적 신호들이 일상이 되어가고 있어요.', care: '몸의 통합 회복 — 비움명상, 1:1 코칭, 깊은 호흡 수련이 필요한 시점입니다.' },
@@ -1040,15 +1094,15 @@
       6: { text: '<strong>기(氣)가 거의 막힌 상태</strong>입니다. 만성적 정체가 일상이 되어가고 있어요.', care: '깊이 막힌 곳의 회복 — 통합 수련 전체에서 함께 풀어내야 할 시점입니다.' },
       7: { text: '<strong>기(氣)가 매우 깊이 막힌 상태</strong>입니다. 회복이 시급한 신호가 모이고 있어요.', care: '비움명상의 깊은 정화와 통합 수련 — 회복의 길을 함께 만들어 갈 수 있습니다.' }
     },
-    mind: { // 신(神) - 마음의 결 (max 5)
+    mind: { // 신(神) - 마음의 결 (max 8)
       0: { text: '마음이 평온합니다.', care: null },
       1: { text: '마음이 살짝 흩어지기 시작했습니다.', care: null },
       2: { text: '감각과 알아차림이 약해지고 있습니다.', care: '마음을 들여다보는 일이 — 회복의 첫걸음이 됩니다.' },
       3: { text: '<strong>신(神)이 약해진 상태</strong>입니다. 불안, 의욕 저하, 공허함이 늘어나고 있어요.', care: '1:1 코칭과 무의식 정화 세션 — 마음의 깊은 응어리를 풀어내는 시간이 도움이 됩니다.' },
-      4: { text: '<strong>신(神)이 많이 무너진 상태</strong>입니다. 일상의 의미가 흐려지고, 자기 자신과의 연결이 약해졌어요.', care: '깊이 가라앉은 마음의 회복 — 통합 수련과 무의식 정화 세션이 깊이 도움이 됩니다.' },
+      4: { text: '<strong>신(神)이 오래 지쳐 있는 상태</strong>입니다. 나를 뒤로 미뤄온 시간이 길었던 것 같아요.', care: '눌러온 마음을 먼저 풀어내는 시간 — 명상심리코칭이 도움이 됩니다.' },
       5: { text: '<strong>신(神)이 많이 약해진 상태</strong>입니다. 자기 자신과의 연결이 옅어진 시점이에요.', care: '마음의 깊은 회복은 — 1:1 개인명상과 명상심리코칭에서 함께 살펴볼 수 있습니다.' },
-      6: { text: '<strong>신(神)이 오래 지쳐 있는 상태</strong>입니다. 나를 뒤로 미뤄온 시간이 길었던 것 같아요.', care: '눌러온 마음을 먼저 풀어내는 시간 — 명상심리코칭이 도움이 됩니다.' },
-      7: { text: '<strong>신(神)이 깊이 가라앉은 상태</strong>입니다. 스스로를 살필 여유가 거의 없으셨던 듯해요.', care: '1:1 개인명상부터 천천히 — 지금 상태에 맞는 자리에서 시작하시면 됩니다.' },
+      6: { text: '<strong>신(神)이 깊이 가라앉은 상태</strong>입니다. 스스로를 살필 여유가 거의 없으셨던 듯해요.', care: '1:1 개인명상부터 천천히 — 지금 상태에 맞는 자리에서 시작하시면 됩니다.' },
+      7: { text: '<strong>신(神)이 많이 무너진 상태</strong>입니다. 일상의 의미가 흐려지고, 자기 자신과의 연결이 약해졌어요.', care: '깊이 가라앉은 마음의 회복 — 통합 수련과 무의식 정화 세션이 깊이 도움이 됩니다.' },
       8: { text: '<strong>신(神)이 많이 소진된 상태</strong>입니다. 오래 참아오신 신호가 모여 있어요.', care: '혼자 감당하지 않으셔도 됩니다. 먼저 한 번 이야기 나누는 것부터 시작하실 수 있습니다.' }
     }
   };
@@ -1066,9 +1120,9 @@
 
   function updateProgress() {
     const total = Object.values(counts).reduce((a, b) => a + b, 0);
-    const pct = Math.round((total / 20) * 100);
+    const pct = Math.round((total / 23) * 100);
     document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressText').textContent = total + ' / 20 체크됨';
+    document.getElementById('progressText').textContent = total + ' / 23 체크됨';
     document.getElementById('progressPct').textContent = pct + '%';
   }
 
@@ -1202,7 +1256,7 @@
 
   // 점수 기반 추천 단계 결정
   function getRecommendedStages(bodyScore, flowScore, mindScore, total) {
-    const bodyMax = 8, flowMax = 7, mindMax = 5;
+    const bodyMax = 8, flowMax = 7, mindMax = 8;
     const bodyRatio = bodyScore / bodyMax;
     const flowRatio = flowScore / flowMax;
     const mindRatio = mindScore / mindMax;
