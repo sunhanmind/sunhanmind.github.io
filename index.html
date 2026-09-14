@@ -3,25 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <!-- ─────────────────────────────────────────────
-     검색엔진 소유확인 메타태그
-     아래 두 줄의 "여기에코드붙여넣기" 부분만 바꾸세요.
-     · 네이버: 서치어드바이저 > 웹마스터 도구 > 사이트 등록 >
-       소유확인 [HTML 태그] 선택 > content 안의 코드 복사
-     · 구글: 서치콘솔 > 속성 추가 > URL 접두어 >
-       [HTML 태그] 선택 > content 안의 코드 복사
-     확인이 끝난 뒤에도 이 두 줄은 지우지 마세요.
+     검색엔진 소유확인 메타태그 — 지우지 마세요.
 ───────────────────────────────────────────── -->
 <meta name="naver-site-verification" content="a63f1a2de5509926865d0fafb73fe4c5134eadb7" />
 <meta name="google-site-verification" content="UKzO0JH_aGQUveUvMKKP_ZIv_qhe2hbN0CiJ5c5d1gA" />
-<link rel="canonical" href="https://seonhan.kr/" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>선한인연 선한명상 | 광진구 광장동 호흡명상 센터</title>
-<meta name="description" content="서울 광진구 광장동 호흡명상 센터. 2005년부터 두 자매가 함께 지도해 온 9단계 호흡명상. 연차별 소수정예 반 운영.">
+<meta name="description" content="몸의 감각에서 시작해 내가 왜 그렇게 반응하는지 알아차리고, 삶에서 다르게 선택하는 힘을 기릅니다. 2005년부터 명상 지도 · 서울 광진구 광장동 호흡명상 센터. 처음은 1:1 개인명상 60분.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="선한인연 선한명상">
-<meta property="og:title" content="선한인연 선한명상 | 광진구 광장동 호흡명상 센터">
-<meta property="og:description" content="내 몸과 감각을 통해 나에게 돌아가는 길.">
+<meta property="og:title" content="선한인연 선한명상 | 몸에서 느끼고, 삶에서 알아차립니다">
+<meta property="og:description" content="몸의 감각에서 시작해 삶에서 다르게 선택하는 힘을 기릅니다. 광진구 광장동 호흡명상 센터.">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:url" content="https://seonhan.kr/">
 <link rel="canonical" href="https://seonhan.kr/">
@@ -34,11 +27,11 @@
   "@context":"https://schema.org","@type":"HealthAndBeautyBusiness",
   "name":"선한인연 선한명상",
   "alternateName":["선한명상","호흡명상컨텐츠연구소"],
-  "description":"서울 광진구 광장동 호흡명상 센터. 2005년부터 두 자매가 함께 지도해 온 9단계 호흡명상.",
+  "description":"서울 광진구 광장동 호흡명상 센터. 몸의 감각에서 시작해 삶의 선택까지 이어지는 9단계 호흡명상. 2005년부터 명상 지도.",
   "url":"https://seonhan.kr/","telephone":"+82-10-5299-7596","priceRange":"₩₩",
   "address":{"@type":"PostalAddress","streetAddress":"아차산로78길 43 리버리치빌 503호","addressLocality":"광진구","addressRegion":"서울특별시","addressCountry":"KR"},
   "areaServed":["광장동","구의동","자양동","광진구","서울"],
-  "knowsAbout":["호흡명상","명상","마음챙김","불면","스트레스 관리","정념수련"],
+  "knowsAbout":["호흡명상","명상","마음챙김","인지감각","스트레스 관리","정념수련"],
   "founder":[{"@type":"Person","name":"박선정","alternateName":"가이"},{"@type":"Person","name":"박선호","alternateName":"시아"}],
   "sameAs":["https://www.instagram.com/good.meditation/"],
   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"19:30","closes":"21:30"}]
@@ -54,6 +47,7 @@
   --celadon:#6E8B7E;      /* 청자 */
   --celadon-lt:#9DB3A7;
   --gold:#B08D5B;         /* 금 — 아주 아껴 씀 */
+  --glow:#A7E8BF;         /* 강조 — 먹 위에서만 쓰는 형광 청자 */
   --ash:#7C7668;
   --line:rgba(20,32,27,.14);
   --line-lt:rgba(245,241,232,.18);
@@ -66,7 +60,7 @@ html{scroll-behavior:smooth}
 body{
   background:var(--paper);color:var(--ink);
   font-family:var(--sans);font-weight:300;
-  line-height:1.95;letter-spacing:-.01em;
+  line-height:1.95;letter-spacing:-.01em;word-break:keep-all;
   -webkit-font-smoothing:antialiased;
 }
 ::selection{background:var(--celadon);color:var(--paper)}
@@ -109,7 +103,7 @@ body{
 .hero{
   position:relative;min-height:100svh;background:var(--ink);color:var(--paper);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:120px 24px 90px;overflow:hidden;
+  text-align:center;padding:120px 24px 110px;overflow:hidden;
 }
 .hero::after{
   content:'';position:absolute;inset:0;
@@ -117,7 +111,7 @@ body{
   pointer-events:none;
 }
 /* 호흡 원 — 3초 들이쉬고 5초 내쉬기 */
-.breath{position:relative;width:210px;height:210px;margin-bottom:52px}
+.breath{position:relative;width:186px;height:186px;margin-bottom:44px}
 .breath i{
   position:absolute;inset:0;border-radius:50%;
   border:1px solid rgba(157,179,167,.35);
@@ -142,18 +136,31 @@ body{
 }
 .hero h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(30px,5.6vw,54px);line-height:1.55;letter-spacing:-.02em;
+  font-size:clamp(29px,5.4vw,52px);line-height:1.55;letter-spacing:-.02em;
 }
 .hero h1 em{font-style:normal;color:var(--celadon-lt)}
+.hero-line{
+  margin-top:26px;font-family:var(--serif);font-size:clamp(16px,2.2vw,19.5px);
+  color:var(--glow);letter-spacing:.01em;
+}
 .hero-sub{
-  margin-top:30px;font-size:14.5px;color:rgba(245,241,232,.62);
+  margin-top:18px;font-size:14.5px;color:rgba(245,241,232,.62);
   line-height:2.1;letter-spacing:.01em;
 }
 .hero-meta{
-  position:absolute;bottom:38px;left:0;right:0;
-  font-family:var(--latin);font-size:12px;letter-spacing:.22em;
+  position:absolute;bottom:34px;left:0;right:0;
+  font-family:var(--latin);font-size:11.5px;letter-spacing:.22em;
   color:rgba(245,241,232,.34);text-transform:uppercase;
 }
+.hero-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.hbtn{
+  display:inline-block;font-size:14.5px;letter-spacing:.03em;text-decoration:none;
+  padding:15px 30px;border-radius:999px;transition:transform .3s,background .3s;
+}
+.hbtn.solid{background:var(--paper);color:var(--ink)}
+.hbtn.solid:hover{background:var(--celadon-lt);transform:translateY(-2px)}
+.hbtn.ghost{border:1px solid rgba(245,241,232,.42);color:var(--paper)}
+.hbtn.ghost:hover{background:rgba(245,241,232,.1);transform:translateY(-2px)}
 
 /* ─────────── 섹션 공통 ─────────── */
 section{position:relative;z-index:2;padding:110px 24px}
@@ -182,19 +189,27 @@ p{font-size:15.5px;line-height:2.15;color:#3A4741;margin-bottom:20px}
 .lead{font-family:var(--serif);font-size:19px;line-height:1.95;color:var(--ink)}
 .on-ink .lead{color:var(--paper)}
 strong{font-weight:500;color:var(--ink)}
-.on-ink strong{color:var(--celadon-lt)}
+.on-ink strong{color:var(--glow)}
 .quiet{font-size:13px;color:var(--ash);line-height:1.95}
+.on-ink .quiet{color:rgba(245,241,232,.45)}
 .rule{height:1px;background:var(--line);margin:64px 0}
 .on-ink .rule{background:var(--line-lt)}
+.center{text-align:center}
+
+/* ─────────── 강조 박스 ─────────── */
+.note{border-left:2px solid var(--gold);padding:24px 28px;margin:36px 0;background:rgba(176,141,91,.08)}
+.note p{margin:0}
+.note p + p{margin-top:14px}
+.on-ink .note{background:rgba(176,141,91,.12)}
 
 /* ─────────── 체크 목록 ─────────── */
 .checks{display:grid;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .checks li{
-  list-style:none;background:var(--paper);padding:17px 4px 17px 34px;
+  list-style:none;background:var(--paper);padding:16px 4px 16px 34px;
   font-size:15px;position:relative;
 }
 .checks li::before{
-  content:'';position:absolute;left:8px;top:26px;
+  content:'';position:absolute;left:8px;top:25px;
   width:9px;height:9px;border-radius:50%;
   border:1px solid var(--celadon);
 }
@@ -203,64 +218,103 @@ strong{font-weight:500;color:var(--ink)}
 .nots li::before{content:'—';position:absolute;left:0;color:var(--celadon-lt)}
 
 /* ─────────── 정기신 ─────────── */
-.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:44px 0;border-top:1px solid var(--line-lt)}
-.triad div{padding:30px 20px;border-right:1px solid var(--line-lt);border-bottom:1px solid var(--line-lt)}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:40px 0;border-top:1px solid var(--line-lt)}
+.triad div{padding:28px 20px;border-right:1px solid var(--line-lt);border-bottom:1px solid var(--line-lt)}
 .triad div:last-child{border-right:none}
 .triad b{display:block;font-family:var(--serif);font-size:21px;font-weight:400;color:var(--celadon-lt);margin-bottom:10px}
 .triad span{font-size:13.5px;line-height:1.9;color:rgba(245,241,232,.6)}
 @media(max-width:680px){.triad{grid-template-columns:1fr}.triad div{border-right:none}}
 
 /* ─────────── 변화 사례 ─────────── */
-.cases{display:grid;gap:26px;margin-top:40px}
+.cases{display:grid;gap:30px;margin-top:40px}
 .case{border-left:2px solid var(--celadon);padding:4px 0 4px 26px}
-.case-h{font-family:var(--serif);font-size:17px;color:var(--celadon);margin-bottom:4px}
+.case-h{font-family:var(--serif);font-size:17.5px;color:var(--celadon-lt);margin-bottom:4px}
 .case-who{font-size:12.5px;color:var(--ash);letter-spacing:.04em;margin-bottom:14px}
 .case p{font-size:14.5px;line-height:2.1;margin:0}
+.case p + p{margin-top:12px}
+.case .pull{
+  font-family:var(--serif);font-size:clamp(17px,2.4vw,20px);line-height:1.8;
+  color:var(--glow);letter-spacing:-.01em;
+}
 
-/* ─────────── 9단계 · 척추 ─────────── */
-.spine{position:relative;margin-top:56px;padding-left:52px}
-.spine::before{
-  content:'';position:absolute;left:15px;top:12px;bottom:12px;width:1px;
-  background:linear-gradient(180deg,transparent,var(--celadon) 8%,var(--celadon) 92%,transparent);
-  opacity:.45;
+/* ─────────── 공간 사진 ─────────── */
+.photos{max-width:600px;margin:46px auto}
+.photos .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.photos img{
+  display:block;width:100%;height:auto;
+  aspect-ratio:1/1;object-fit:cover;border-radius:3px;
 }
-.stage{position:relative;padding:0 0 40px}
-.stage:last-child{padding-bottom:0}
-.stage::before{
-  content:'';position:absolute;left:-42px;top:9px;
-  width:9px;height:9px;border-radius:50%;
-  background:var(--paper);border:1px solid var(--celadon);
-  transition:background .4s,transform .4s;
+.photos.tall img{aspect-ratio:4/5}
+.photos figcaption{
+  margin-top:13px;font-size:12.5px;letter-spacing:.03em;
+  line-height:1.85;color:var(--ash);
 }
-.stage:hover::before{background:var(--celadon);transform:scale(1.35)}
-.stage-n{
-  font-family:var(--latin);font-size:12px;letter-spacing:.18em;
-  color:var(--gold);display:block;margin-bottom:5px;
+.on-ink .photos figcaption{color:rgba(245,241,232,.45)}
+@media(max-width:680px){
+  .photos{max-width:100%;margin:36px auto}
+  .photos .grid{gap:8px}
 }
-.stage-t{font-family:var(--serif);font-size:22px;line-height:1.5}
-.stage-shift{font-size:12.5px;color:var(--celadon);letter-spacing:.05em;margin:4px 0 9px}
-.stage-d{font-size:14.5px;color:#4A554F;line-height:1.95}
-.stage-p{font-size:12.5px;color:var(--ash);margin-top:7px;line-height:1.85}
 
-/* ─────────── 표 ─────────── */
-.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
-.tbl th,.tbl td{padding:13px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.tbl th{font-weight:500;color:var(--ash);font-size:12.5px;letter-spacing:.05em}
-.tbl td.c{text-align:center}
-.tbl .time{color:var(--celadon);white-space:nowrap;font-size:13.5px}
-.plan{text-align:center;font-family:var(--latin);font-size:20px;color:var(--gold);letter-spacing:.06em}
-.tbl tr.total td{border-bottom:none;padding-top:18px;font-weight:500;color:var(--ink)}
-.tbl tr.sub td{border-bottom:none;padding:2px 10px;color:var(--ash);font-size:12.5px}
-.dot{color:var(--celadon);font-size:15px}
-
-/* ─────────── 프로그램 카드 ─────────── */
-.prog{border-top:1px solid var(--line);padding:38px 0}
-.prog-tag{font-family:var(--latin);font-size:12px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
-.prog h3{margin:8px 0 16px;font-size:23px}
-.prog .meta{
-  display:inline-block;margin-top:8px;font-size:13px;color:var(--celadon);
-  border:1px solid var(--celadon);border-radius:999px;padding:6px 16px;
+/* ─────────── 회원 인용 ─────────── */
+.say{border-left:2px solid var(--celadon);padding:3px 0 3px 26px;margin:30px 0}
+.say p{font-family:var(--serif);font-size:17.5px;line-height:2;margin:0;color:var(--ink)}
+.on-ink .say p{color:var(--paper)}
+.say cite{
+  display:block;margin-top:12px;font-style:normal;
+  font-size:12.5px;letter-spacing:.05em;color:var(--ash);
 }
+.on-ink .say cite{color:rgba(245,241,232,.45)}
+
+/* ─────────── 수련 일지 캡처 ─────────── */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
+.shot{
+  position:relative;max-height:500px;overflow:hidden;cursor:pointer;
+  border:1px solid var(--line-lt);border-radius:4px;background:#c3ccd8;
+}
+.shot img{display:block;width:100%;height:auto}
+.shot::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:130px;
+  background:linear-gradient(180deg,rgba(20,32,27,0),var(--ink));
+  pointer-events:none;transition:opacity .35s;
+}
+.shot .more{
+  position:absolute;left:0;right:0;bottom:15px;text-align:center;z-index:2;
+  font-size:12.5px;letter-spacing:.06em;color:var(--celadon-lt);
+}
+.shot.open{max-height:none}
+.shot.open::after{opacity:0}
+.shot.open .more{display:none}
+@media(max-width:680px){.shots{grid-template-columns:1fr}}
+
+/* ─────────── 흐름 다이어그램 ─────────── */
+.flow{margin:44px auto 8px;max-width:330px;text-align:center}
+.flow div{
+  font-family:var(--serif);font-size:17.5px;padding:15px 10px;
+  border:1px solid var(--line);border-radius:2px;
+  background:rgba(255,255,255,.4);color:var(--ink);
+}
+.on-ink .flow div{border-color:var(--line-lt);background:rgba(245,241,232,.04);color:var(--paper)}
+.flow div.last{border-color:var(--celadon);color:var(--celadon)}
+.on-ink .flow div.last{color:var(--celadon-lt)}
+.flow i{display:block;font-style:normal;color:var(--celadon);font-size:13px;padding:7px 0}
+
+/* ─────────── 3단 ─────────── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.step{border-top:1px solid var(--line);padding-top:18px}
+.on-ink .step{border-top-color:var(--line-lt)}
+.step b{font-family:var(--latin);font-size:13px;letter-spacing:.16em;color:var(--gold);display:block;margin-bottom:8px}
+.step h4{font-family:var(--serif);font-weight:400;font-size:17px;margin-bottom:6px}
+.on-ink .step h4{color:var(--paper)}
+.step span{font-size:13.5px;color:var(--ash);line-height:1.85}
+.on-ink .step span{color:rgba(245,241,232,.58)}
+@media(max-width:680px){.steps{grid-template-columns:1fr;gap:18px}}
+
+/* ─────────── 운영 숫자 ─────────── */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:38px}
+.facts div{background:var(--paper);padding:26px 22px}
+.facts b{display:block;font-family:var(--serif);font-size:27px;font-weight:400;color:var(--celadon);margin-bottom:5px;letter-spacing:-.01em}
+.facts span{font-size:13.5px;color:var(--ash);line-height:1.8}
+@media(max-width:600px){.facts{grid-template-columns:1fr}}
 
 /* ─────────── 두 사람 ─────────── */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:34px}
@@ -269,13 +323,32 @@ strong{font-weight:500;color:var(--ink)}
 .two p{font-size:14.5px;line-height:2.05}
 @media(max-width:680px){.two{grid-template-columns:1fr;gap:30px}}
 
-/* ─────────── 단계 3 ─────────── */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
-.step{border-top:1px solid var(--line);padding-top:18px}
-.step b{font-family:var(--latin);font-size:13px;letter-spacing:.16em;color:var(--gold);display:block;margin-bottom:8px}
-.step h4{font-family:var(--serif);font-weight:400;font-size:16.5px;margin-bottom:6px}
-.step span{font-size:13.5px;color:var(--ash);line-height:1.85}
-@media(max-width:680px){.steps{grid-template-columns:1fr;gap:18px}}
+/* ─────────── 가격 박스 ─────────── */
+.price{text-align:center;border:1px solid var(--line-lt);padding:38px 24px;margin-top:36px;border-radius:2px}
+.price b{display:block;font-family:var(--serif);font-size:clamp(24px,4vw,32px);color:var(--celadon-lt);font-weight:400;margin-bottom:10px;letter-spacing:.01em}
+.price p{margin:0}
+
+/* ─────────── 링크 목록 ─────────── */
+.links{list-style:none;margin-top:32px;border-top:1px solid var(--line)}
+.links li{border-bottom:1px solid var(--line)}
+.links a{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:19px 4px;text-decoration:none;color:var(--ink);font-size:15px;
+  transition:color .3s,padding .3s;
+}
+.links a:hover{color:var(--celadon);padding-left:8px}
+.links a em{font-style:normal;color:var(--ash);font-size:12.5px;text-align:right;flex-shrink:0}
+.links a:hover em{color:var(--celadon)}
+
+/* ─────────── 표 ─────────── */
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.tbl th,.tbl td{padding:13px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl th{font-weight:500;color:var(--ash);font-size:12.5px;letter-spacing:.05em}
+.tbl td.c{text-align:center}
+.tbl .time{color:var(--celadon);white-space:nowrap;font-size:13.5px}
+.on-ink .tbl th,.on-ink .tbl td{border-bottom-color:var(--line-lt)}
+.on-ink .tbl th{color:rgba(245,241,232,.52)}
+.on-ink .tbl td{color:rgba(245,241,232,.84)}
 
 /* ─────────── CTA ─────────── */
 .cta-band{background:var(--ink);color:var(--paper);text-align:center;padding:96px 24px}
@@ -292,11 +365,16 @@ strong{font-weight:500;color:var(--ink)}
 .btn-line:hover{background:rgba(245,241,232,.1)}
 .btn-dark{color:var(--paper);background:var(--ink)}
 .btn-dark:hover{background:var(--celadon)}
+.btn-ink-line{background:transparent;color:var(--ink);border:1px solid rgba(20,32,27,.34)}
+.btn-ink-line:hover{background:rgba(20,32,27,.06);color:var(--ink)}
+.btn-row{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.btn-row .btn{margin-top:30px}
 
 /* ─────────── 푸터 ─────────── */
 footer{background:var(--ink-2);color:rgba(245,241,232,.55);padding:60px 24px 44px;text-align:center;font-size:13px;line-height:2.1}
 footer .fname{font-family:var(--serif);font-size:17px;color:var(--paper);margin-bottom:14px}
 footer .flat{font-family:var(--latin);font-size:11.5px;letter-spacing:.26em;margin-top:22px;color:rgba(245,241,232,.3)}
+footer a{color:rgba(245,241,232,.55)}
 
 /* ─────────── 모바일 하단 바 ─────────── */
 .dock{
@@ -314,9 +392,6 @@ footer .flat{font-family:var(--latin);font-size:11.5px;letter-spacing:.26em;marg
   body{padding-bottom:72px}
   section{padding:78px 20px}
   .thread{display:none}
-  .spine{padding-left:38px}
-  .stage::before{left:-32px}
-  .spine::before{left:8px}
 }
 
 /* 스크롤 등장 */
@@ -327,7 +402,7 @@ footer .flat{font-family:var(--latin);font-size:11.5px;letter-spacing:.26em;marg
   .breath i,.breath-core{animation:none}
   html{scroll-behavior:auto}
 }
-a:focus-visible,.stage:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
+a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -338,48 +413,161 @@ a:focus-visible,.stage:focus-visible{outline:2px solid var(--celadon);outline-of
   <a href="#top" class="nav-brand" style="text-decoration:none">선한인연 선한명상</a>
   <div class="nav-links">
     <a href="#about">명상이란</a>
-    <a href="#path">9단계</a>
-    <a href="#program">프로그램</a>
-    <a href="#fee">회비</a>
-    <a href="#start" class="nav-cta">시작하기</a>
+    <a href="#stories">회원 이야기</a>
+    <a href="#path">수련 과정</a>
+    <a href="#leaders">지도자</a>
+    <a href="/start/" class="nav-cta">처음 오시는 분</a>
   </div>
 </nav>
 
-<!-- ══════════ 히어로 ══════════ -->
+<!-- ══════════ ① 첫 화면 ══════════ -->
 <header class="hero" id="top">
   <div class="breath">
     <i></i><i></i><i></i>
     <div class="breath-core"></div>
     <div class="breath-label">breathe with it</div>
   </div>
+
   <h1>내 몸과 감각을 통해<br><em>나에게 돌아가는 길</em></h1>
+
+  <p class="hero-line">몸에서 느끼고, 삶에서 알아차립니다.</p>
+
   <p class="hero-sub">
-    서울 광진구 광장동 호흡명상 센터<br>
-    2005년부터 스무 해, 두 사람이 지키는 자리
+    선한명상은 몸의 감각에서 시작해<br>
+    내가 왜 그렇게 반응하는지 알아차리고,<br>
+    삶에서 다른 선택을 할 수 있는 힘을 기릅니다.
   </p>
-  <div class="hero-meta">선한인연 선한명상 · 광장동</div>
+
+  <div class="hero-btns">
+    <a href="#about" class="hbtn ghost">선한명상 알아보기</a>
+    <a href="/start/" class="hbtn solid">처음 1:1 명상 경험하기</a>
+  </div>
+
+  <div class="hero-meta">2005년부터 명상 지도 · 선한인연 선한명상 약 10년 · 광진구 광장동</div>
 </header>
 
-<!-- ══════════ 잠시 멈추어 ══════════ -->
-<section>
+<!-- ══════════ ② 왜 몸에서 시작하는가 ══════════ -->
+<section id="about">
   <div class="wrap">
-    <div class="eyebrow rv">잠시 멈추어</div>
-    <h2 class="rv">혹시 이런 상태이신가요</h2>
+    <div class="eyebrow rv">왜 몸에서 시작하는가</div>
+    <h2 class="rv">생각을 멈추는 명상이 아니라<br>감각을 회복하는 명상입니다</h2>
+
+    <p class="rv">
+      화내지 말아야 한다고 생각해도 또 화가 나고,
+      내려놓아야 한다고 알아도 계속 붙잡게 되는 데는 이유가 있습니다.
+    </p>
+    <p class="rv">
+      그 이유를 알려면 먼저
+      <strong>지금 내 안에서 무엇이 일어나고 있는지</strong> 느낄 수 있어야 합니다.
+    </p>
+    <p class="lead rv" style="margin-top:34px">
+      느껴야 알고,<br>
+      알아야 감당할 수 있고,<br>
+      감당할 수 있어야 선택할 수 있습니다.
+    </p>
+
+    <div class="note rv">
+      <p>
+        선한명상에서는 몸의 느낌을 의식으로 알아차리는 힘을
+        <strong>‘인지감각’</strong>이라고 표현합니다.
+      </p>
+      <p class="quiet">
+        인지감각이 커질수록, 같은 상황에서 고를 수 있는 선택의 폭이 넓어집니다.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <h3 class="rv">운동과는 무엇이 다른가</h3>
+    <p class="rv">
+      운동은 긴장을 풀고 몸의 생기를 되찾는 데 큰 도움이 됩니다.
+      다만 대부분의 운동은 <strong>몸의 사용</strong>에 집중하지,
+      몸이 가진 감정의 언어를 읽는 훈련은 아닙니다.
+    </p>
+    <p class="rv">
+      선한명상은 감정을 억누른 채 움직이는 것이 아니라 —
+      <strong>몸을 통해 감정을 만나고 흐르게 하는 길</strong>입니다.
+      지금의 분노, 불안, 수치심, 상처를 있는 그대로 감각화하여
+      해결이 아니라 통과하도록 이끕니다.
+    </p>
+
+    <div class="say rv">
+      <p>“머리로 이해하고 끝나는 게 아니라 몸으로 알게 된다.”</p>
+      <cite>8년째 함께 수련하고 계신 회원</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ③ 수련이 삶으로 이어진다는 것 ══════════ -->
+<section class="on-ink" id="life">
+  <div class="wrap">
+    <div class="eyebrow rv">선한명상이 보는 것</div>
+    <h2 class="rv">수련은 방석 위에서 끝나지 않습니다</h2>
+
+    <p class="rv">
+      명상하는 동안 편안해지는 것은 어렵지 않습니다.
+      어려운 것은 눈을 뜨고 나와, 어제와 똑같은 상황을 다시 만났을 때입니다.
+    </p>
+    <p class="rv">
+      저희가 보는 것은 수련 중에 얼마나 고요했는지가 아닙니다.
+      <strong>같은 상황에서 오늘 무엇이 달라졌는지</strong>입니다.
+    </p>
+
+    <div class="steps rv">
+      <div class="step">
+        <b>01</b>
+        <h4>수련에서 느낀다</h4>
+        <span>잠들어 있던 몸의 감각을 깨웁니다.</span>
+      </div>
+      <div class="step">
+        <b>02</b>
+        <h4>일상에서 알아차린다</h4>
+        <span>반응이 올라오는 순간이 잡힙니다.</span>
+      </div>
+      <div class="step">
+        <b>03</b>
+        <h4>다르게 선택한다</h4>
+        <span>늘 하던 대로 하지 않을 수 있게 됩니다.</span>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="rv">
+      수련이 끝나면 그날의 기록을 남깁니다.
+      두 지도자가 기록된 내용을 읽고, 다음 수련의 방향을 정합니다.
+      수련 이후 일상에서 어떻게 이어지는지, 한 분씩 관찰하고 체크합니다.
+    </p>
+
+    <figure class="photos rv">
+      <div class="grid">
+        <img src="/img/space/record-desk.jpg" alt="기록을 적는 자리. 노트와 펜이 놓인 낮은 탁자" loading="lazy">
+        <img src="/img/space/hall-wide.jpg" alt="매트가 놓인 수련실 전경" loading="lazy">
+      </div>
+      <figcaption>기록을 나누는 자리, 그리고 매주 앉는 자리.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ ③-b 나와 맞을까 ══════════ -->
+<section id="fit">
+  <div class="wrap">
+    <div class="eyebrow rv">누가 오시는가</div>
+    <h2 class="rv">이런 분들이 오십니다</h2>
 
     <ul class="checks rv">
-      <li>쉬어도 쉬는 느낌이 없다</li>
-      <li>생각이 많아서 멈추질 않는다</li>
-      <li>감정을 느끼기보다 눌러왔다</li>
-      <li>몸이 늘 긴장되어 있다</li>
-      <li>잠을 자도 피로가 풀리지 않는다</li>
-      <li>짜증이 쉽게 나고 감정 기복이 커졌다</li>
-      <li>예전에는 즐거웠던 것들이 더 이상 즐겁지 않다</li>
-      <li>관계에서 비슷한 문제가 반복된다</li>
+      <li>고민이 너무 많아 잠을 자지 못하는 분</li>
+      <li>화내지 말아야지 하면서도, 매번 같은 자리에서 터지는 분</li>
+      <li>내 몸과 감정이 내 뜻대로 따라주지 않는 분</li>
+      <li>이완이 안 되어 힘든 분</li>
+      <li>“왜 내 주변은 항상 날 괴롭히지” 하는 생각이 드는 분</li>
+      <li>관계에서 비슷한 문제가 반복되는 분</li>
+      <li>몸과 마음을 따로 해결하려고 여기저기 다니다가 지친 분</li>
     </ul>
 
-    <p class="lead rv" style="margin-top:34px;text-align:center">
-      이 중 하나라도 마음에 닿으셨다면 —<br>
-      이 자리는 바로 그 마음에서 시작됩니다.
+    <p class="quiet rv" style="margin-top:20px">
+      이 문장들은 저희가 지은 것이 아니라,
+      오래 수련해 오신 회원들이 “어떤 분께 권하고 싶으냐”는 질문에 직접 쓰신 답입니다.
     </p>
 
     <div class="rule"></div>
@@ -398,352 +586,348 @@ a:focus-visible,.stage:focus-visible{outline:2px solid var(--celadon);outline-of
   </div>
 </section>
 
-<!-- ══════════ 명상이란 ══════════ -->
-<section class="on-ink" id="about">
-  <div class="wrap">
-    <div class="eyebrow rv">명상이란</div>
-    <h2 class="rv">생각을 멈추는 명상이 아니라<br>감각을 회복하는 명상입니다</h2>
-
-    <p class="rv">
-      지금을 사는 사람들은 <strong>정보는 많은데 느낌을 잃어가고</strong> 있습니다.
-      너무 많은 것을 알고 있지만, 정작 자기 몸과 마음의 진짜 느낌은
-      외면한 채 살아갑니다. 감정은 미뤄지고, 감각은 마비되며,
-      머리로만 사는 삶이 일상이 되었습니다.
-    </p>
-    <p class="rv">
-      많은 명상은 생각을 비우려 합니다. 그러나 선한명상은
-      <strong>몸과 감각에서 시작</strong>합니다.
-      몸에서 시작하여 감정으로 이어지고, 존재로 스며드는 단계적 회복의 길입니다.
-    </p>
-
-    <div class="rule"></div>
-
-    <h3 class="rv">운동과는 무엇이 다른가</h3>
-    <p class="rv">
-      운동은 긴장을 풀고 몸의 생기를 되찾는 데 큰 도움이 됩니다.
-      다만 대부분의 운동은 <strong>몸의 사용</strong>에 집중하지,
-      몸이 가진 감정의 언어를 읽는 훈련은 아닙니다.
-    </p>
-    <p class="rv">
-      선한명상은 감정을 억누른 채 움직이는 것이 아니라 —
-      <strong>몸을 통해 감정을 만나고 흐르게 하는 길</strong>입니다.
-      지금의 분노, 불안, 수치심, 상처를 있는 그대로 감각화하여
-      해결이 아니라 통과하도록 이끕니다.
-    </p>
-
-    <div class="rule"></div>
-
-    <h3 class="rv">정기신(精氣神) — 세 자리가 함께 움직입니다</h3>
-    <div class="triad rv">
-      <div><b>정 精</b><span>몸의 자리.<br>호흡과 자세, 12경락의 흐름.</span></div>
-      <div><b>기 氣</b><span>에너지의 자리.<br>음양의 순환, 막힘과 풀림.</span></div>
-      <div><b>신 神</b><span>마음의 자리.<br>자기 패턴의 알아차림.</span></div>
-    </div>
-    <p class="rv">
-      세 자리는 따로 가는 것이 아닙니다. 한 사람 안에서 함께 움직이는 하나의 흐름입니다.
-      그래서 선한명상은 몸으로만, 마음으로만, 호흡으로만 가는 길이 아닙니다.
-    </p>
-  </div>
-</section>
-
-<!-- ══════════ 변화 ══════════ -->
-<section>
+<!-- ══════════ ④ 실제 회원 이야기 ══════════ -->
+<section class="on-ink" id="stories">
   <div class="wrap">
     <div class="eyebrow rv">함께 걸어오신 분들</div>
-    <h2 class="rv">만나신 변화</h2>
+    <h2 class="rv">같은 상황에서, 달라진 것</h2>
 
     <div class="cases">
+
+      <!-- ─── 사례 1 · 반응이 달라진 자리 (맨 위 고정) ───
+           ▸ 여기 첫 줄에 실제 회원 인용 한 문장을 넣으면 가장 강해집니다.
+             예: "화가 나는 상황은 똑같았는데, 예전처럼 바로 튀어나가지 않는 저를 봤어요."
+             인용문을 받으시면 아래 <p class="quiet"> 자리를 그 문장으로 바꾸세요. -->
       <div class="case rv">
-        <div class="case-h">정(精) · 몸의 변화</div>
-        <div class="case-who">두 아이 엄마</div>
-        <p>“밤에 깨지 않고 아침까지 자는 게 얼마 만인지 모르겠어요.”
-        주변에서 “10년은 젊어졌다”는 말을 듣게 되셨다고 합니다.
-        몸과 마음이 함께 단단해졌다고 말씀하십니다.</p>
-      </div>
-      <div class="case rv">
-        <div class="case-h">기(氣) · 흐름의 변화</div>
-        <div class="case-who">직장인 20년차</div>
-        <p>“20년을 달고 살던 속이 요즘은 편해요.” 오래 굽어 있던 등이 펴지고,
-        해마다 힘들어하시던 환절기도 한결 수월했다고 말씀하십니다.
-        무기력에 잠겨 있던 일상에 활력이 살아나고 — 같은 상황 속에서도
-        흔들리지 않는 힘이 자라났다고 하십니다.</p>
-      </div>
-      <div class="case rv">
-        <div class="case-h">신(神) · 시선의 변화</div>
+        <div class="case-h">반응이 달라진 자리</div>
         <div class="case-who">30대 직장인</div>
-        <p>평생 보지 못하던 자기 패턴이 명료해지기 시작했습니다.
-        부모를 원망하던 마음이 자기 자신을 보는 마음으로 돌아오고,
-        자기를 공격하던 패턴이 자기를 끌어안는 마음으로 바뀌었습니다.
-        가족과 동료를 바라보는 시선이 부드러워졌습니다.</p>
+        <p class="pull">평생 보지 못하던 자기 패턴이 명료해지기 시작했습니다.</p>
+        <p>
+          부모를 원망하던 마음이 자기 자신을 보는 마음으로 돌아오고,
+          자기를 공격하던 패턴이 자기를 끌어안는 마음으로 바뀌었습니다.
+          가족과 동료를 바라보는 시선이 부드러워졌습니다.
+        </p>
       </div>
+
+      <!-- ─── 사례 2 · 몸의 흐름이 달라진 자리 ─── -->
+      <div class="case rv">
+        <div class="case-h">흐름이 달라진 자리</div>
+        <div class="case-who">직장인 20년차</div>
+        <p class="pull">“20년을 달고 살던 속이 요즘은 편해요.”</p>
+        <p>
+          오래 굽어 있던 등이 펴졌습니다.
+          해마다 힘들어하던 환절기도 한결 수월해졌습니다.
+          무기력하던 일상에 활력이 살아났습니다.
+          같은 상황에서도 예전만큼 흔들리지 않습니다.
+        </p>
+      </div>
+
+      <!-- ─── 사례 3 · 몸이 달라진 자리 ─── -->
+      <div class="case rv">
+        <div class="case-h">몸이 달라진 자리</div>
+        <div class="case-who">두 아이 엄마</div>
+        <p class="pull">“밤에 깨지 않고 아침까지 자는 게 얼마 만인지 모르겠어요.”</p>
+        <p>
+          주변에서 “10년은 젊어졌다”는 말을 듣습니다.
+          밤에 깨지 않고 아침까지 잡니다.
+        </p>
+      </div>
+
     </div>
 
-    <p class="quiet rv" style="margin-top:34px;text-align:center">
+    <!-- ─── 회원 인터뷰 영상 자리 ───
+         ▸ 유튜브에 올린 뒤 아래 주석(<!-- 와 -- >)만 지우고 VIDEO_ID 자리에
+           주소 끝의 영상 아이디를 넣으면 바로 켜집니다.
+           예) https://youtu.be/abc123XYZ  →  VIDEO_ID 자리에 abc123XYZ
+         ▸ 대표 사이트에는 「왜 10년을 계속 다니나」 편 하나만 넣으세요.
+         ▸ 세로 영상이면 aspect-ratio 를 9/16 으로, max-width:380px 를 추가하세요.
+    <h3 class="rv" style="margin-top:52px">10년을 함께 걸어오신 분께 직접 여쭈었습니다</h3>
+    <div class="rv" style="margin-top:20px;aspect-ratio:16/9">
+      <iframe style="width:100%;height:100%;border:0;border-radius:4px"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+              title="회원 인터뷰 — 왜 10년을 계속 다니나"
+              allowfullscreen loading="lazy"></iframe>
+    </div>
+    -->
+
+    <!-- ══ 실제 수련 일지 캡처 ══
+         ▸ 게시 전 반드시 회원 본인 동의를 받으세요. 동의 전에는 이 블록을 주석 처리해 두시면 됩니다.
+         ▸ 이미지는 /img/reviews/ 폴더에 올라가 있어야 합니다. -->
+    <div class="rule"></div>
+
+    <h3 class="rv">회원들이 매주 남기는 수련 일지</h3>
+    <p class="rv">
+      아래는 실제로 오간 대화입니다.
+      이름과 연락처만 가렸고, <strong>문장은 오타까지 그대로 두었습니다.</strong>
+    </p>
+
+    <div class="shots">
+      <div class="shot rv"><img src="/img/reviews/home-01-pattern.png" alt="회원 수련 일지 — 반복되던 패턴을 보고 스스로 결정했음을 알아차린 기록" loading="lazy"><span class="more">전체 보기 ↓</span></div>
+      <div class="shot rv"><img src="/img/reviews/home-02-owner.png" alt="회원 수련 일지 — 자기를 탓하던 시선이 달라진 기록" loading="lazy"><span class="more">전체 보기 ↓</span></div>
+      <div class="shot rv"><img src="/img/reviews/home-03-insight.png" alt="회원 수련 일지와 지도자의 답" loading="lazy"><span class="more">전체 보기 ↓</span></div>
+      <div class="shot rv"><img src="/img/reviews/home-04-selfview.png" alt="회원 수련 일지 — 스스로를 보는 시선이 여유로워진 기록" loading="lazy"><span class="more">전체 보기 ↓</span></div>
+    </div>
+
+    <p class="quiet rv" style="margin-top:44px">
       회원분들이 직접 전해주신 개인적인 경험이며, 느끼시는 변화는 사람마다 다릅니다.<br>
       저희는 의료 행위를 하지 않으며, 치료 중이신 분은 반드시 주치의의 안내를 따라주세요.
     </p>
   </div>
 </section>
 
-<!-- ══════════ 9단계 ══════════ -->
-<section id="path">
+<!-- ══════════ ⑤ 왜 믿을 수 있는가 ══════════ -->
+<section id="trust">
   <div class="wrap">
-    <div class="eyebrow rv">9단계의 길</div>
-    <h2 class="rv">한 호흡으로 시작해<br>한 걸음씩 깊어지는 길</h2>
-    <p class="rv">
-      선한명상은 9단계의 흐름을 따라 펼쳐집니다.
-      한 분 한 분 자기에게 맞는 속도로 걸어가시는 길입니다.
-    </p>
+    <div class="eyebrow rv">운영 방식</div>
+    <h2 class="rv">선한명상은 이렇게 운영합니다</h2>
 
-    <div class="spine">
-      <div class="stage rv"><span class="stage-n">01</span>
-        <div class="stage-t">깨어남</div><div class="stage-shift">외부 → 내부</div>
-        <div class="stage-d">감각에 주의를 돌리는 순간, 의식이 밖에서 안으로 옵니다.</div>
-        <div class="stage-p">수련 — 18개 관절 인지 · 피부 기감 · 음양 손</div></div>
-
-      <div class="stage rv"><span class="stage-n">02</span>
-        <div class="stage-t">풀려나감</div><div class="stage-shift">긴장 → 정화</div>
-        <div class="stage-d">쌓여 있던 신체적·정서적 긴장이 빠져나갑니다.</div>
-        <div class="stage-p">수련 — 양지감 확산 · 기공 정화 · 늑골·횡격막 이완</div></div>
-
-      <div class="stage rv"><span class="stage-n">03</span>
-        <div class="stage-t">가라앉음</div><div class="stage-shift">흩어짐 → 중심</div>
-        <div class="stage-d">흩어져 있던 에너지가 아래로 내려와 중심을 잡습니다.</div>
-        <div class="stage-p">수련 — 음지감 침잠 · 턱관절 이완 · 상허하실(上虛下實)</div></div>
-
-      <div class="stage rv"><span class="stage-n">04</span>
-        <div class="stage-t">기다림</div><div class="stage-shift">반응 → 공간</div>
-        <div class="stage-d">반응과 선택 사이에 공간이 생깁니다.</div>
-        <div class="stage-p">수련 — 수식관(숫자 사이 공간) · 호흡 사이 머무름</div></div>
-
-      <div class="stage rv"><span class="stage-n">05</span>
-        <div class="stage-t">바라봄</div><div class="stage-shift">판단 → 직시</div>
-        <div class="stage-d">저항 없이, 판단 없이 있는 그대로 봅니다.</div>
-        <div class="stage-p">수련 — 외부 시선 돌이킴 · 바라봄의 자리 · 정념</div></div>
-
-      <div class="stage rv"><span class="stage-n">06</span>
-        <div class="stage-t">알아차림</div><div class="stage-shift">반복 → 통찰</div>
-        <div class="stage-d">반복되는 패턴을 인식하고, 감정의 뿌리를 감각으로 만납니다.</div>
-        <div class="stage-p">수련 — 메타인지 · 점→선→면→형</div></div>
-
-      <div class="stage rv"><span class="stage-n">07</span>
-        <div class="stage-t">받아들임</div><div class="stage-shift">저항 → 수용</div>
-        <div class="stage-d">불편한 감각과 감정을 저항 없이 받습니다. 수용이 변화의 시작입니다.</div>
-        <div class="stage-p">수련 — 음양 감정 수용 · 내 꼴 / 내 길 · 회심(回心)</div></div>
-
-      <div class="stage rv"><span class="stage-n">08</span>
-        <div class="stage-t">연결됨</div><div class="stage-shift">분리 → 공명</div>
-        <div class="stage-d">분리된 자아 감각이 이완되고, 고립에서 관계로 넘어갑니다.</div>
-        <div class="stage-p">수련 — 음양 합일 · 회음~백회 · 무한 회전공 · 항심(恒心)</div></div>
-
-      <div class="stage rv"><span class="stage-n">09</span>
-        <div class="stage-t">스며듦</div><div class="stage-shift">수련 → 삶</div>
-        <div class="stage-d">수련이 일상 전체로 통합됩니다. 삶이 곧 명상이 되는 자리입니다.</div>
-        <div class="stage-p">검증 — 정기신 합일 · 부동심(不動心) · 몸·시선·삶의 변화</div></div>
+    <div class="facts rv">
+      <div><b>2005년</b><span>부터 명상 지도</span></div>
+      <div><b>약 10년</b><span>선한인연 선한명상 운영</span></div>
+      <div><b>30명</b><span>정원입니다. 더 받지 않습니다</span></div>
+      <div><b>두 자매</b><span>지도자가 직접 지도합니다</span></div>
+      <div><b>15명</b><span>5년 이상 함께 수련해 오신 분</span></div>
+      <div><b>10년째</b><span>같은 자리에 앉아 계신 회원</span></div>
     </div>
 
-    <p class="quiet rv" style="margin-top:44px;text-align:center">
-      9단계는 한 번 통과하고 끝나는 길이 아닙니다.<br>
-      같은 자리에 반복해서 앉으며 — 차곡차곡 깊어지는 시간입니다.
+    <p class="lead rv" style="margin-top:44px">
+      신규로 오시는 분의 약 80%가<br>
+      기존 회원의 소개로 오십니다.
     </p>
+
+    <p class="rv" style="margin-top:26px">
+      <strong>많이 받는 것보다,
+      한 사람의 수련이 삶에서 어떻게 이어지는지를 오래 보는 방식을 선택했습니다.</strong>
+    </p>
+
+    <figure class="photos rv">
+      <div class="grid">
+        <img src="/img/space/one-seat.jpg" alt="매트 한 장과 차가 놓인 자리" loading="lazy">
+        <img src="/img/space/tea-incense.jpg" alt="차 도구와 향이 놓인 좌식 탁자" loading="lazy">
+        <img src="/img/space/mirror-cushion.jpg" alt="거울 앞에 놓인 방석" loading="lazy">
+        <img src="/img/space/hansil-room.jpg" alt="좌식 탁자와 방석이 놓인 한실 수련 공간" loading="lazy">
+      </div>
+      <figcaption></figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ══════════ 시간표 ══════════ -->
-<section id="fee">
-  <div class="wrap-wide">
-    <div class="eyebrow rv">함께 걸을 수 있는 길</div>
-    <h2 class="rv">연차별로 반이 나뉘어 있습니다</h2>
+<!-- ══════════ ⑥ 선한명상의 수련 과정 ══════════ -->
+<section class="on-ink" id="path">
+  <div class="wrap">
+    <div class="eyebrow rv">수련 과정</div>
+    <h2 class="rv">몸에서 시작해 삶의 선택까지</h2>
 
-    <table class="tbl rv">
-      <tr><td class="time">목요일 19:30~21:30</td><td>입문자반 · 1~3년</td></tr>
-      <tr><td class="time">수요일 19:30~21:30</td><td>전수자반 · 3~5년</td></tr>
-      <tr><td class="time">화요일 19:30~21:30</td><td>수행자반 · 5년 이상</td></tr>
-      <tr><td class="time">매월 첫째 토 13~18시</td><td>정념수련 (300분 정진)</td></tr>
-      <tr><td class="time">매월 셋째 주 토 · 일</td><td>비움명상 (하루 과정 · 양일 중 택일)</td></tr>
-      <tr><td class="time">화·수·목 낮 / 둘째·넷째 토</td><td>1:1 개인명상 · 명상심리코칭 · 에너지 세라피</td></tr>
-    </table>
-
-    <p class="quiet rv" style="margin-top:20px">
-      5년, 10년을 함께 걸어오신 분들이 지금도 같은 자리에 앉아 계십니다.<br>
-      같은 반 안에서 서로의 속도를 지켜주며 함께 깊어집니다.
+    <p class="rv">
+      선한명상의 수련은 몸의 감각을 깨우는 것에서 시작해
+      점차 자신의 감정과 반응을 알아차리고,
+      삶에서 스스로 선택할 수 있는 힘을 기르는 방향으로 이어집니다.
     </p>
+
+    <div class="flow rv">
+      <div>몸의 감각</div>
+      <i>↓</i>
+      <div>반응 알아차림</div>
+      <i>↓</i>
+      <div>감정과 마음 보기</div>
+      <i>↓</i>
+      <div>반복되는 삶의 패턴 보기</div>
+      <i>↓</i>
+      <div class="last">스스로 선택하기</div>
+    </div>
+
+    <p class="rv center" style="margin-top:38px">
+      이 흐름을 아홉 단계로 나누어 안내합니다.<br>
+      걸어가는 속도는 한 분 한 분 다릅니다.
+    </p>
+
+    <div class="center rv">
+      <a href="/nine/" class="btn btn-line">9단계 수련 자세히 보기</a>
+    </div>
 
     <div class="rule"></div>
 
-    <h3 class="rv">연간 멤버십 — 세 가지 길</h3>
-    <table class="tbl rv">
-      <tr>
-        <th></th>
-        <th class="plan">330</th><th class="plan">430</th><th class="plan">530</th>
-      </tr>
-      <tr><td>명상 아카데미<br><span class="quiet">주 1회 2시간 · 연 48회</span></td>
-        <td class="c dot">●</td><td class="c dot">●</td><td class="c dot">●</td></tr>
-      <tr><td>명상심리코칭<br><span class="quiet">수업 안에서 · 단품 15만원~</span></td>
-        <td class="c dot">●</td><td class="c dot">●</td><td class="c dot">●</td></tr>
-      <tr><td>에너지 세라피<br><span class="quiet">수업 안에서 · 단품 15만원~</span></td>
-        <td class="c dot">●</td><td class="c dot">●</td><td class="c dot">●</td></tr>
-      <tr><td>9단계 홈 수련실<br><span class="quiet">매일 · 집에서</span></td>
-        <td class="c dot">●</td><td class="c dot">●</td><td class="c dot">●</td></tr>
-      <tr><td>섭생 · 생활 습관 안내</td>
-        <td class="c dot">●</td><td class="c dot">●</td><td class="c dot">●</td></tr>
-      <tr><td>정념수련<br><span class="quiet">300분 정진 · 1회 20만원</span></td>
-        <td class="c">—</td><td class="c">5회</td><td class="c">10회</td></tr>
-      <tr class="total"><td>연 회비</td>
-        <td class="c">330만원</td><td class="c">430만원</td><td class="c">530만원</td></tr>
-      <tr class="sub"><td>월 기준</td><td class="c">27.5만원</td><td class="c">35.8만원</td><td class="c">44.2만원</td></tr>
-      <tr class="sub"><td>하루 기준</td><td class="c">9,000원</td><td class="c">11,700원</td><td class="c">14,500원</td></tr>
-    </table>
-
-    <p class="quiet rv" style="margin-top:26px">
-      · 정념수련은 1회 20만원입니다. 430은 5회(100만원), 530은 10회(200만원)가 그대로 더해진 금액입니다.<br>
-      · 아카데미만 따로 참여하셔도 연 330만원입니다. 멤버십은 같은 금액 안에 나머지가 모두 들어갑니다.<br>
-      · 530은 깊고 고요한 흐름을 유지하기 위해 9명까지만 함께 걷습니다.<br>
-      · 각 반은 정원이 있습니다. 정원이 차면 대기 순으로 안내드립니다.<br>
-      · 사정이 생기시면 휴회하실 수 있습니다. 자세한 내용은 면담에서 안내드립니다.
+    <h3 class="rv">선한명상의 수련은 어떻게 깊어지나요</h3>
+    <p class="rv">
+      선한명상의 수련은 몸·에너지·마음을 따로 보지 않습니다.
     </p>
 
-    <div class="steps rv">
-      <div class="step"><b>01</b><h4>입문 — 감각 회복</h4><span>잃어버린 몸의 감각을 깨우는 시간</span></div>
-      <div class="step"><b>02</b><h4>심화 — 감정 통과</h4><span>눌러왔던 감정을 만나고 흐르게 하는 시간</span></div>
-      <div class="step"><b>03</b><h4>통합 — 삶 연결</h4><span>수련이 일상으로 스며드는 시간</span></div>
+    <div class="triad rv">
+      <div><b>정 精</b><span>몸의 자리.<br>호흡과 자세, 12경락의 흐름.</span></div>
+      <div><b>기 氣</b><span>에너지의 자리.<br>음양의 순환, 막힘과 풀림.</span></div>
+      <div><b>신 神</b><span>마음의 자리.<br>자기 패턴의 알아차림.</span></div>
     </div>
+
+    <p class="rv">
+      세 자리는 따로 가는 것이 아니라 한 사람 안에서 함께 움직입니다.
+      그래서 선한명상은 몸으로만, 마음으로만, 호흡으로만 가는 길이 아닙니다.
+    </p>
+    <p class="quiet rv">
+      기감 · 정화 · 음양 같은 표현은 수련 안에서 실제로 쓰는 말입니다.
+      어떤 단계에서 무엇을 하는지는 9단계 상세에서 보실 수 있습니다.
+    </p>
+
+    <figure class="photos rv">
+      <div class="grid">
+        <img src="/img/space/hands-sense.jpg" alt="두 손으로 몸 앞의 감각을 살피는 모습" loading="lazy">
+        <img src="/img/space/group-practice-a.jpg" alt="지도자가 앞에서 동작을 보여주는 수업 장면" loading="lazy">
+      </div>
+      <figcaption>손끝에서 무엇이 느껴지는지부터 시작합니다.</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ══════════ 프로그램 ══════════ -->
-<section id="program" style="background:var(--paper-2)">
+<!-- ══════════ ⑦ 지도자 소개 ══════════ -->
+<section id="leaders">
   <div class="wrap">
-    <div class="eyebrow rv">시작하실 수 있는 길</div>
-    <h2 class="rv">프로그램</h2>
+    <div class="eyebrow rv">함께 걸어가는 두 사람</div>
+    <h2 class="rv">두 사람이 함께 봅니다</h2>
 
-    <div class="prog rv">
-      <div class="prog-tag">처음 오시는 길</div>
-      <h3>1:1 개인명상 <span style="font-size:15px;color:var(--ash)">— 입문 면담을 겸합니다</span></h3>
-      <p>처음 오시는 분들이 가장 많이 선택하시는 시작점입니다. 지금 몸과 마음이 어떤 상태인지,
-      무엇이 가장 힘드신지를 먼저 듣고 — 어느 반에서 시작하시면 좋을지 함께 정합니다.</p>
-      <p>사람마다 체질이 다르고, 기질이 다르고, 성질이 다릅니다. 같은 호흡을 해도 어떤 분은
-      사흘 만에 몸이 열리고, 어떤 분은 석 달이 걸립니다. 그룹에서는 맞추기 어려운 그 속도를 —
-      이 자리에서는 온전히 한 분께 맞춥니다.</p>
-      <p>무엇을 없앨지가 아니라 <strong>어디서부터 회복할지</strong>를 함께 찾습니다.
-      한 번만 오셔도 괜찮고, 이어가고 싶으시면 10회권으로 이어가실 수 있습니다.</p>
-      <span class="meta">60분 · 66,000원 / 회</span>
-      <p style="margin-top:20px">
-        <a href="/start" style="display:inline-block;padding:14px 26px;border:1px solid currentColor;border-radius:3px;text-decoration:none;font-size:15px;font-weight:500">첫 수업이 어떻게 흐르는지 보기 →</a>
-      </p>
-      <p class="quiet" style="margin-top:18px">
-        더 깊이 들어가는 1:1 시간도 있습니다.<br>
-        명상심리코칭 — 60분 15만원 / 120분 30만원<br>
-        에너지 세라피 — 30분 15만원 / 60분 30만원
-      </p>
-    </div>
+    <figure class="photos tall rv">
+      <div class="grid">
+        <img src="/img/space/guide-two.jpg" alt="수련 공간에서 이야기하는 지도자" loading="lazy">
+        <img src="/img/space/guide-class-a.jpg" alt="두 사람이 나란히 앉아 수업을 진행하는 모습" loading="lazy">
+      </div>
+      <figcaption>수업도, 회원의 기록을 읽는 일도 두 사람이 함께 합니다.</figcaption>
+    </figure>
 
-    <div class="prog rv">
-      <div class="prog-tag">함께 걷는 길</div>
-      <h3>선한명상 아카데미</h3>
-      <p>주 1회 2시간의 그룹 명상 시간입니다. 9단계의 흐름을 따라 — 호흡, 몸 수련(기예공),
-      명상심리코칭, 에너지 세라피가 한 회 안에 통합으로 펼쳐집니다.</p>
-      <p>혼자서는 끝까지 가기 어려운 길을, 매주 같은 시간에 같은 사람들과 함께 걸어가며
-      만들어가는 깊이가 있습니다. 한 사람의 변화가 그룹 전체에 흐름을 만들고,
-      그 흐름이 다시 한 분 한 분의 깊이로 돌아옵니다.</p>
-      <p>아카데미는 <strong>1년 단위의 과정</strong>입니다. 명상은 몇 주에 성과가 나는 일이 아니라,
-      계절이 바뀌는 것을 몇 번 겪으며 몸이 달라지는 일이기 때문입니다.</p>
-      <p>정념수련은 한 자리에서 300분을 지키는 시간입니다. 혼자서는 거의 불가능하고,
-      같은 마음의 사람들이 함께 앉을 때만 가능합니다. 1년 동안 이 자리에 몇 번 앉으시느냐에 따라 —
-      도달하시는 깊이가 달라집니다.</p>
-      <span class="meta">주 1회 2시간 · 연 48회 · 연 330 / 430 / 530만원</span>
-    </div>
 
-    <div class="prog rv">
-      <div class="prog-tag">깊이 비우는 길</div>
-      <h3>비움명상</h3>
-      <p>매월 한 번, 하루 동안 일상에서 완전히 빠져나오는 시간입니다. 생각과 감정을 깊이 비우고,
-      몸 안에 쌓인 것을 해독하며, 자기 안의 가장 고요한 곳까지 만나고 돌아옵니다.</p>
-      <p><strong>섭생을 함께 조절하며</strong> 몸의 정화를 진행합니다. 평소에는 닿기 어려운
-      깊은 곳까지 비움이 일어납니다. 무엇을 어떻게 드시는지는 당일 안내드립니다. 미뤄왔던 감정, 오래 묵은 응어리, 분주함에 가려져 있던
-      자기 본래의 모습이 명료해집니다.</p>
-      <p>비움명상은 1년 과정과 별도로 운영됩니다. 원하시는 달에 신청하실 수 있고,
-      회원이 아니셔도 참여하실 수 있습니다. 매월 셋째 주 토요일과 일요일 중
-      편하신 하루를 고르시면 됩니다.</p>
-      <span class="meta">월 1회 · 하루 과정 · 180,000원</span>
-    </div>
-
-    <div class="prog rv">
-      <div class="prog-tag">매일 이어지는 길</div>
-      <h3>9단계 홈 수련실</h3>
-      <p>명상을 시작하시는 분들이 가장 많이 하시는 말씀이 있습니다.
-      <strong>“수업 갔을 때는 되는데, 집에 오면 뭘 해야 할지 모르겠어요.”</strong></p>
-      <p>그래서 저희는 회원분들이 집에서 매일 수련하실 수 있도록 — 9단계 전 과정을 영상으로
-      만들어 두었습니다. 지금 어느 단계에 계신지에 맞춰, 오늘 무엇을 얼마나 하시면 되는지
-      그대로 따라오시면 됩니다. 무엇을 드시고 어떻게 하루를 쓰실지 —
-      섭생과 생활 습관까지 함께 안내해 드립니다.</p>
-      <p>일주일에 두 시간이 아니라, <strong>하루 15분이 쌓여 일 년이 됩니다.</strong>
-      주 1회 수업은 방향을 잡는 시간이고, 나머지 엿새가 실제로 몸이 바뀌는 시간입니다.</p>
-      <span class="meta">아카데미 1년 과정에 포함</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ 첫날 · 두 사람 ══════════ -->
-<section id="start">
-  <div class="wrap">
-    <div class="eyebrow rv">시작하기</div>
-    <h2 class="rv">특별한 준비 없이 오시면 됩니다</h2>
-    <p class="rv">
-      잘 정리된 질문을 가지고 오지 않으셔도 됩니다.
-      자기 안이 다 정돈되어야만 시작할 수 있는 시간이 아닙니다.
-      흐트러진 채로 오셔도 괜찮습니다. 그 자리에서부터 시작하면 됩니다.
-    </p>
-
-    <div class="rule"></div>
-
-    <h3 class="rv">첫날은 이렇게 진행됩니다</h3>
-    <p class="rv">
-      편안한 옷차림으로 오시면 됩니다. 따로 준비하실 것은 없습니다.
-      수업 10분 전쯤 도착하셔서 잠시 앉아 계시면 — 저희가 먼저 인사드립니다.
-    </p>
-    <p class="rv">
-      처음에는 앉는 것보다 <strong>서서 하는 수련(입선)</strong>부터 시작합니다.
-      발바닥이 땅에 닿는 감각에서 출발해, 호흡과 몸의 감각을 하나씩 깨워갑니다.
-      끝나고 나면 오늘 어떠셨는지 짧게 나누고 마칩니다.
-    </p>
-
-    <div class="rule"></div>
-
-    <h3 class="rv">함께 걸어가는 두 사람</h3>
     <div class="two rv">
       <div>
         <div class="name">가이 · 박선정</div>
         <div class="role">관장</div>
-        <p>선한인연 선한명상의 운영을 맡고 있습니다. 동생과 함께 통합 수련 체계를 만들어 왔으며 —
-        오래 묵은 감정과 내면의 응어리를 풀어내는 <strong>명상심리코칭</strong>을 직접 설계했습니다.</p>
+        <p>
+          선한인연 선한명상의 운영을 맡고 있습니다.
+          오래 묵은 감정과 내면의 응어리를 풀어내는 명상심리코칭을 직접 설계했습니다.
+        </p>
       </div>
       <div>
         <div class="name">시아 · 박선호</div>
         <div class="role">지도</div>
-        <p>몸·마음·호흡을 잇는 <strong>9단계 명상 체계</strong>를 세웠습니다. 언니와 함께 통합 수련 체계를
-        만들어 왔으며 — 1:1 개인수업과 정규 수련을 직접 진행합니다.</p>
+        <p>
+          몸·마음·호흡을 잇는 9단계 명상 체계를 세웠습니다.
+          1:1 개인수업과 정규 수련을 직접 진행합니다.
+        </p>
       </div>
+    </div>
+
+    <div class="note rv" style="margin-top:48px">
+      <p><strong>왜 두 사람인가</strong></p>
+      <p>
+        한 사람이 수업 시간만 보고 끝내지 않습니다.
+        두 사람이 회원의 기록을 같이 읽고, 다음 수업을 함께 정합니다.
+      </p>
+      <p>
+        몸에서 올라온 것을 마음으로 바라보고 해석하는 사람과,
+        마음에서의 부딪힘을 몸으로 풀어내는 사람이 같은 회원을 관찰합니다.
+      </p>
     </div>
 
     <div class="rule"></div>
 
-    <h3 class="rv">처음 오시는 길</h3>
+    <p class="rv">
+      오래 다니고 계신 분들께 <strong>“왜 계속 오시느냐”</strong>고 여쭈었을 때
+      가장 많이 돌아온 답은, 프로그램이 아니라 사람이었습니다.
+    </p>
+
+    <div class="say rv">
+      <p>“지도자가 스스로 자신을 세우려 하는 걸 본 적이 없고,
+      그걸 통해 그저 자연스럽게 존경하고 따르고 싶은 마음이 생겼다.”</p>
+      <cite>10년 이상 수련해 오신 회원</cite>
+    </div>
+
+    <div class="say rv">
+      <p>“내가 싫어서 버린 마음까지 기꺼이 사랑으로 보듬어줄 누군가 있다는 건,
+      세상에 두려울 게 없는 강력한 무기가 된다는 것을 처음으로 알게 되었다.”</p>
+      <cite>10년 이상 수련해 오신 회원</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ⑧ 처음 오시는 분 ══════════ -->
+<section class="on-ink" id="start">
+  <div class="wrap">
+    <div class="eyebrow rv">처음 오시는 분</div>
+    <h2 class="rv">처음에는 1:1 개인명상으로 시작합니다</h2>
+
+    <p class="rv">
+      한 번 와서 체험하고 끝나는 방식은 하지 않습니다.
+      일정 기간 이어가면서 무엇이 달라지는지 지켜보는 쪽을 택했습니다.
+    </p>
+    <p class="rv">
+      그래서 처음 오시는 분은 그룹 수업이 아니라 <strong>1:1 개인명상 60분</strong>으로 시작합니다.
+      지금 몸과 마음이 어떤 상태인지 먼저 보고,
+      어디서부터 회복할지를 함께 찾는 시간입니다.
+    </p>
+
+    <figure class="photos rv">
+      <div class="grid">
+        <img src="/img/space/sitting-back.jpg" alt="매트 위에 앉아 수련 중인 뒷모습" loading="lazy">
+        <img src="/img/space/adjust-1on1.jpg" alt="지도자가 회원의 자세를 직접 잡아주는 모습" loading="lazy">
+      </div>
+      <figcaption>첫 60분은 한 분만을 위한 자리입니다.</figcaption>
+    </figure>
+
+    <div class="say rv">
+      <p>“내 삶에 문제가 있다고 생각한다면, 그 상태 그대로 오십시오.”</p>
+      <cite>오래 수련해 오신 회원</cite>
+    </div>
+
+    <div class="price rv">
+      <b>1:1 개인명상 · 60분 · 66,000원</b>
+      <p class="quiet">
+        먼저 직접 경험해 보신 뒤에 이후 수련을 결정하셔도 됩니다.
+      </p>
+      <div class="btn-row">
+        <a href="/start/" class="btn">첫 60분 자세히 보기</a>
+      </div>
+    </div>
+
+    <p class="rv" style="margin-top:48px">
+      이후에는 현재 상태와 수련 방향에 따라 적합한 과정을 안내드립니다.
+    </p>
+    <div class="center rv">
+      <a href="/program/" class="btn btn-line" style="margin-top:10px">전체 수련 과정 및 비용 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ⑨ 위치 · 문의 ══════════ -->
+<section id="visit">
+  <div class="wrap">
+    <div class="eyebrow rv">위치 · 문의</div>
+    <h2 class="rv">선한인연 선한명상</h2>
+
     <table class="tbl rv">
-      <tr><td style="width:34px;color:var(--gold);font-family:var(--latin)">01</td>
-          <td>어떤 점 때문에 명상을 찾아보시게 됐는지 한 줄만 남겨주세요.</td></tr>
-      <tr><td style="color:var(--gold);font-family:var(--latin)">02</td>
-          <td>함께 살펴보며 — 어떤 길이 맞으실지 안내드립니다.</td></tr>
-      <tr><td style="color:var(--gold);font-family:var(--latin)">03</td>
-          <td>일정을 조율하여 첫 만남으로 이어집니다.</td></tr>
+      <tr><th style="width:88px">주소</th><td>서울 광진구 아차산로78길 43 리버리치빌 503호</td></tr>
+      <tr><th>오시는 길</th><td>5호선 광나루역 · 2호선 구의역 인근</td></tr>
+      <tr><th>전화</th><td><a href="tel:01052997596" style="color:var(--celadon);text-decoration:none">010-5299-7596</a></td></tr>
+      <tr><th>수업 시간</th><td>화 · 수 · 목 19:30~21:30<br><span class="quiet">1:1 개인명상은 화·수·목 낮, 둘째·넷째 토요일</span></td></tr>
     </table>
 
-    <p class="quiet rv" style="margin-top:26px">
-      선한인연 선한명상<br>
-      서울 광진구 아차산로78길 43 리버리치빌 503호<br>
-      5호선 광나루역 · 2호선 구의역 인근 · 한강 도보 3분<br>
-      010-5299-7596
-    </p>
+    <div class="btn-row rv">
+      <a href="https://open.kakao.com/o/seQTrvti" class="btn btn-dark" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+      <a href="tel:01052997596" class="btn btn-ink-line">전화 010-5299-7596</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ⑩ 더 자세히 알고 싶은 분 ══════════ -->
+<section id="more" style="padding-top:0">
+  <div class="wrap">
+    <div class="rule" style="margin-top:0"></div>
+    <div class="eyebrow rv">더 보실 것들</div>
+
+    <ul class="links rv">
+      <li><a href="/start/">첫 60분은 이렇게 흐릅니다 <em>1:1 개인명상</em></a></li>
+      <li><a href="/nine/">9단계 수련 자세히 보기 <em>수련 체계</em></a></li>
+      <li><a href="/program/">전체 수련 과정 및 비용 <em>아카데미 · 비움명상</em></a></li>
+      <li><a href="/check/">지금 내 에너지 상태 셀프체크 <em>3분</em></a></li>
+      <li><a href="https://www.instagram.com/good.meditation/" target="_blank" rel="noopener">인스타그램 <em>@good.meditation</em></a></li>
+      <!-- ▸ 블로그 주소를 받으면 아래 줄의 주석을 풀고 링크만 넣으세요.
+      <li><a href="블로그주소" target="_blank" rel="noopener">선한명상 블로그 <em>매주 발행</em></a></li>
+      -->
+    </ul>
   </div>
 </section>
 
@@ -754,28 +938,27 @@ a:focus-visible,.stage:focus-visible{outline:2px solid var(--celadon);outline-of
       지금 이 글을 여기까지 읽으셨다면 —<br>
       이미 시작은 되어 있습니다.
     </p>
-    <a href="https://open.kakao.com/o/seQTrvti" class="btn" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+    <a href="/start/" class="btn">첫 60분 시작하기</a>
   </div>
 </div>
 
 <footer>
   <div class="fname">선한인연 선한명상</div>
   서울 광진구 아차산로78길 43 리버리치빌 503호<br>
-  화 · 수 · 목 19:30~21:30 · 010-5299-7596<br>
+  대표번호 010-5299-7596<br>
   가이 · 박선정 / 시아 · 박선호
   <div class="flat">SUNHANMIND · SEOUL · 2026</div>
 </footer>
 
 <div class="dock">
-  <a href="https://open.kakao.com/o/seQTrvti" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+  <a href="/start/">처음 1:1 명상 경험하기 · 60분</a>
 </div>
 
 <script>
 (function(){
-  var nav=document.getElementById('nav'),thread=document.getElementById('thread'),hero=document.querySelector('.hero');
+  var nav=document.getElementById('nav'),thread=document.getElementById('thread');
   function onScroll(){
-    var y=window.scrollY;
-    nav.classList.toggle('solid', y > window.innerHeight*0.72);
+    nav.classList.toggle('solid', window.scrollY > window.innerHeight*0.72);
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
@@ -790,6 +973,11 @@ a:focus-visible,.stage:focus-visible{outline:2px solid var(--celadon);outline-of
     thread.classList.toggle('on-ink',on);
   }
   window.addEventListener('scroll',threadTone,{passive:true}); threadTone();
+
+  // 수련 일지 캡처 펼치기
+  document.querySelectorAll('.shot').forEach(function(el){
+    el.addEventListener('click',function(){ el.classList.toggle('open'); });
+  });
 
   // 스크롤 등장
   if('IntersectionObserver' in window){
