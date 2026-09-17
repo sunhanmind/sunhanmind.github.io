@@ -33,7 +33,7 @@
   "areaServed":["광장동","구의동","자양동","광진구","서울"],
   "knowsAbout":["호흡명상","명상","마음챙김","인지감각","스트레스 관리","정념수련"],
   "founder":[{"@type":"Person","name":"박선정","alternateName":"가이"},{"@type":"Person","name":"박선호","alternateName":"시아"}],
-  "sameAs":["https://www.instagram.com/good.meditation/"],
+  "sameAs":["https://www.instagram.com/good.meditation/","https://blog.naver.com/senjame01"],
   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"19:30","closes":"21:30"}]
 }
 </script>
@@ -906,7 +906,7 @@ a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
     </table>
 
     <div class="btn-row rv">
-      <a href="https://open.kakao.com/o/seQTrvti" class="btn btn-dark" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+      <a href="sms:01052997596" class="btn btn-dark">문자로 문의하기</a>
       <a href="tel:01052997596" class="btn btn-ink-line">전화 010-5299-7596</a>
     </div>
   </div>
@@ -924,9 +924,7 @@ a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
       <li><a href="/program/">전체 수련 과정 및 비용 <em>아카데미 · 비움명상</em></a></li>
       <li><a href="/check/">지금 내 에너지 상태 셀프체크 <em>3분</em></a></li>
       <li><a href="https://www.instagram.com/good.meditation/" target="_blank" rel="noopener">인스타그램 <em>@good.meditation</em></a></li>
-      <!-- ▸ 블로그 주소를 받으면 아래 줄의 주석을 풀고 링크만 넣으세요.
-      <li><a href="블로그주소" target="_blank" rel="noopener">선한명상 블로그 <em>매주 발행</em></a></li>
-      -->
+      <li><a href="https://blog.naver.com/senjame01" target="_blank" rel="noopener">선한명상 블로그 <em>네이버 블로그</em></a></li>
     </ul>
   </div>
 </section>
@@ -988,6 +986,57 @@ a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
   } else {
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
   }
+})();
+</script>
+
+
+<!-- ── PC에서 문자 링크를 눌렀을 때: 앱 선택 창 대신 번호 복사 ── -->
+<style>
+#smsToast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(14px);
+  z-index:9999;opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease;
+  background:#14201B;color:#F5F1E8;font-size:14px;line-height:1.7;letter-spacing:.01em;
+  padding:14px 22px;border-radius:999px;box-shadow:0 8px 28px rgba(20,32,27,.24);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;text-align:center;max-width:90vw}
+#smsToast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#smsToast b{font-weight:500;color:#A7E8BF}
+</style>
+<div id="smsToast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var TEL='010-5299-7596', RAW='01052997596';
+  var isMobile=/Android|iPhone|iPad|iPod|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+  if(isMobile) return;                     // 휴대폰은 그대로 문자 앱이 열린다
+
+  var toast=document.getElementById('smsToast'), timer;
+  function say(html){
+    toast.innerHTML=html; toast.classList.add('on');
+    clearTimeout(timer); timer=setTimeout(function(){toast.classList.remove('on')},3200);
+  }
+  function copy(text){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).then(function(){return true}).catch(function(){return false});
+    }
+    try{
+      var t=document.createElement('textarea'); t.value=text;
+      t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t);
+      t.select(); var ok=document.execCommand('copy'); document.body.removeChild(t);
+      return Promise.resolve(ok);
+    }catch(e){ return Promise.resolve(false); }
+  }
+
+  // 버튼 글자는 그대로 두고, 눌렀을 때만 번호를 복사해 준다
+  var links=[].slice.call(document.querySelectorAll('a[href^="sms:"], a[href^="tel:"]'));
+  links.forEach(function(a){
+    var isTel = a.getAttribute('href').indexOf('tel:')===0;
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      copy(RAW).then(function(ok){
+        if(!ok){ say('문자 · 전화 <b>'+TEL+'</b>'); return; }
+        say(isTel ? '<b>'+TEL+'</b> — 번호를 복사했습니다. 이 번호로 전화 주세요.'
+                  : '<b>'+TEL+'</b> — 번호를 복사했습니다. 휴대폰에서 문자 주세요.');
+      });
+    });
+  });
 })();
 </script>
 

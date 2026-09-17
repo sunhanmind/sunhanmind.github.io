@@ -786,8 +786,9 @@ a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
     </p>
     <div class="btn-row">
       <a href="/start/" class="btn">첫 60분 자세히 보기</a>
-      <a href="https://open.kakao.com/o/seQTrvti" class="btn btn-line" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+      <a href="sms:01052997596" class="btn btn-line">문자로 문의하기</a>
     </div>
+    <p class="quiet" style="margin-top:18px">문자 · 전화 010-5299-7596</p>
   </div>
 </div>
 
@@ -825,6 +826,57 @@ a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
   } else {
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
   }
+})();
+</script>
+
+
+<!-- ── PC에서 문자 링크를 눌렀을 때: 앱 선택 창 대신 번호 복사 ── -->
+<style>
+#smsToast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(14px);
+  z-index:9999;opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease;
+  background:#14201B;color:#F5F1E8;font-size:14px;line-height:1.7;letter-spacing:.01em;
+  padding:14px 22px;border-radius:999px;box-shadow:0 8px 28px rgba(20,32,27,.24);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;text-align:center;max-width:90vw}
+#smsToast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#smsToast b{font-weight:500;color:#A7E8BF}
+</style>
+<div id="smsToast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var TEL='010-5299-7596', RAW='01052997596';
+  var isMobile=/Android|iPhone|iPad|iPod|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+  if(isMobile) return;                     // 휴대폰은 그대로 문자 앱이 열린다
+
+  var toast=document.getElementById('smsToast'), timer;
+  function say(html){
+    toast.innerHTML=html; toast.classList.add('on');
+    clearTimeout(timer); timer=setTimeout(function(){toast.classList.remove('on')},3200);
+  }
+  function copy(text){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).then(function(){return true}).catch(function(){return false});
+    }
+    try{
+      var t=document.createElement('textarea'); t.value=text;
+      t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t);
+      t.select(); var ok=document.execCommand('copy'); document.body.removeChild(t);
+      return Promise.resolve(ok);
+    }catch(e){ return Promise.resolve(false); }
+  }
+
+  // 버튼 글자는 그대로 두고, 눌렀을 때만 번호를 복사해 준다
+  var links=[].slice.call(document.querySelectorAll('a[href^="sms:"], a[href^="tel:"]'));
+  links.forEach(function(a){
+    var isTel = a.getAttribute('href').indexOf('tel:')===0;
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      copy(RAW).then(function(ok){
+        if(!ok){ say('문자 · 전화 <b>'+TEL+'</b>'); return; }
+        say(isTel ? '<b>'+TEL+'</b> — 번호를 복사했습니다. 이 번호로 전화 주세요.'
+                  : '<b>'+TEL+'</b> — 번호를 복사했습니다. 휴대폰에서 문자 주세요.');
+      });
+    });
+  });
 })();
 </script>
 
