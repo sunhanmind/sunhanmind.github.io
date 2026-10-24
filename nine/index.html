@@ -80,7 +80,9 @@ body{
   padding:7px 16px !important;color:var(--paper) !important;
 }
 .nav.solid .nav-cta{border-color:var(--celadon);color:var(--celadon) !important}
-@media(max-width:820px){.nav-links a:not(.nav-cta){display:none}.nav{padding:14px 18px}}
+@media(max-width:820px){.nav-links a:not(.nav-cta):not(.nav-acad){display:none}.nav{padding:14px 18px}.nav-links{gap:14px}}
+.nav-brand,.nav-links a{white-space:nowrap}
+@media(max-width:400px){.nav-acad .m-hide{display:none}.nav-brand{font-size:15px}.nav-cta{padding:6px 12px !important}}
 
 /* ─────────── 히어로 ─────────── */
 .hero{
@@ -526,6 +528,7 @@ a:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
     <a href="/#about">명상이란</a>
     <a href="/program/">수련 과정 · 비용</a>
     <a href="/#leaders">지도자</a>
+    <a href="/academy/" class="nav-acad"><span class="m-hide">명상</span>아카데미</a>
     <a href="/start/" class="nav-cta">처음 오시는 분</a>
   </div>
 </nav>
