@@ -30,8 +30,25 @@
 </style>
 </head><body><header class="top gutter"><div class="top-in">
 <a class="brand" href="/">선한인연 선한명상<small>명상아카데미</small></a>
-<nav aria-label="아카데미"><a href="/academy/">명상아카데미</a><a href="/academy/signature/">시그니처 글</a><a href="/academy/terms/">용어 사전</a><a class="cta" href="https://seonhan.kr/start/">처음 오시는 분</a></nav>
+<nav aria-label="아카데미"><a href="/academy/">명상아카데미</a><a href="/academy/signature/">시그니처 글</a><a href="/academy/terms/">용어 사전</a><a class="cta" href="https://seonhan.kr/start/">처음 오시는 분</a><button class="nav-menu" type="button" aria-expanded="false" aria-controls="mnav"><span aria-hidden="true">☰</span> 메뉴</button></nav>
 </div></header>
+<div class="mnav" id="mnav" hidden>
+  <div class="mnav-in">
+    <div class="mnav-top"><a class="mnav-brand" href="/">선한인연 선한명상</a><button class="mnav-close" type="button">닫기 ✕</button></div>
+    <ul>
+      <li><a href="/#about">명상이란</a></li>
+      <li><a href="/#stories">회원 이야기</a></li>
+      <li><a href="/#path">수련 과정</a></li>
+      <li><a href="/#leaders">지도자</a></li>
+      <li><a href="/nine/">9단계</a></li>
+      <li><a href="/program/">수련 과정과 비용</a></li>
+      <li><a href="/check/">셀프체크</a></li>
+      <li><a href="/academy/">명상아카데미</a></li>
+    </ul>
+    <a class="mnav-cta" href="/start/">처음 오시는 분</a>
+  </div>
+</div>
+
 <main class="article gutter"><div class="col">
 <div class="eyebrow">용어 사전</div>
 <h1>선한명상이 쓰는 말</h1>
@@ -44,4 +61,5 @@
 <small>2005년부터 두 지도자가 직접 지도합니다 · 정원 30명</small>
 </div></section>
 <footer class="foot gutter">선한인연 선한명상 · 서울 광진구 아차산로78길 43 리버리치빌 503호<br>© 2026 선한인연 선한명상</footer>
+<script>(function(){var b=document.querySelector(".nav-menu"),p=document.getElementById("mnav");if(!b||!p)return;function o(){p.hidden=false;b.setAttribute("aria-expanded","true");document.documentElement.style.overflow="hidden";}function c(){p.hidden=true;b.setAttribute("aria-expanded","false");document.documentElement.style.overflow="";}b.addEventListener("click",o);p.querySelector(".mnav-close").addEventListener("click",c);p.querySelectorAll("a").forEach(function(a){a.addEventListener("click",c)});document.addEventListener("keydown",function(e){if(e.key==="Escape")c()});})();</script>
 </body></html>
