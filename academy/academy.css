@@ -39,7 +39,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .top nav a{text-decoration:none;color:var(--ash)}
 .top nav a:hover{color:var(--celadon)}
 .top nav .cta{border:1px solid var(--celadon);color:var(--celadon);border-radius:999px;padding:5px 14px;white-space:nowrap}
-@media(max-width:640px){.top nav a:not(.cta){display:none}.brand small{display:none}}
+@media(max-width:760px){.top nav a:not(.cta){display:none}.brand small{display:none}}
 
 /* 공통 글 단 */
 .wrap{max-width:1080px;margin:0 auto}
@@ -91,9 +91,42 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+/* ── 칼럼 모음 · 이전/다음 글 ── */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:52px}
+.pager a{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;min-width:0}
+.pager a:hover{border-color:var(--celadon)}
+.pager small{display:block;font-size:12px;letter-spacing:.12em;color:var(--ash);margin-bottom:4px}
+.pager b{font-weight:400;font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink)}
+.pager .nx{text-align:right;grid-column:2}
+.pager-all{margin-top:14px;text-align:center;font-size:14px}
+.pager-all a{color:var(--celadon)}
+@media(max-width:520px){.pager{grid-template-columns:1fr}.pager .nx{grid-column:1}}
+.arch{max-width:880px;margin:0 auto;padding-block:48px 24px}
+.arch h1{font-size:clamp(28px,5vw,38px);line-height:1.35;margin-top:12px}
+.arch .intro{margin:14px 0 0;font-size:15.5px;line-height:1.9;color:var(--ink-2);max-width:34em}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.filters button{font:inherit;font-size:14px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);border-radius:999px;padding:6px 15px}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.filters button span{opacity:.6;margin-left:4px;font-size:12.5px}
+.series{margin-top:46px}
+.series-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:12px}
+.series-head h2{font-size:22px}
+.series-head p{margin:0;font-size:13px;color:var(--ash)}
+.clist{list-style:none;margin:0;padding:0}
+.clist li{border-bottom:1px solid var(--line)}
+.clist a{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;padding:20px 2px;text-decoration:none}
+.clist .no{grid-row:1/3;font-family:var(--latin);font-size:22px;color:var(--gold);line-height:1.2}
+.clist .tt{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink)}
+.clist .ds{grid-column:2;font-size:14.5px;line-height:1.75;color:var(--ash)}
+.clist .tg{grid-row:1;grid-column:3;font-size:12px;color:var(--celadon);border:1px solid var(--celadon-lt);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.clist a:hover .tt{color:var(--celadon)}
+.clist li[hidden],.series[hidden]{display:none}
+@media(max-width:560px){.clist a{grid-template-columns:34px minmax(0,1fr)}.clist .no{font-size:19px}.clist .tg{grid-row:auto;grid-column:2;justify-self:start;margin-top:6px}}
+.all-cols{margin-top:30px}
+
 /* 사이트 전체 메뉴 (휴대폰) */
 .nav-menu{display:none;align-items:center;gap:6px;font:inherit;font-size:13px;cursor:pointer;background:none;border:1px solid var(--celadon);border-radius:999px;padding:5px 14px;color:var(--celadon);white-space:nowrap}
-@media(max-width:640px){.top nav .cta{display:none}.nav-menu{display:inline-flex}}
+@media(max-width:760px){.top nav .cta{display:none}.nav-menu{display:inline-flex}}
 .mnav{position:fixed;inset:0;z-index:80;background:var(--ink);color:var(--paper);overflow-y:auto}
 .mnav[hidden]{display:none}
 .mnav-in{max-width:520px;margin:0 auto;padding:16px 22px 40px}
