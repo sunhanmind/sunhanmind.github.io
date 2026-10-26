@@ -143,11 +143,11 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 .ph{display:inline-block}
 /* 읽기 다듬기 (PC·휴대폰 공통) */
 .article .body p{text-wrap:pretty}
-.verse p{margin:0!important;line-height:1.95}
+.verse p{margin:0!important;line-height:1.95;padding-left:1em;text-indent:-1em}
 .article .body.verse .pause{margin:1.7em 0}
 @media(max-width:600px){
   .article{padding-block:40px 32px}
-  .article .body{margin-top:32px;line-height:1.9}
+  .article .body{margin-top:32px;line-height:1.9;font-size:17.5px}
   .article .body p{margin-bottom:1.05em}
   .verse p{line-height:1.9}
   .article .summary{padding:18px 0;font-size:17px;line-height:1.85}
