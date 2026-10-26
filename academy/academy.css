@@ -139,3 +139,17 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 .mnav li a{display:block;padding:15px 2px;font-family:var(--serif);font-size:19px;color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(245,241,232,.18)}
 .mnav li a:active{color:#A7E8BF}
 .mnav-cta{display:block;margin-top:28px;text-align:center;padding:15px;border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font-size:15px}
+/* 제목 뜻 덩어리 */
+.ph{display:inline-block}
+/* 읽기 다듬기 (PC·휴대폰 공통) */
+.article .body p{text-wrap:pretty}
+.verse p{margin:0!important;line-height:1.95}
+.article .body.verse .pause{margin:1.7em 0}
+@media(max-width:600px){
+  .article{padding-block:40px 32px}
+  .article .body{margin-top:32px;line-height:1.9}
+  .article .body p{margin-bottom:1.05em}
+  .verse p{line-height:1.9}
+  .article .summary{padding:18px 0;font-size:17px;line-height:1.85}
+  .article .ask{padding:18px 18px}
+}
