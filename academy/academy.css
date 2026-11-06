@@ -156,3 +156,8 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 /* 연 단위 칼럼 */
 .verse p.st{margin:0 0 1.15em!important;padding-left:0;text-indent:0}
 .verse p.st .ln{display:block;padding-left:1em;text-indent:-1em}
+/* 문장 잇기 */
+.verse p{padding-left:0!important;text-indent:0!important}
+.verse p.st .ln{padding-left:0;text-indent:0}
+/* 연 여백 통일 */
+.verse p.st.st2{margin:0 0 1.5em!important}
