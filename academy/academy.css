@@ -174,3 +174,10 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 .article .body.book .care{font-family:var(--sans);font-size:14px;line-height:1.8;color:var(--ash);text-align:left}
 .article .summary{font-family:'Noto Serif KR',serif;text-align:justify;word-break:normal}
 @media(max-width:640px){.article .body.book{font-size:15.5px}.article .body.book h2{font-size:19px}}
+
+/* 느낌 남기기 */
+.feel-cta{margin:56px 0 0;padding:26px 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.feel-cta p{margin:0 0 16px;font-size:14.5px;line-height:1.8;color:var(--ash)}
+.feel-cta p b{display:block;font-family:var(--serif);font-weight:400;font-size:18px;color:var(--ink);margin-bottom:4px}
+.feel-btn{display:inline-block;padding:11px 28px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:15px}
+.feel-btn:hover{background:var(--celadon)}
