@@ -163,3 +163,8 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 .verse p.st.st2{margin:0 0 1.6em!important}
 .verse p.st{line-height:2!important}
 .verse strong{font-family:var(--serif);font-weight:700;font-size:1.06em;color:var(--ink)}
+
+/* 마음공부 칼럼 시 형식 */
+.verse.mind h2{margin:2.2em 0 1em}
+.summary .ln{display:block;padding-left:1em;text-indent:-1em}
+.verse.mind .endq,.verse.mind .care{line-height:1.9}
