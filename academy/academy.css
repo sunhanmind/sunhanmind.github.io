@@ -164,7 +164,13 @@ footer.foot{padding-block:28px 40px;text-align:center;font-size:12px;color:var(-
 .verse p.st{line-height:2!important}
 .verse strong{font-family:var(--serif);font-weight:700;font-size:1.06em;color:var(--ink)}
 
-/* 마음공부 칼럼 시 형식 */
-.verse.mind h2{margin:2.2em 0 1em}
-.summary .ln{display:block;padding-left:1em;text-indent:-1em}
-.verse.mind .endq,.verse.mind .care{line-height:1.9}
+/* 마음공부 칼럼 = 하루 한 페이지 마음공부 책 양식 */
+.article .body.book{font-family:'Noto Serif KR',serif;font-size:16.5px;line-height:2}
+.article .body.book p{margin:0 0 2em;text-align:justify;word-break:normal;text-wrap:wrap}
+.article .body.book h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:21px;line-height:1.5;margin:2.6em 0 1.1em}
+.article .body.book .list3 p{margin:0 0 .4em;text-align:left}
+.article .body.book .list3{margin:0 0 2em}
+.article .body.book .endq{margin:2.4em 0 2em;padding:22px 26px;background:#f3ede2;border-left:3px solid #8c6f47;border-radius:4px;color:#5e4a2e;font-weight:500;line-height:1.9;text-align:left}
+.article .body.book .care{font-family:var(--sans);font-size:14px;line-height:1.8;color:var(--ash);text-align:left}
+.article .summary{font-family:'Noto Serif KR',serif;text-align:justify;word-break:normal}
+@media(max-width:640px){.article .body.book{font-size:15.5px}.article .body.book h2{font-size:19px}}
